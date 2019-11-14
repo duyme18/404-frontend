@@ -1,0 +1,112 @@
+<button type="button" class="btn btn-light" data-toggle="modal" data-target="#exampleModalCenter"
+        (click)="isShowModal=true">Thêm nhà
+</button>
+<br>
+<br>
+<table class="table">
+  <thead class="thead-dark">
+  <tr>
+    <th scope="col">Id</th>
+    <th scope="col">Tên nhà</th>
+    <th scope="col">Địa chỉ</th>
+    <th scope="col">Phòng ngủ</th>
+    <th scope="col">Phòng tắm</th>
+    <th scope="col">Giá tiền</th>
+    <th scope="col">Hình ảnh</th>
+    <th scope="col">Mô tả</th>
+    <th scope="col">Loại nhà</th>
+    <th scope="col">Loại phòng</th>
+    <th scope="col">Trạng thái</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let home of homeList">
+    <th scope="row">{{ home.id }}</th>
+    <td>{{ home.name }}</td>
+    <td>{{ home.address }}</td>
+    <td>{{ home.bedroomQuantity }}</td>
+    <td>{{ home.bathroomQuantity }}</td>
+    <td>{{ home.price }}</td>
+    <td><img src="{{'http://localhost:8080/uploads/' + home.file}}" width="150px" height="150px"></td>
+    <td>{{ home.description }}</td>
+    <td>{{ home.categoryHome.name }}</td>
+    <td>{{ home.categoryRoom.name }}</td>
+    <td>{{ home.statusHome.name }}</td>
+  </tr>
+  </tbody>
+</table>
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalCenterTitle">Thêm nhà</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="homeForm">
+          <div class="form-group">
+            <label for="name">Tên nhà</label>
+            <input type="email" class="form-control" id="name" name="name" formControlName="name">
+          </div>
+          <div class="form-group">
+            <label for="address">Địa chỉ</label>
+            <input type="email" class="form-control" id="address" name="address" formControlName="address">
+          </div>
+          <div class="form-group">
+            <label for="bedroomQuantity">Số lượng phòng ngủ</label>
+            <input type="email" class="form-control" id="bedroomQuantity" name="bedroomQuantity"
+                   formControlName="bedroomQuantity">
+          </div>
+          <div class="form-group">
+            <label for="bathroomQuantity">Số lượng phòng tắm</label>
+            <input type="email" class="form-control" id="bathroomQuantity" name="bathroomQuantity"
+                   formControlName="bathroomQuantity">
+          </div>
+          <div class="form-group">
+            <label for="price">Giá tiền</label>
+            <input type="email" class="form-control" id="price" name="price" formControlName="price">
+          </div>
+          <div class="form-group">
+            <label for="file">Hình ảnh</label>
+            <input type="file" class="form-control" id="file" name="file" formControlName="file"(change)="handleFileChoose($event.target.files)">
+          </div>
+          <div class="form-group">
+            <label for="description">Mô tả</label>
+            <input type="email" class="form-control" id="description" name="description" formControlName="description">
+          </div>
+          <div class="form-group">
+            <label for="exampleFormControlSelect1">Loại nhà</label>
+            <select class="form-control" id="exampleFormControlSelect1" name="categoryHome"
+                    formControlName="categoryHomeId">
+              <option *ngFor="let categoryHome of categoryHomeList" value="{{ categoryHome.id }}">
+                {{ categoryHome.name }}</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="exampleFormControlSelect2">Loại phòng</label>
+            <select class="form-control" id="exampleFormControlSelect2" name="category"
+                    formControlName="categoryRoomId">
+              <option *ngFor="let categoryRoom of categoryRoomList" value="{{ categoryRoom.id }}">
+                {{ categoryRoom.name }}</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="exampleFormControlSelect3">Trạng thái</label>
+            <select class="form-control" id="exampleFormControlSelect3" name="status" formControlName="statusHomeId">
+              <option *ngFor="let statusHome of statusHomeList" value="{{ statusHome.id }}"> {{ statusHome.name }}
+              </option>
+            </select>
+          </div>
+
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button #closeModalRef type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+        <button type="button" class="btn btn-primary" (click)="saveHome(closeModalRef)">Lưu</button>
+      </div>
+    </div>
+  </div>
+</div>
