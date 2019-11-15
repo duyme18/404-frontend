@@ -4,12 +4,13 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
-import { ReactiveFormsModule } from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { HomeListComponent } from './home-list/home-list.component';
 import { AddHomeComponent } from './add-home/add-home.component';
+import { HomesComponent } from './homes/homes.component';
 
 @NgModule({
   declarations: [
@@ -18,13 +19,15 @@ import { AddHomeComponent } from './add-home/add-home.component';
     HeaderComponent,
     FooterComponent,
     HomeListComponent,
-    AddHomeComponent
+    AddHomeComponent,
+    HomesComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

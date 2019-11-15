@@ -1,0 +1,32 @@
+<table class="table">
+  <thead class="thead-dark">
+  <tr>
+    <th scope="col">Id</th>
+    <th scope="col">Tên nhà</th>
+    <th scope="col">Địa chỉ</th>
+    <th scope="col">Phòng ngủ</th>
+    <th scope="col">Phòng tắm</th>
+    <th scope="col">Giá tiền</th>
+    <th scope="col">Hình ảnh</th>
+    <th scope="col">Mô tả</th>
+    <th scope="col">Loại nhà</th>
+    <th scope="col">Loại phòng</th>
+    <th scope="col">Trạng thái</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr >
+    <th scope="row">{{ home.id }}</th>
+    <td>{{ home.name }}</td>
+    <td>{{ home.address }}</td>
+    <td>{{ home.bedroomQuantity }}</td>
+    <td>{{ home.bathroomQuantity }}</td>
+    <td>{{ home.price }}</td>
+    <td><img src="{{'http://localhost:8080/uploads/' + home.file}}" [routerLink]="" width="150px" height="150px"></td>
+    <td>{{ home.description }}</td>
+    <td>{{ home.categoryHome.name }}</td>
+    <td>{{ home.categoryRoom.name }}</td>
+    <td>{{ home.statusHome.name }}</td>
+  </tr>
+  </tbody>
+</table>

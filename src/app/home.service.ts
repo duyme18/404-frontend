@@ -17,6 +17,10 @@ export class HomeService {
   constructor(private httpClient: HttpClient) {
   }
 
+  public getHomeId(id: string): Observable<Home> {
+    return this.httpClient.get<Home>(this.API_URL + '/home/' + id);
+  }
+
   public getList(): Observable<Home[]> {
     return this.httpClient.get<Home[]>(this.API_URL + '/home');
   }

@@ -27,8 +27,6 @@ export class HomeListComponent implements OnInit {
     description: new FormControl('')
   });
 
-  filterHomeList: any[];
-
   constructor(private homeService: HomeService) {
   }
 
