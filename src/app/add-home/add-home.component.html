@@ -17,10 +17,12 @@
     <th scope="col">Loại nhà</th>
     <th scope="col">Loại phòng</th>
     <th scope="col">Trạng thái</th>
+    <th scope="col">Edit</th>
+    <th scope="col">Delete</th>
   </tr>
   </thead>
   <tbody>
-  <tr *ngFor="let home of homeList">
+  <tr *ngFor="let home of homeList;index as i">
     <th scope="row">{{ home.id }}</th>
     <td>{{ home.name }}</td>
     <td>{{ home.address }}</td>
@@ -32,6 +34,12 @@
     <td>{{ home.categoryHome.name }}</td>
     <td>{{ home.categoryRoom.name }}</td>
     <td>{{ home.statusHome.name }}</td>
+    <td><a class="btn btn-primary" [routerLink]="['/home-edit',home.id]">Edit <span
+      class="sr-only">(current)</span></a>
+    </td>
+    <td>
+      <button class="btn btn-primary" (click)="deleteHome(i)">Delete</button>
+    </td>
   </tr>
   </tbody>
 </table>
@@ -71,7 +79,8 @@
           </div>
           <div class="form-group">
             <label for="file">Hình ảnh</label>
-            <input type="file" class="form-control" id="file" name="file" formControlName="file"(change)="handleFileChoose($event.target.files)">
+            <input type="file" class="form-control" id="file" name="file" formControlName="file"
+                   (change)="handleFileChoose($event.target.files)">
           </div>
           <div class="form-group">
             <label for="description">Mô tả</label>

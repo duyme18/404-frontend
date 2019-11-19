@@ -5,6 +5,7 @@ import {CategoryRoom} from '../category-room';
 import {StatusHome} from '../status-home';
 import {FormControl, FormGroup} from '@angular/forms';
 import {HomeService} from '../home.service';
+import {SearchService} from '../search.service';
 
 @Component({
   selector: 'app-home-list',

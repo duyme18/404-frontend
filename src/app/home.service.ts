@@ -17,7 +17,7 @@ export class HomeService {
   constructor(private httpClient: HttpClient) {
   }
 
-  public getHomeId(id: string): Observable<Home> {
+  public getHomeId(id: number): Observable<Home> {
     return this.httpClient.get<Home>(this.API_URL + '/home/' + id);
   }
 
@@ -27,6 +27,14 @@ export class HomeService {
 
   public addHome(home: Home): Observable<Home> {
     return this.httpClient.post<Home>(this.API_URL + '/home', home);
+  }
+
+  public updateHome(home: Home, id: number): Observable<Home> {
+    return this.httpClient.put<Home>(`${this.API_URL}` + '/home/' + `${id}`, home);
+  }
+
+  public deleteHome(id: string): Observable<Home> {
+    return this.httpClient.delete<Home>(this.API_URL + '/home/' + id);
   }
 
   public addFile(file: FormData, id: string): Observable<FileForm> {

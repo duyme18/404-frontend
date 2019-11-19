@@ -14,7 +14,7 @@ import {HomeService} from '../home.service';
   styleUrls: ['./homes.component.scss']
 })
 export class HomesComponent implements OnInit {
-  id: string;
+  id: number;
   homeName: string;
   categoryHome: CategoryHome;
   categoryRoom: CategoryRoom;
@@ -22,15 +22,15 @@ export class HomesComponent implements OnInit {
 
   home: Home;
 
-  homeForm = new FormGroup({
-    name: new FormControl(''),
-    address: new FormControl(''),
-    bedroomQuantity: new FormControl(''),
-    bathroomQuantity: new FormControl(''),
-    price: new FormControl(''),
-    file: new FormControl(''),
-    description: new FormControl('')
-  });
+  // homeForm = new FormGroup({
+  //   name: new FormControl(''),
+  //   address: new FormControl(''),
+  //   bedroomQuantity: new FormControl(''),
+  //   bathroomQuantity: new FormControl(''),
+  //   price: new FormControl(''),
+  //   file: new FormControl(''),
+  //   description: new FormControl('')
+  // });
 
   constructor(private activatedRoute: ActivatedRoute,
               private domSanitizer: DomSanitizer,
@@ -52,7 +52,6 @@ export class HomesComponent implements OnInit {
     this.homeService.getStatusHomeList().subscribe(result => {
       this.statusHome = this.statusHome;
     });
-    console.log(this.id);
   }
 
   getHomeId() {

@@ -1,9 +1,11 @@
+Danh sách nhà:
 <div class="row">
   <div class="col-3" *ngFor="let home of homeList; index as idx">
     <div class="card" style="width: 18rem;" [routerLink]="'/home/' + home.id + '/' + home.name ">
       <img src="{{'http://localhost:8080/uploads/' + home.file}}" width="150px" height="200px" class="card-img-top" alt="...">
       <div class="card-body text-center">
         <p class="card-text">{{ home.name }}</p>
+        <p class="card-text">{{ home.price }} VNĐ / đêm</p>
       </div>
     </div>
   </div>

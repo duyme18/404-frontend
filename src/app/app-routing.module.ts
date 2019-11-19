@@ -3,6 +3,7 @@ import {Routes, RouterModule} from '@angular/router';
 import {HomeListComponent} from './home-list/home-list.component';
 import {AddHomeComponent} from './add-home/add-home.component';
 import {HomesComponent} from './homes/homes.component';
+import {EditHomeComponent} from './edit-home/edit-home.component';
 
 
 const routes: Routes = [
@@ -14,6 +15,9 @@ const routes: Routes = [
   },
   {
     path: 'home/:homeId/:name', component: HomesComponent
+  },
+  {
+    path: 'home-edit/:homeId', component: EditHomeComponent
   }
 ];
 
