@@ -6,6 +6,7 @@ import {StatusHome} from '../status-home';
 import {FormControl, FormGroup} from '@angular/forms';
 import {HomeService} from '../home.service';
 import {SearchService} from '../search.service';
+import {SearchHomeByAddress} from './search-home-by-address';
 
 @Component({
   selector: 'app-home-list',
@@ -18,15 +19,7 @@ export class HomeListComponent implements OnInit {
   categoryRoomList: CategoryRoom[];
   statusHomeList: StatusHome[];
 
-  homeForm = new FormGroup({
-    name: new FormControl(''),
-    address: new FormControl(''),
-    bedroomQuantity: new FormControl(''),
-    bathroomQuantity: new FormControl(''),
-    price: new FormControl(''),
-    file: new FormControl(''),
-    description: new FormControl('')
-  });
+  searchAddress = '';
 
   constructor(private homeService: HomeService, private searchService: SearchService) {
   }
@@ -41,6 +34,15 @@ export class HomeListComponent implements OnInit {
     });
     this.homeService.getStatusHomeList().subscribe(result => {
       this.statusHomeList = this.statusHomeList;
+    });
+  }
+
+  searchHomeByAddress() {
+    const addressForm: SearchHomeByAddress = {
+      address: this.searchAddress
+    };
+    this.homeService.searchHomeByAddress(addressForm).subscribe(result => {
+      this.homeList = result;
     });
   }
 

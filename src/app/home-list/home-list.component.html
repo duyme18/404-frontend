@@ -1,8 +1,24 @@
-<h1>Homes List</h1>
+<div class="row">
+  <div class="col-md-8">
+
+  </div>
+  <div class="col-md-4">
+    <nav class="navbar navbar-light bg-light">
+      <div class="form-inline">
+        <input [(ngModel)]="searchAddress" class="form-control mr-sm-2" type="search" placeholder="Search"
+               aria-label="Search"
+               (keydown)="searchHomeByAddress()">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      </div>
+    </nav>
+  </div>
+</div>
+<h1 class="text-center">Homes List</h1>
 <div class="row">
   <div class="col-3" *ngFor="let home of homeList; index as idx">
     <div class="card" style="width: 18rem;" [routerLink]="'/home/' + home.id + '/' + home.name ">
-      <img src="{{'http://localhost:8080/uploads/' + home.file}}" width="150px" height="200px" class="card-img-top" alt="...">
+      <img src="{{'http://localhost:8080/uploads/' + home.file}}" width="150px" height="200px" class="card-img-top"
+           alt="...">
       <div class="card-body text-center">
         <p class="card-text">{{ home.name }}</p>
         <p class="card-text">{{ home.price }} VNĐ / đêm</p>

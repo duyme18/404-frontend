@@ -11,7 +11,14 @@
       </a>
     </h5>
     <nav class="my-2 my-md-0 mr-md-3">
-      <a class="p-2 text-light" href="#">Features</a>
+
+      <a class="p-2 text-light dropdown-toggle" id="navbarDropdownMenuLink" href="#" role="button"
+         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Home Management</a>
+      <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+        <a class="dropdown-item" href="/add-home">Add Home</a>
+        <a class="dropdown-item" href="/home-list">Home List</a>
+        <a class="dropdown-item" href="#">Something else here</a>
+      </div>
       <a class="p-2 text-light" href="#">Enterprise</a>
       <a class="p-2 text-light" href="#">Support</a>
       <a class="p-2 text-light" href="#" routerLink="register">Registration</a>
@@ -53,8 +60,6 @@
         <a class="btn btn-sm btn-outline-secondary  text-warning btn-bd-download" routerLink="/login">Sign up</a>
       </li>
     </ul>
-
-
   </div>
 </div>
 

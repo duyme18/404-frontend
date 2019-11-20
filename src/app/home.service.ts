@@ -6,6 +6,7 @@ import {CategoryHome} from './category-home';
 import {CategoryRoom} from './category-room';
 import {StatusHome} from './status-home';
 import {FileForm} from './file-form';
+import {SearchHomeByAddress} from './home-list/search-home-by-address';
 
 @Injectable({
   providedIn: 'root'
@@ -42,6 +43,10 @@ export class HomeService {
     headers.append('Content-Type', 'multipart/form-data');
     headers.append('Accept', 'application/json');
     return this.httpClient.post<FileForm>(this.API_URL + '/file/' + id, file, {headers});
+  }
+
+  public searchHomeByAddress(address: SearchHomeByAddress): Observable<Home[]> {
+    return this.httpClient.post<Home[]>(this.API_URL + '/home/searchByAddress', address);
   }
 
   public getCategoryHomeList(): Observable<CategoryHome[]> {
