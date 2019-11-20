@@ -1,5 +1,5 @@
 <button type="button" class="btn btn-light" data-toggle="modal" data-target="#exampleModalCenter"
-        (click)="isShowModal=true">Thêm nhà
+        (click)="isShowModal=true">Add home
 </button>
 <br>
 <br>
@@ -7,17 +7,17 @@
   <thead class="thead-dark">
   <tr>
     <th scope="col">Id</th>
-    <th scope="col">Tên nhà</th>
-    <th scope="col">Địa chỉ</th>
-    <th scope="col">Phòng ngủ</th>
-    <th scope="col">Phòng tắm</th>
-    <th scope="col">Giá tiền</th>
-    <th scope="col">Hình ảnh</th>
-    <th scope="col">Mô tả</th>
-    <th scope="col">Loại nhà</th>
-    <th scope="col">Loại phòng</th>
-    <th scope="col">Trạng thái</th>
-    <th scope="col">Edit</th>
+    <th scope="col">Name</th>
+    <th scope="col">Address</th>
+    <th scope="col">Bedroom</th>
+    <th scope="col">Bathroom</th>
+    <th scope="col">Price</th>
+    <th scope="col">Image</th>
+    <th scope="col">Description</th>
+    <th scope="col">Category Home</th>
+    <th scope="col">Category Room</th>
+    <th scope="col">Status</th>
+    <th scope="col">Update</th>
     <th scope="col">Delete</th>
   </tr>
   </thead>
@@ -34,11 +34,35 @@
     <td>{{ home.categoryHome.name }}</td>
     <td>{{ home.categoryRoom.name }}</td>
     <td>{{ home.statusHome.name }}</td>
-    <td><a class="btn btn-primary" [routerLink]="['/home-edit',home.id]">Edit <span
+    <td><a class="btn btn-primary" [routerLink]="['/home-edit',home.id]">Update<span
       class="sr-only">(current)</span></a>
     </td>
     <td>
-      <button class="btn btn-primary" (click)="deleteHome(i)">Delete</button>
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+        Delete
+      </button>
+      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+           aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body text-center">
+              Do you want to delete this house?
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary" data-dismiss="modal" (click)=" deleteHome(i)
+            ">Delete
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </td>
   </tr>
   </tbody>
@@ -48,7 +72,7 @@
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalCenterTitle">Thêm nhà</h5>
+        <h5 class="modal-title" id="exampleModalCenterTitle">Add Home</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -56,38 +80,38 @@
       <div class="modal-body">
         <form [formGroup]="homeForm">
           <div class="form-group">
-            <label for="name">Tên nhà</label>
+            <label for="name">Name</label>
             <input type="email" class="form-control" id="name" name="name" formControlName="name">
           </div>
           <div class="form-group">
-            <label for="address">Địa chỉ</label>
+            <label for="address">Address</label>
             <input type="email" class="form-control" id="address" name="address" formControlName="address">
           </div>
           <div class="form-group">
-            <label for="bedroomQuantity">Số lượng phòng ngủ</label>
+            <label for="bedroomQuantity">Bedroom</label>
             <input type="email" class="form-control" id="bedroomQuantity" name="bedroomQuantity"
                    formControlName="bedroomQuantity">
           </div>
           <div class="form-group">
-            <label for="bathroomQuantity">Số lượng phòng tắm</label>
+            <label for="bathroomQuantity">Bathroom</label>
             <input type="email" class="form-control" id="bathroomQuantity" name="bathroomQuantity"
                    formControlName="bathroomQuantity">
           </div>
           <div class="form-group">
-            <label for="price">Giá tiền</label>
+            <label for="price">Price</label>
             <input type="email" class="form-control" id="price" name="price" formControlName="price">
           </div>
           <div class="form-group">
-            <label for="file">Hình ảnh</label>
+            <label for="file">Image</label>
             <input type="file" class="form-control" id="file" name="file" formControlName="file"
                    (change)="handleFileChoose($event.target.files)">
           </div>
           <div class="form-group">
-            <label for="description">Mô tả</label>
+            <label for="description">Description</label>
             <input type="email" class="form-control" id="description" name="description" formControlName="description">
           </div>
           <div class="form-group">
-            <label for="exampleFormControlSelect1">Loại nhà</label>
+            <label for="exampleFormControlSelect1">Category Home</label>
             <select class="form-control" id="exampleFormControlSelect1" name="categoryHome"
                     formControlName="categoryHomeId">
               <option *ngFor="let categoryHome of categoryHomeList" value="{{ categoryHome.id }}">
@@ -95,7 +119,7 @@
             </select>
           </div>
           <div class="form-group">
-            <label for="exampleFormControlSelect2">Loại phòng</label>
+            <label for="exampleFormControlSelect2">Category Room</label>
             <select class="form-control" id="exampleFormControlSelect2" name="category"
                     formControlName="categoryRoomId">
               <option *ngFor="let categoryRoom of categoryRoomList" value="{{ categoryRoom.id }}">
@@ -103,7 +127,7 @@
             </select>
           </div>
           <div class="form-group">
-            <label for="exampleFormControlSelect3">Trạng thái</label>
+            <label for="exampleFormControlSelect3">Status</label>
             <select class="form-control" id="exampleFormControlSelect3" name="status" formControlName="statusHomeId">
               <option *ngFor="let statusHome of statusHomeList" value="{{ statusHome.id }}"> {{ statusHome.name }}
               </option>
@@ -113,8 +137,8 @@
         </form>
       </div>
       <div class="modal-footer">
-        <button #closeModalRef type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
-        <button type="button" class="btn btn-primary" (click)="saveHome(closeModalRef)">Lưu</button>
+        <button #closeModalRef type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" (click)="saveHome(closeModalRef)">Save changes</button>
       </div>
     </div>
   </div>

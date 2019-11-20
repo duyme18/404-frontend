@@ -110,6 +110,7 @@ export class AddHomeComponent implements OnInit {
       this.homeService.addFile(form, String(next.id)).subscribe(
         result => {
           console.log(next.id);
+          this.getHomeList();
         }, error => {
           alert('Upload file fail');
         }
@@ -118,9 +119,7 @@ export class AddHomeComponent implements OnInit {
       return alert('error add home');
     });
     console.log('Thêm thành công');
-    this.getHomeList();
     closeButton.click();
     this.homeForm.reset();
   }
-
 }
