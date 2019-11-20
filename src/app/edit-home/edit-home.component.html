@@ -1,39 +1,39 @@
 <div class="container">
-  <h1>Cập nhật thông tin nhà</h1>
+  <h1>Update information the home</h1>
   <form [formGroup]="homeForm">
     <div class="form-group">
-      <label for="name">Tên nhà</label>
+      <label for="name">Name</label>
       <input type="text" class="form-control" id="name" name="name" formControlName="name">
     </div>
     <div class="form-group">
-      <label for="address">Địa chỉ</label>
+      <label for="address">Address</label>
       <input type="text" class="form-control" id="address" name="address" formControlName="address">
     </div>
     <div class="form-group">
-      <label for="bedroomQuantity">Số lượng phòng ngủ</label>
+      <label for="bedroomQuantity">Bedroom</label>
       <input type="text" class="form-control" id="bedroomQuantity" name="bedroomQuantity"
              formControlName="bedroomQuantity">
     </div>
     <div class="form-group">
-      <label for="bathroomQuantity">Số lượng phòng tắm</label>
+      <label for="bathroomQuantity">Bathroom</label>
       <input type="text" class="form-control" id="bathroomQuantity" name="bathroomQuantity"
              formControlName="bathroomQuantity">
     </div>
     <div class="form-group">
-      <label for="price">Giá tiền</label>
+      <label for="price">Price</label>
       <input type="text" class="form-control" id="price" name="price" formControlName="price">
     </div>
     <div class="form-group">
-      <label for="file">Hình ảnh</label>
+      <label for="file">Image</label>
       <input type="file" class="form-control" id="file" name="file"
              (change)="handleFileChoose($event.target.files)">
     </div>
     <div class="form-group">
-      <label for="description">Mô tả</label>
+      <label for="description">Description</label>
       <input type="text" class="form-control" id="description" name="description" formControlName="description">
     </div>
     <div class="form-group">
-      <label for="exampleFormControlSelect1">Loại nhà</label>
+      <label for="exampleFormControlSelect1">Category Home</label>
       <select class="form-control" id="exampleFormControlSelect1" name="categoryHome"
               formControlName="categoryHomeId">
         <option *ngFor="let categoryHome of categoryHomeList" value="{{ categoryHome.id }}">
@@ -41,7 +41,7 @@
       </select>
     </div>
     <div class="form-group">
-      <label for="exampleFormControlSelect2">Loại phòng</label>
+      <label for="exampleFormControlSelect2">Category Room</label>
       <select class="form-control" id="exampleFormControlSelect2" name="category"
               formControlName="categoryRoomId">
         <option *ngFor="let categoryRoom of categoryRoomList" value="{{ categoryRoom.id }}">
@@ -49,26 +49,25 @@
       </select>
     </div>
     <div class="form-group">
-      <label for="exampleFormControlSelect3">Trạng thái</label>
+      <label for="exampleFormControlSelect3">Status</label>
       <select class="form-control" id="exampleFormControlSelect3" name="status" formControlName="statusHomeId">
         <option *ngFor="let statusHome of statusHomeList" value="{{ statusHome.id }}"> {{ statusHome.name }}
         </option>
       </select>
     </div>
     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-      Save
+      Lưu
     </button>
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
          aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
-          <div class="modal-body">
+          <div class="modal-body text-center">
             Do you want to update information of the house?
           </div>
           <div class="modal-footer">

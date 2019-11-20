@@ -28,7 +28,7 @@ export class HomeListComponent implements OnInit {
     description: new FormControl('')
   });
 
-  constructor(private homeService: HomeService) {
+  constructor(private homeService: HomeService, private searchService: SearchService) {
   }
 
   ngOnInit() {

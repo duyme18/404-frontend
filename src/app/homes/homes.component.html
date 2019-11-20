@@ -1,13 +1,13 @@
 <div class="container">
-  <h1>Tên ngôi nhà: {{home.name}}</h1>
-  <h3>Địa chỉ: {{home.address}}</h3>
-  <h3>Số lượng phòng tắm: {{home.bedroomQuantity}}</h3>
-  <h3>Số lượng phòng ngủ: {{ home.bathroomQuantity }}</h3>
-  <h3>Giá tiền/đêm: {{ home.price }}VNĐ</h3>
+  <h1>Name: {{home.name}}</h1>
+  <h3>Address: {{home.address}}</h3>
+  <h3>Bedroom: {{home.bedroomQuantity}}</h3>
+  <h3>Bathroom: {{ home.bathroomQuantity }}</h3>
+  <h3>Price per night: {{ home.price }}VNĐ</h3>
   <img src="{{'http://localhost:8080/uploads/' + home.file}}" [routerLink]="" width="500px" height="500px">
-  <h3>Mô tả: {{home.description}}</h3>
-  <h3>Loại nhà: {{home.categoryHome.name}}</h3>
-  <h3>Loại phòng: {{home.categoryRoom.name}}</h3>
-  <h3>Trạng thái: {{home.statusHome.name}}</h3>
+  <h3>Description: {{home.description}}</h3>
+  <h3>Category Room: {{home.categoryHome.name}}</h3>
+  <h3>Category Home: {{home.categoryRoom.name}}</h3>
+  <h3>Status: {{home.statusHome.name}}</h3>
 </div>
 
