@@ -1,72 +1,61 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">Airbnb</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
-          aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="/home-list">Home List <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Dashboard<span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-           aria-haspopup="true" aria-expanded="false">
-          Hotel Management
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="/add-home">Home</a>
-          <a class="dropdown-item" href="#">Another action</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Something else here</a>
+<div>
+  <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-dark border-bottom box-shadow">
+    <h5 class="my-0 mr-md-auto font-weight-normal">
+      <a href="#" class="navbar-brand d-flex align-items-center text-light">
+        <svg _ngcontent-qcd-c1="" aria-hidden="true" focusable="false" role="presentation"
+             style="height: 1.5em; width: 2.3em; display: block; fill: rgb(255, 90, 95);" viewBox="0 0 1000 970">
+          <path _ngcontent-qcd-c1=""
+                d="m499.3 736.7c-51-64-81-120.1-91-168.1-10-39-6-70 11-93 18-27 45-40 80-40s62 13 80 40c17 23 21 54 11 93-11 49-41 105-91 168.1zm362.2 43c-7 47-39 86-83 105-85 37-169.1-22-241.1-102 119.1-149.1 141.1-265.1 90-340.2-30-43-73-64-128.1-64-111 0-172.1 94-148.1 203.1 14 59 51 126.1 110 201.1-37 41-72 70-103 88-24 13-47 21-69 23-101 15-180.1-83-144.1-184.1 5-13 15-37 32-74l1-2c55-120.1 122.1-256.1 199.1-407.2l2-5 22-42c17-31 24-45 51-62 13-8 29-12 47-12 36 0 64 21 76 38 6 9 13 21 22 36l21 41 3 6c77 151.1 144.1 287.1 199.1 407.2l1 1 20 46 12 29c9.2 23.1 11.2 46.1 8.2 70.1zm46-90.1c-7-22-19-48-34-79v-1c-71-151.1-137.1-287.1-200.1-409.2l-4-6c-45-92-77-147.1-170.1-147.1-92 0-131.1 64-171.1 147.1l-3 6c-63 122.1-129.1 258.1-200.1 409.2v2l-21 46c-8 19-12 29-13 32-51 140.1 54 263.1 181.1 263.1 1 0 5 0 10-1h14c66-8 134.1-50 203.1-125.1 69 75 137.1 117.1 203.1 125.1h14c5 1 9 1 10 1 127.1.1 232.1-123 181.1-263.1z"></path>
+        </svg>
+        <strong>Airbnb</strong>
+      </a>
+    </h5>
+    <nav class="my-2 my-md-0 mr-md-3">
+      <a class="p-2 text-light" href="#">Features</a>
+      <a class="p-2 text-light" href="#">Enterprise</a>
+      <a class="p-2 text-light" href="#">Support</a>
+      <a class="p-2 text-light" href="#" routerLink="register">Registration</a>
+    </nav>
+    <ul class="nav navbar-nav" routerLinkActive="active">
+
+      <li *ngIf="authority === 'user'" class="btn-group">
+        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+          User {{infor.token}}
+        </button>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" (click)=" logoutUser()">Log out</a>
+          <a class="dropdown-item" (click)="  detailUser()">Detail</a>
         </div>
       </li>
-      <li class="nav-item">
-        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+      <li *ngIf="authority === 'admin'" class="btn-group">
+        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+          Admin {{infor.token}}
+        </button>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" (click)="logoutUser()">Log out</a>
+          <a class="dropdown-item" (click)="  detailUser()">Detail</a>
+
+        </div>
+      </li>
+      <li *ngIf="authority === 'pm'" class="btn-group">
+        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+          Pm {{infor.token}}
+        </button>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" (click)="logoutUser()" href="#">Log out</a>
+        </div>
+
+      </li>
+
+
+      <li *ngIf="!authority" class="nav-item">
+
+        <a class="btn btn-sm btn-outline-secondary  text-warning btn-bd-download" routerLink="/login">Sign up</a>
       </li>
     </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"
-             name="search"
-             [(ngModel)]="searchText"
-             (keydown)="onSearchComplete()"
-      >
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    </form>
+
+
   </div>
-</nav>
-<!--<nav class="navbar navbar-expand-lg navbar-light bg-light">-->
-<!--  <a class="navbar-brand" href="#">Airbnb</a>-->
-<!--  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">-->
-<!--    <span class="navbar-toggler-icon"></span>-->
-<!--  </button>-->
-<!--  <div class="collapse navbar-collapse" id="navbarNav">-->
-<!--    <ul class="navbar-nav">-->
-<!--      <li class="nav-item active">-->
-<!--        <a class="nav-link" href="/home-list">Home List <span class="sr-only">(current)</span></a>-->
-<!--      </li>-->
-<!--      <li class="nav-item active">-->
-<!--        <a class="nav-link" href="/add-home">Add Home <span class="sr-only">(current)</span></a>-->
-<!--      </li>-->
-<!--      <li class="nav-item">-->
-<!--        <a class="nav-link" href="#">Pricing</a>-->
-<!--      </li>-->
-<!--      <li class="nav-item">-->
-<!--        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>-->
-<!--      </li>-->
-<!--    </ul>-->
-<!--  </div>-->
-<!--</nav>-->
-<!--<section class="jumbotron text-center">-->
-<!--  <div class="container">-->
-<!--    <h1 class="jumbotron-heading">Album example</h1>-->
-<!--    <p class="lead text-muted">Something short and leading about the collection below—its contents, the creator, etc. Make it short and sweet, but not too short so folks don’t simply skip over it entirely.</p>-->
-<!--    <p>-->
-<!--      <a href="#" class="btn btn-primary my-2">Main call to action</a>-->
-<!--      <a href="#" class="btn btn-secondary my-2">Secondary action</a>-->
-<!--    </p>-->
-<!--  </div>-->
-<!--</section>-->
+</div>
+
+

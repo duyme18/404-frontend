@@ -1,0 +1,84 @@
+<div *ngIf="isSignedUp; else signupForm">
+  Your registration is successful. Please login!
+</div>
+<ng-template #signupForm>
+  <div class="container">
+    <div class="card bg-light">
+      <article class="card-body mx-auto" style="max-width: 400px;">
+        <h4 class="card-title mt-3 text-center">Create Account</h4>
+        <p class="text-center">Get started with your free account</p>
+        <p>
+          <a href="" class="btn btn-block btn-twitter"> <i class="fab fa-twitter"></i>   Login  Twitter</a>
+          <a href="" class="btn btn-block btn-facebook"> <i class="fab fa-facebook-f"></i>   Login  Facebook</a>
+        </p>
+        <p class="divider-text">
+          <span class="bg-light">OR</span>
+        </p>
+        <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+          <!--  name-->
+          <div class="form-group input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
+            </div>
+            <input placeholder="Name" type="text" class="form-control" name="name" [(ngModel)]="form.name" #name="ngModel" required />
+            <div *ngIf="f.submitted && name.invalid">
+              <div *ngIf="name.errors.required">Name is required</div>
+            </div>        </div> <!-- form-group// -->
+          <!--        username-->
+          <div class="form-group input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
+            </div>
+
+            <input placeholder="Username" type="text" class="form-control" name="username" [(ngModel)]="form.username" #username="ngModel"
+                   required />
+            <div *ngIf="f.submitted && username.invalid">
+              <div *ngIf="username.errors.required">Username is required</div>
+            </div> <!-- form-group// -->
+          </div>
+          <div class="form-group input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
+            </div>
+            <input placeholder="Email" type="text" class="form-control" name="email" [(ngModel)]="form.email" #email="ngModel" required email />
+            <div *ngIf="f.submitted && email.invalid">
+              <div *ngIf="email.errors.required">Email is required</div>
+              <div *ngIf="email.errors.email">Email must be a valid email address</div>
+            </div>
+          </div> <!-- form-group// -->
+
+
+
+          <div class="form-group input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
+            </div>
+            <input placeholder="Password" type="password" class="form-control" name="password" [(ngModel)]="form.password" #password="ngModel"
+                   required minlength="6" />
+            <div *ngIf="f.submitted && password.invalid">
+              <div *ngIf="password.errors.required">Password is required</div>
+              <div *ngIf="password.errors.minlength">Password must be at least 6 characters</div>
+            </div>
+          </div>
+          <!-- form-group// -->
+          <!--        <div class="form-group input-group">-->
+          <!--          <div class="input-group-prepend">-->
+          <!--            <span class="input-group-text"> <i class="fa fa-lock"></i> </span>-->
+          <!--          </div>-->
+          <!--          <input class="form-control" placeholder="Repeat password" type="password">-->
+          <!--        </div> &lt;!&ndash; form-group// &ndash;&gt;-->
+
+          <div class="form-group">
+            <button class="btn btn-primary btn-block">Register</button>
+            <div *ngIf="f.submitted && isSignUpFailed" class="alert alert-warning">
+              Signup failed!<br/>{{errorMessage}}
+            </div>
+          </div>
+
+          <p class="text-center">Have an account?  <a class="nav-link" routerLink="/login">Login</a> </p>
+        </form>
+      </article>
+    </div> <!-- card.// -->
+
+  </div>
+</ng-template>

@@ -12,6 +12,8 @@ import {HomeListComponent} from './home-list/home-list.component';
 import {AddHomeComponent} from './add-home/add-home.component';
 import {HomesComponent} from './homes/homes.component';
 import {EditHomeComponent} from './edit-home/edit-home.component';
+import { RegisterComponent } from './register/register.component';
+import { SignupComponent } from './signup/signup.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,9 @@ import {EditHomeComponent} from './edit-home/edit-home.component';
     HomeListComponent,
     AddHomeComponent,
     HomesComponent,
-    EditHomeComponent
+    EditHomeComponent,
+    RegisterComponent,
+    SignupComponent
   ],
   imports: [
     BrowserModule,
