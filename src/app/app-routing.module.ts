@@ -28,6 +28,9 @@ const routes: Routes = [
   {
     path: 'login',
     component: SignupComponent,
+  }, {
+    path: '',
+    component: HomeListComponent,
   }
 ];
 
