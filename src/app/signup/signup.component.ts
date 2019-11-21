@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {AuthLoginInfo} from '../auth/login-infor';
 import {AuthService} from '../auth/auth.service';
 import {TokenStorageService} from '../auth/token-storage.service';
@@ -43,8 +43,8 @@ export class SignupComponent implements OnInit {
         // this.ngOnInit();
         // this.reloadPage();
         // this.router.navigate(['/widget']);
-        this.router.navigateByUrl('/home-list', {skipLocationChange: true}).then(() => {
-          this.router.navigate(['Your actualComponent']);
+        this.router.navigate(['/']).then(r => {
+          console.log('success to navigate');
         });
       },
       error => {

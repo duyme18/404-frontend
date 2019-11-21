@@ -14,6 +14,9 @@ import {HomesComponent} from './homes/homes.component';
 import {EditHomeComponent} from './edit-home/edit-home.component';
 import { RegisterComponent } from './register/register.component';
 import { SignupComponent } from './signup/signup.component';
+import { FeaturedComponent } from './featured/featured.component';
+import { HomeComponent } from './home/home.component';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -26,7 +29,9 @@ import { SignupComponent } from './signup/signup.component';
     HomesComponent,
     EditHomeComponent,
     RegisterComponent,
-    SignupComponent
+    SignupComponent,
+    FeaturedComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
@@ -34,6 +39,7 @@ import { SignupComponent } from './signup/signup.component';
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]
