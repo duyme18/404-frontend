@@ -19,18 +19,12 @@ export class HomesComponent implements OnInit {
   categoryHome: CategoryHome;
   categoryRoom: CategoryRoom;
   statusHome: StatusHome;
+  latitude: 105.77876;
+  longitude: 105.77876;
+  locationChosen: false;
 
   home: Home;
 
-  // homeForm = new FormGroup({
-  //   name: new FormControl(''),
-  //   address: new FormControl(''),
-  //   bedroomQuantity: new FormControl(''),
-  //   bathroomQuantity: new FormControl(''),
-  //   price: new FormControl(''),
-  //   file: new FormControl(''),
-  //   description: new FormControl('')
-  // });
 
   constructor(private activatedRoute: ActivatedRoute,
               private domSanitizer: DomSanitizer,
@@ -54,6 +48,13 @@ export class HomesComponent implements OnInit {
     });
   }
 
+
+  onChoseLocation(event) {
+    console.log(event);
+    this.latitude = event.coords.lat;
+    this.longitude = event.coords.lng;
+    this.locationChosen = true;
+  }
   getHomeId() {
     this.homeService.getHomeId(this.id).subscribe(result => {
       this.home = result;
