@@ -12,11 +12,14 @@ import {HomeListComponent} from './home-list/home-list.component';
 import {AddHomeComponent} from './add-home/add-home.component';
 import {HomesComponent} from './homes/homes.component';
 import {EditHomeComponent} from './edit-home/edit-home.component';
-import { RegisterComponent } from './register/register.component';
-import { SignupComponent } from './signup/signup.component';
-import { FeaturedComponent } from './featured/featured.component';
-import { HomeComponent } from './home/home.component';
+import {RegisterComponent} from './register/register.component';
+import {SignupComponent} from './signup/signup.component';
+import {FeaturedComponent} from './featured/featured.component';
+import {HomeComponent} from './home/home.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {GoogleMapComponent} from './google-map/google-map.component';
+import {AgmCoreModule} from '@agm/core';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,7 +34,8 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
     SignupComponent,
     FeaturedComponent,
     HomeComponent,
-    FeaturedComponent
+    FeaturedComponent,
+    GoogleMapComponent
   ],
   imports: [
     BrowserModule,
@@ -39,7 +43,10 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
-    NgbModule
+    NgbModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyBL1psdbu18dDFFpDlMOuASQl-65r72vJE'
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -60,6 +60,8 @@ export class EditHomeComponent implements OnInit {
       bathroomQuantity: [''],
       price: [''],
       file: [''],
+      latitude: [''],
+      longitude: [''],
       description: [''],
       categoryHomeId: [''],
       categoryRoomId: [''],
@@ -83,7 +85,7 @@ export class EditHomeComponent implements OnInit {
 
   editHome() {
     const {
-      name, address, bedroomQuantity, bathroomQuantity, price, file, description, categoryHomeId,
+      name, address, bedroomQuantity, bathroomQuantity, price, file, latitude, longitude, description, categoryHomeId,
       categoryRoomId, statusHomeId
     } = this.homeForm.value;
 
@@ -95,6 +97,8 @@ export class EditHomeComponent implements OnInit {
       bathroomQuantity,
       price,
       file,
+      latitude,
+      longitude,
       description,
       categoryHome: {
         id: categoryHomeId

@@ -27,6 +27,8 @@ export class AddHomeComponent implements OnInit {
     bathroomQuantity: new FormControl(''),
     price: new FormControl(''),
     file: new FormControl(''),
+    latitude: new FormControl(''),
+    longitude: new FormControl(''),
     description: new FormControl(''),
     categoryHomeId: new FormControl(''),
     categoryRoomId: new FormControl(''),
@@ -81,7 +83,7 @@ export class AddHomeComponent implements OnInit {
 
   saveHome(closeButton: HTMLInputElement) {
     const {
-      name, address, bedroomQuantity, bathroomQuantity, price, file, description, categoryHomeId,
+      name, address, bedroomQuantity, bathroomQuantity, price, file, description, latitude, longitude, categoryHomeId,
       categoryRoomId, statusHomeId
     } = this.homeForm.value;
 
@@ -93,6 +95,8 @@ export class AddHomeComponent implements OnInit {
       price,
       file,
       description,
+      latitude,
+      longitude,
       categoryHome: {
         id: categoryHomeId
       },
