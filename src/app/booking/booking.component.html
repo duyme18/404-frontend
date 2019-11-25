@@ -1,0 +1,80 @@
+<app-header></app-header>
+<div class="container">
+  <div class="stepwizard">
+    <div class="stepwizard-row setup-panel">
+      <div class="stepwizard-step col-xs-4">
+        <a href="#step-1" type="button" class="btn btn-check1 btn-circle btn-lg"><i class="fa fa-check"></i></a>
+        <h4>Check</h4>
+      </div>
+      <div class="stepwizard-step col-xs-4">
+        <a href="#step-2" type="button" class="btn btn-default btn-circle btn-lg" disabled="disabled"><i
+          class="fa fa-check"></i></a>
+        <h4>Customer info</h4>
+      </div>
+      <div class="stepwizard-step col-xs-4">
+        <a href="#step-3" type="button" class="btn btn-default btn-circle btn-lg disicon" disabled="disabled"><i
+          class="fa fa-check"></i></a>
+        <h4>Rooms</h4>
+      </div>
+    </div>
+  </div>
+  <form>
+    <div class="panel panel-default setup-content" id="step-1">
+      <div class="panel-heading">
+        <h3 class="panel-title">Check</h3>
+      </div>
+      <div class="panel-body">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="CheckIn" class="control-label">Check In<span class="required">*</span></label>
+            <input type="text" required="required" class="form-control" name="CheckIn" id="CheckIn" value="11/25/2019"/>
+          </div>
+          <div class="form-group">
+            <label class="control-label" for="Adult">Adults<span class="required">*</span></label>
+            <select class="form-control" data-val="true" data-val-number="The field Adult must be a number."
+                    data-val-required="The Adult field is required." id="Adult" name="Adult">
+              <option selected="selected" value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+            </select>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label class="control-label" for="CheckOut">Check Out<span class="required">*</span></label>
+            <input type="text" required="required" class="form-control" name="CheckOut" id="CheckOut"
+                   value="11/26/2019"/>
+          </div>
+          <div class="form-group">
+            <label class="control-label" for="Child">Child<span class="required">*</span></label>
+            <select class="form-control" data-val="true" data-val-number="The field Child must be a number."
+                    data-val-required="The Child field is required." id="Child" name="Child">
+              <option selected="selected" value="0">0</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+            </select>
+          </div>
+        </div>
+        <button class="btn btn-check1 nextBtn pull-right" type="button">Tiếp</button>
+      </div>
+    </div>
+  </form>
+</div>
+
+
+

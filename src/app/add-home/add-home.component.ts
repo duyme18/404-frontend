@@ -6,6 +6,8 @@ import {StatusHome} from '../status-home';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {HomeService} from '../home.service';
 import {ActivatedRoute, Router} from '@angular/router';
+import {Token} from '@angular/compiler';
+import {TokenStorageService} from '../auth/token-storage.service';
 
 @Component({
   selector: 'app-add-home',
@@ -34,9 +36,14 @@ export class AddHomeComponent implements OnInit {
     categoryRoomId: new FormControl(''),
     statusHomeId: new FormControl('')
   });
+  private info: any;
 
 
-  constructor(private homeService: HomeService, private fb: FormBuilder, private route: ActivatedRoute, private router: Router) {
+  constructor(private homeService: HomeService,
+              private fb: FormBuilder,
+              private route: ActivatedRoute,
+              private router: Router,
+              private token: TokenStorageService) {
   }
 
   deleteHome(i) {
@@ -47,6 +54,16 @@ export class AddHomeComponent implements OnInit {
   }
 
   ngOnInit() {
+
+    this.info = {
+      token: this.token.getToken(),
+      username: this.token.getUsername(),
+      role: this.token.getAuthorities()
+    };
+
+    console.log(this.info);
+
+
     this.getHomeList();
 
     this.homeService.getCategoryHomeList().subscribe(result => {

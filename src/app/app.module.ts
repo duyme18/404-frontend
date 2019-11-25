@@ -10,7 +10,6 @@ import {HeaderComponent} from './header/header.component';
 import {FooterComponent} from './footer/footer.component';
 import {HomeListComponent} from './home-list/home-list.component';
 import {AddHomeComponent} from './add-home/add-home.component';
-import {HomesComponent} from './homes/homes.component';
 import {EditHomeComponent} from './edit-home/edit-home.component';
 import {RegisterComponent} from './register/register.component';
 import {SignupComponent} from './signup/signup.component';
@@ -19,6 +18,12 @@ import {HomeComponent} from './home/home.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {GoogleMapComponent} from './google-map/google-map.component';
 import {AgmCoreModule} from '@agm/core';
+import {HomeDetailComponent} from './home-detail/home-detail.component';
+import {BookingComponent} from './booking/booking.component';
+import {Permissions} from './deactivate/permissions';
+import {NotActivateTeam} from './deactivate/not-activate-team';
+import {IsAdmin} from './deactivate/is-admin';
+import {CanActivateTeam} from './deactivate/can-activate-team';
 
 @NgModule({
   declarations: [
@@ -28,14 +33,15 @@ import {AgmCoreModule} from '@agm/core';
     FooterComponent,
     HomeListComponent,
     AddHomeComponent,
-    HomesComponent,
     EditHomeComponent,
     RegisterComponent,
     SignupComponent,
     FeaturedComponent,
     HomeComponent,
     FeaturedComponent,
-    GoogleMapComponent
+    GoogleMapComponent,
+    HomeDetailComponent,
+    BookingComponent
   ],
   imports: [
     BrowserModule,
@@ -48,7 +54,7 @@ import {AgmCoreModule} from '@agm/core';
       apiKey: 'AIzaSyBL1psdbu18dDFFpDlMOuASQl-65r72vJE'
     })
   ],
-  providers: [],
+  providers: [Permissions, CanActivateTeam, NotActivateTeam, IsAdmin],
   bootstrap: [AppComponent]
 })
 export class AppModule {
