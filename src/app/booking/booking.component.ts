@@ -1,8 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {DomSanitizer} from '@angular/platform-browser';
-import {HomeService} from '../home.service';
-import {Home} from '../home';
+import {HomeService} from '../services/home.service';
+import {Home} from '../services/home';
+import { TokenStorageService } from '../auth/token-storage.service';
 
 @Component({
   selector: 'app-booking',
@@ -13,11 +14,13 @@ export class BookingComponent implements OnInit {
 
   id: number;
   homeName: string;
+  private info: any;
 
   home: Home;
 
   constructor(private activatedRoute: ActivatedRoute,
               private domSanitizer: DomSanitizer,
+              private token: TokenStorageService,
               private homeService: HomeService) {
     this.activatedRoute.params.subscribe(params => {
       this.id = params.homeId;
@@ -27,6 +30,12 @@ export class BookingComponent implements OnInit {
 
   ngOnInit() {
     this.getHomeId();
+
+    this.info = {
+        token: this.token.getToken(),
+        username: this.token.getUsername(),
+        role: this.token.getAuthorities()
+      };
   }
 
   getHomeId() {

@@ -1,0 +1,35 @@
+<app-header></app-header>
+<div class="container">
+  <form [formGroup]="formBooking">
+    <div class="panel panel-default setup-content" id="step-1">
+      <div class="panel-heading">
+        <h3 class="panel-title">Check</h3>
+      </div>
+      <div class="panel-body">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="CheckIn" class="control-label">Check In<span class="required">*</span></label>
+            <input type="date" required="required" class="form-control" formControlName="checkin" name="CheckIn"
+                   id="CheckIn"
+                   value="11/25/2019"/>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label class="control-label" for="CheckOut">Check Out<span class="required">*</span></label>
+            <input type="date" required="required" class="form-control" formControlName="checkout" name="CheckOut"
+                   id="CheckOut"
+                   value="11/26/2019"/>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <button type="button" class="hvr-sweep-to-top tbn-hover" (click)="createBooking()"><i
+            class="fa fa-calendar"></i>
+            Book Now
+          </button>
+
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

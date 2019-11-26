@@ -1,11 +1,11 @@
 import {Component, OnInit} from '@angular/core';
-import {Home} from '../home';
+import {Home} from '../services/home';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
-import {HomeService} from '../home.service';
-import {CategoryHome} from '../category-home';
-import {CategoryRoom} from '../category-room';
-import {StatusHome} from '../status-home';
+import {HomeService} from '../services/home.service';
+import {CategoryHome} from '../services/category-home';
+import {CategoryRoom} from '../services/category-room';
+import {StatusHome} from '../services/status-home';
 
 @Component({
   selector: 'app-edit-home',

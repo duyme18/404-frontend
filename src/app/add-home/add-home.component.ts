@@ -1,10 +1,10 @@
 import {Component, OnInit} from '@angular/core';
-import {Home} from '../home';
-import {CategoryHome} from '../category-home';
-import {CategoryRoom} from '../category-room';
-import {StatusHome} from '../status-home';
+import {Home} from '../services/home';
+import {CategoryHome} from '../services/category-home';
+import {CategoryRoom} from '../services/category-room';
+import {StatusHome} from '../services/status-home';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
-import {HomeService} from '../home.service';
+import {HomeService} from '../services/home.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Token} from '@angular/compiler';
 import {TokenStorageService} from '../auth/token-storage.service';

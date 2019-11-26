@@ -1,21 +1,23 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {AuthLoginInfo} from './login-infor';
 import {Observable} from 'rxjs';
 import {JwtResponse} from './jwt-response';
 import {SignUpInfo} from './sigup-info';
 import {Router} from '@angular/router';
+
 const httpOptions = {
-  headers: new HttpHeaders ({ 'Content-Type': 'application/json' })
+  headers: new HttpHeaders({'Content-Type': 'application/json'})
 };
+
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
   private loginUrl = 'http://localhost:8080/api/auth/signin';
   private signupUrl = 'http://localhost:8080/api/auth/signup';
-  constructor(private http: HttpClient
-  ) {
+
+  constructor(private http: HttpClient) {
   }
 
   attemptAuth(credentials: AuthLoginInfo): Observable<JwtResponse> {
@@ -25,7 +27,4 @@ export class AuthService {
   signUp(info: SignUpInfo): Observable<string> {
     return this.http.post<string>(this.signupUrl, info, httpOptions);
   }
-
-
-
 }

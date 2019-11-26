@@ -24,6 +24,8 @@ import {Permissions} from './deactivate/permissions';
 import {NotActivateTeam} from './deactivate/not-activate-team';
 import {IsAdmin} from './deactivate/is-admin';
 import {CanActivateTeam} from './deactivate/can-activate-team';
+import {UserBookingListComponent} from './user-booking-list/user-booking-list.component';
+import {CreateBookingComponent} from './create-booking/create-booking.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +43,9 @@ import {CanActivateTeam} from './deactivate/can-activate-team';
     FeaturedComponent,
     GoogleMapComponent,
     HomeDetailComponent,
-    BookingComponent
+    BookingComponent,
+    UserBookingListComponent,
+    CreateBookingComponent
   ],
   imports: [
     BrowserModule,

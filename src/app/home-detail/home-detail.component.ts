@@ -1,11 +1,11 @@
 import {Component, OnInit} from '@angular/core';
 import {DomSanitizer} from '@angular/platform-browser';
-import {HomeService} from '../home.service';
+import {HomeService} from '../services/home.service';
 import {ActivatedRoute, Router} from '@angular/router';
-import {CategoryHome} from '../category-home';
-import {CategoryRoom} from '../category-room';
-import {StatusHome} from '../status-home';
-import {Home} from '../home';
+import {CategoryHome} from '../services/category-home';
+import {CategoryRoom} from '../services/category-room';
+import {StatusHome} from '../services/status-home';
+import {Home} from '../services/home';
 import {TokenStorageService} from '../auth/token-storage.service';
 
 @Component({
@@ -62,10 +62,10 @@ export class HomeDetailComponent implements OnInit {
 
 
   onChoseLocation(event) {
-    console.log(event);
     this.latitude = event.coords.lat;
     this.longitude = event.coords.lng;
     this.locationChosen = true;
+    console.log(event);
   }
 
   getHomeId() {
@@ -79,7 +79,7 @@ export class HomeDetailComponent implements OnInit {
 
   bookingButton() {
     if (this.info.token != null) {
-      return this.router.navigateByUrl('/home-booking/' + this.id);
+      return this.router.navigateByUrl('/create-booking');
     } else {
       return this.router.navigateByUrl('/login');
 

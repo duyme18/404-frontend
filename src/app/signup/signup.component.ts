@@ -17,16 +17,23 @@ export class SignupComponent implements OnInit {
   errorMessage = '';
   roles: string[] = [];
   private loginInfo: AuthLoginInfo;
+  private info: any;
 
   constructor(private authService: AuthService, private tokenStorage: TokenStorageService,
               private router: Router) {
   }
 
   ngOnInit() {
+    this.info = {
+      token: this.tokenStorage.getToken(),
+      username: this.tokenStorage.getUsername(),
+      id: this.tokenStorage.getUserId()
+    };
+
+    console.log(this.info);
   }
 
   onSubmit() {
-    console.log(this.form);
 
     this.loginInfo = new AuthLoginInfo(
       this.form.username,
@@ -34,15 +41,14 @@ export class SignupComponent implements OnInit {
 
     this.authService.attemptAuth(this.loginInfo).subscribe(
       data => {
+        this.tokenStorage.saveId(data.id);
         this.tokenStorage.saveToken(data.accessToken);
         this.tokenStorage.saveUsername(data.username);
         this.tokenStorage.saveAuthorities(data.roles);
         this.isLoginFailed = false;
         this.isLoggedIn = true;
         this.roles = this.tokenStorage.getAuthorities();
-        // this.ngOnInit();
-        // this.reloadPage();
-        // this.router.navigate(['/widget']);
+        console.log(this.tokenStorage.getUserId(), this.tokenStorage.getToken(), this.tokenStorage.getUsername());
         this.router.navigate(['/']).then(r => {
           console.log('success to navigate');
         });
@@ -54,7 +60,6 @@ export class SignupComponent implements OnInit {
       }
     );
   }
-
 
   reloadPage() {
     window.location.reload();

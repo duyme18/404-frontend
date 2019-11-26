@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {SearchService} from './search.service';
+import {SearchService} from './services/search.service';
 
 @Component({
   selector: 'app-root',
@@ -8,16 +8,6 @@ import {SearchService} from './search.service';
 })
 export class AppComponent {
   title = 'frontend';
-  // latitude: 51.678418;
-  // longitude: 7.809007;
-  // locationChosen: boolean;
-  //
-  // onChoseLocation(event) {
-  //   console.log(event);
-  //   // this.latitude = event.coords.lat;
-  //   // this.longitude = event.coords.lng;
-  //   // this.locationChosen = true;
-  // }
 
   constructor() {
 
