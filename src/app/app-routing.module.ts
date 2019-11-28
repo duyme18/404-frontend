@@ -6,6 +6,7 @@ import {HomesComponent} from './homes/homes.component';
 import {EditHomeComponent} from './edit-home/edit-home.component';
 import {RegisterComponent} from './register/register.component';
 import {SignupComponent} from './signup/signup.component';
+import {ChangePassComponent} from './change-pass/change-pass.component';
 
 
 const routes: Routes = [
@@ -28,6 +29,10 @@ const routes: Routes = [
   {
     path: 'login',
     component: SignupComponent,
+  },
+  {
+    path: 'change-password',
+    component: ChangePassComponent,
   }
 ];
 

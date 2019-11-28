@@ -1,13 +1,15 @@
 export class PassForm {
-  id: any;
+  // id: any;
+  userId: string;
   username: string;
   newPassword: string;
   currentPassword: string;
 
-  constructor(username: string, newPassword: string, currentPassword: string, id: number) {
+  constructor(userId: string , username: string, newPassword: string, currentPassword: string) {
+    this.userId = userId;
     this.username = username;
     this.newPassword = newPassword;
     this.currentPassword = currentPassword;
-    this.id = id;
+
   }
 }

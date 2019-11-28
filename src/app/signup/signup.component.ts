@@ -13,6 +13,7 @@ export class SignupComponent implements OnInit {
   form: any = {};
   errorMessage = '';
   roles: string[] = [];
+  id: any;
   private loginInfo: AuthLoginInfo;
 
   constructor(private authService: AuthService, private tokenStorage: TokenStorageService,
@@ -35,6 +36,8 @@ export class SignupComponent implements OnInit {
         this.tokenStorage.saveUsername(data.username);
         this.tokenStorage.saveAuthorities(data.roles);
         this.roles = this.tokenStorage.getAuthorities();
+        this.tokenStorage.saveUserId(data.id);
+        this.id = this.tokenStorage.getUserId();
         // this.ngOnInit();
         // this.reloadPage();
         // this.router.navigate(['/widget']);

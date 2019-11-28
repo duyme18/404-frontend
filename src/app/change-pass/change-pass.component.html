@@ -1,1 +1,30 @@
-<
+
+<form [formGroup]="passwordForm">
+    <label  class="col-form-label">Current Password </label>
+    <input id="currentPassword" type="password"  class="form-control" formControlName="currentPassword" >
+
+  <div class="alert alert-warning" role="alert" *ngIf="passwordForm.get('currentPassword').invalid &&passwordForm.get('currentPassword').touched">
+    Password invalid(must longer 6 and smaller 100 character)
+  </div>
+  <div class="form-group">
+    <label  class="col-form-label">New Password</label>
+    <input type="password"  class="form-control" formControlName="newPassword">
+  </div>
+  <div class="alert alert-warning" role="alert" *ngIf="passwordForm.get('newPassword').invalid &&passwordForm.get('newPassword').touched">
+    Password invalid(must longer 6 and smaller 100 character)
+  </div>
+  <div class="form-group">
+    <label  class="col-form-label">Config Password</label>
+    <input type="password"  class="form-control" formControlName="configPassword">
+  </div>
+  <div class="alert alert-warning" role="alert" *ngIf="passwordForm.get('configPassword').invalid &&passwordForm.get('configPassword').touched">
+    Password invalid(must longer 6 and smaller 100 character)gi
+  </div>
+  <div class="alert alert-warning" role="alert" *ngIf="isError">
+    {{error}}
+  </div>
+</form>
+<div class="modal-footer">
+  <button type="button" class="btn btn-secondary" (click)="goBack()" data-dismiss="modal">Back </button>
+  <button type="button" class="btn btn-primary" (click)="updatePassword()" >Change Password</button>
+</div>

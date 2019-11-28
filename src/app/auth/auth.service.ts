@@ -27,8 +27,8 @@ export class AuthService {
   signUp(info: SignUpInfo): Observable<string> {
     return this.http.post<string>(this.signupUrl, info, httpOptions);
   }
-  updatePassword(passwordForm: PassForm): Observable<string> {
-    return this.http.post<string>(this.updatePasswordUrl + '/' + passwordForm.id , passwordForm);
+  updatePassword(passwordForm: PassForm): Observable<void> {
+    return this.http.post<void>('http://localhost:8080/api/auth/update-password' + '/' + passwordForm.userId , passwordForm);
   }
 
 
