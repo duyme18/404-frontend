@@ -3,7 +3,8 @@ import { Injectable } from '@angular/core';
 const TOKEN_KEY = 'AuthToken';
 const USERNAME_KEY = 'AuthUsername';
 const AUTHORITIES_KEY = 'AuthAuthorities';
-
+const NAME_KEY = 'Name';
+const ID_KEY = 'AuthUserId';
 @Injectable({
   providedIn: 'root'
 })
@@ -48,5 +49,11 @@ export class TokenStorageService {
     }
 
     return this.roles;
+  }
+  public getUserId(): string {
+    return sessionStorage.getItem(ID_KEY);
+  }
+  public getName(): string {
+    return sessionStorage.getItem(NAME_KEY);
   }
 }

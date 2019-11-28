@@ -10,10 +10,7 @@ import {Router} from '@angular/router';
   styleUrls: ['./signup.component.scss']
 })
 export class SignupComponent implements OnInit {
-
   form: any = {};
-  isLoggedIn = false;
-  isLoginFailed = false;
   errorMessage = '';
   roles: string[] = [];
   private loginInfo: AuthLoginInfo;
@@ -37,8 +34,6 @@ export class SignupComponent implements OnInit {
         this.tokenStorage.saveToken(data.accessToken);
         this.tokenStorage.saveUsername(data.username);
         this.tokenStorage.saveAuthorities(data.roles);
-        this.isLoginFailed = false;
-        this.isLoggedIn = true;
         this.roles = this.tokenStorage.getAuthorities();
         // this.ngOnInit();
         // this.reloadPage();
@@ -50,7 +45,6 @@ export class SignupComponent implements OnInit {
       error => {
         console.log(error);
         this.errorMessage = error.error.message;
-        this.isLoginFailed = true;
       }
     );
   }

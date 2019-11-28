@@ -14,6 +14,7 @@ import {HomesComponent} from './homes/homes.component';
 import {EditHomeComponent} from './edit-home/edit-home.component';
 import { RegisterComponent } from './register/register.component';
 import { SignupComponent } from './signup/signup.component';
+import { ChangePassComponent } from './change-pass/change-pass.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { SignupComponent } from './signup/signup.component';
     HomesComponent,
     EditHomeComponent,
     RegisterComponent,
-    SignupComponent
+    SignupComponent,
+    ChangePassComponent
   ],
   imports: [
     BrowserModule,
