@@ -1,6 +1,11 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 
+import {AngularFireModule} from '@angular/fire';
+import {AngularFireDatabaseModule} from '@angular/fire/database';
+import {AngularFireStorageModule} from '@angular/fire/storage';
+import {environment} from '../environments/environment';
+
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {HttpClientModule} from '@angular/common/http';
@@ -26,6 +31,7 @@ import {IsAdmin} from './deactivate/is-admin';
 import {CanActivateTeam} from './deactivate/can-activate-team';
 import {UserBookingListComponent} from './user-booking-list/user-booking-list.component';
 import {CreateBookingComponent} from './create-booking/create-booking.component';
+import {CreateHomeComponent} from './create-home/create-home.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +51,8 @@ import {CreateBookingComponent} from './create-booking/create-booking.component'
     HomeDetailComponent,
     BookingComponent,
     UserBookingListComponent,
-    CreateBookingComponent
+    CreateBookingComponent,
+    CreateHomeComponent
   ],
   imports: [
     BrowserModule,
@@ -54,9 +61,13 @@ import {CreateBookingComponent} from './create-booking/create-booking.component'
     ReactiveFormsModule,
     FormsModule,
     NgbModule,
+
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyBL1psdbu18dDFFpDlMOuASQl-65r72vJE'
-    })
+    }),
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireDatabaseModule,
+    AngularFireStorageModule
   ],
   providers: [Permissions, CanActivateTeam, NotActivateTeam, IsAdmin],
   bootstrap: [AppComponent]

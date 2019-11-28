@@ -65,7 +65,7 @@ export class EditHomeComponent implements OnInit {
       description: [''],
       categoryHomeId: [''],
       categoryRoomId: [''],
-      statusHomeId: [''],
+      statusHomeId: ['']
     });
     const id = +this.route.snapshot.paramMap.get('homeId');
     this.homeService.getHomeId(id).subscribe(next => {

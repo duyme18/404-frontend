@@ -29,6 +29,7 @@ export class UserBookingListComponent implements OnInit {
 
   ngOnInit() {
     this.getBookingList();
+    // this.getListBooking();
 
     const id = +this.route.snapshot.paramMap.get('id');
     this.bookingService.findBookingById(id).subscribe(next => {
@@ -50,18 +51,20 @@ export class UserBookingListComponent implements OnInit {
         this.listBooking = result;
         console.log(this.listBooking);
       }, error => {
-        alert('error get booking');
+        alert('Error get booking');
       }
     );
   }
+  private getListBooking() {
+    this.bookingService.getBookingList().subscribe(result => {
+      this.listBooking = result;
+    });
+  }
 
-  deleteBookingById(closeButton: HTMLInputElement) {
-    this.bookingService.deleteBookingById(this.bookingId).subscribe(result => {
-      closeButton.click();
-      this.getBookingList();
-
-    }, error => {
-      console.log(error);
+  deleteBooking(i) {
+    const booking = this.listBooking[i];
+    this.bookingService.deleteBookingById(booking.id).subscribe(() => {
+      this.listBooking = this.listBooking.filter(t => t.id !== booking.id);
     });
   }
 }

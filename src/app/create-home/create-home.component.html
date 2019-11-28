@@ -1,0 +1,135 @@
+<app-header></app-header>
+<div class="container register">
+  <br/>
+  <div *ngIf="currentFileUpload" class="progress">
+    <div class="progress-bar progress-bar-info progress-bar-striped"
+         role="progressbar" attr.aria-valuenow="{{percentage}}"
+         aria-valuemin="0" aria-valuemax="100"
+         [ngStyle]="{width:percentage+'%'}">
+      {{percentage}}%
+    </div>
+  </div>
+  <label class="btn btn-default"> <input type="file" (change)="selectFiles($event)">
+  </label>
+
+  <button class="btn btn-success" [disabled]="!selectedFiles"
+          (click)="upload()">Upload
+  </button>
+  <div class="col-md-4">
+    <form [formGroup]="homeForm" (ngSubmit)="onSubmit()" class="col-md-6 offset-md-3">
+      <div class="form-group row">
+        <label class="col">
+          Name
+          <input type="text" class="form-control" formControlName="name">
+        </label>
+        <div class="alert alert-danger" role="alert"
+             *ngIf="homeForm.get('name').invalid && homeForm.get('name').touched">
+          Invalid tên căn nhà.
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class="col">
+          Address:
+          <input type="text" class="form-control" formControlName="address">
+        </label>
+        <div class="alert alert-danger" role="alert"
+             *ngIf="homeForm.get('address').invalid && homeForm.get('address').touched">
+          Invalid address!
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class="col">
+          Phòng ngủ :
+          <input type="text" class="form-control" formControlName="bedroomQuantity">
+        </label>
+        <div class="alert alert-danger" role="alert"
+             *ngIf="homeForm.get('bedroomQuantity').invalid && homeForm.get('bedroomQuantity').touched">
+          Phòng ngủ !
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class="col">
+          Phòng tắm :
+          <input type="text" class="form-control" formControlName="bathroomQuantity">
+        </label>
+        <div class="alert alert-danger" role="alert"
+             *ngIf="homeForm.get('bathroomQuantity').invalid && homeForm.get('bathroomQuantity').touched">
+          Invalid phong tắm !
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label class="col">
+          Giá một đêm :
+          <input type="text" class="form-control" formControlName="price">
+        </label>
+        <div class="alert alert-danger" role="alert"
+             *ngIf="homeForm.get('price').invalid && homeForm.get('price').touched">
+          Invalid giá !
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class="col">
+          Latitude
+          <input type="text" class="form-control" formControlName="latitude">
+        </label>
+        <div class="alert alert-danger" role="alert"
+             *ngIf="homeForm.get('latitude').invalid && homeForm.get('latitude').touched">
+          Invalid giá !
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class="col">
+          Latitude
+          <input type="text" class="form-control" formControlName="longitude">
+        </label>
+        <div class="alert alert-danger" role="alert"
+             *ngIf="homeForm.get('longitude').invalid && homeForm.get('longitude').touched">
+          Invalid giá !
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class="col">
+          Description
+          <input type="text" class="form-control" formControlName="description">
+        </label>
+        <div class="alert alert-danger" role="alert"
+             *ngIf="homeForm.get('description').invalid && homeForm.get('description').touched">
+          Invalid diện tích !
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="exampleFormControlSelect1">Category Home</label>
+        <select class="form-control" id="exampleFormControlSelect1" name="categoryHome"
+                formControlName="categoryHomeId">
+          <option *ngFor="let categoryHome of categoryHomeList" value="{{ categoryHome.id }}">
+            {{ categoryHome.name }}</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="exampleFormControlSelect2">Category Room</label>
+        <select class="form-control" id="exampleFormControlSelect2" name="category"
+                formControlName="categoryRoomId">
+          <option *ngFor="let categoryRoom of categoryRoomList" value="{{ categoryRoom.id }}">
+            {{ categoryRoom.name }}</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="exampleFormControlSelect3">Status</label>
+        <select class="form-control" id="exampleFormControlSelect3" name="status" formControlName="statusHomeId">
+          <option *ngFor="let statusHome of statusHomeList" value="{{ statusHome.id }}"> {{ statusHome.name }}
+          </option>
+        </select>
+      </div>
+      <div class="form-group">
+        <button class="btn btn-info" type="submit">Submit</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="col-md-4"></div>
+
+<pre>
+{{ homeForm.value | json}}
+</pre>

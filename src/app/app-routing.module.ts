@@ -11,6 +11,7 @@ import {NotActivateTeam} from './deactivate/not-activate-team';
 import {IsAdmin} from './deactivate/is-admin';
 import {CreateBookingComponent} from './create-booking/create-booking.component';
 import {UserBookingListComponent} from './user-booking-list/user-booking-list.component';
+import {CreateHomeComponent} from './create-home/create-home.component';
 
 
 const routes: Routes = [
@@ -34,6 +35,9 @@ const routes: Routes = [
   },
   {
     path: 'home-booking/:homeId', component: BookingComponent
+  },
+  {
+    path: 'create-home', component: CreateHomeComponent
   },
   {
     path: 'register',

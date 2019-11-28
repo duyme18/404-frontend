@@ -3,7 +3,7 @@ import {CategoryRoom} from './category-room';
 import {StatusHome} from './status-home';
 
 export interface Home {
-  id?: string;
+  id?: number;
   name: string;
   address: string;
   bedroomQuantity: number;

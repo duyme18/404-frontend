@@ -17,8 +17,7 @@
       <a class="dropdown-item" href="/add-home">Add Home</a>
       <a class="dropdown-item" href="/home-list">Home List</a>
     </div>
-    <a class="p-3 text-light" (click)="buttonAllow()" href="/user-booking-list">User Booking</a>
-    <a class="p-3 text-light" href="#">About Us</a>
+    <a class="p-3 text-light" href="/create-home">About Us</a>
     <a class="p-3 text-light" href="/register">Registration</a>
   </nav>
 
@@ -28,8 +27,9 @@
         User {{info.token}}
       </button>
       <div class="dropdown-menu">
+        <a class="dropdown-item pointer" (click)="buttonAllow()" href="/user-booking-list">List Booking</a>
         <a class="dropdown-item pointer" (click)=" detailUser()">Detail</a>
-        <a class="dropdown-item pointer" (click)=" logoutUser()">Log out</a>
+        <a class="dropdown-item pointer" (click)=" logoutUser()">Logout</a>
       </div>
     </li>
     <li *ngIf="authority === 'admin'" class="btn-group">
@@ -38,7 +38,7 @@
       </button>
       <div class="dropdown-menu">
         <a class="dropdown-item pointer" (click)="detailUser()">Detail</a>
-        <a class="dropdown-item pointer" (click)="logoutUser()">Log out</a>
+        <a class="dropdown-item pointer" (click)="logoutUser()">Logout</a>
       </div>
     </li>
     <li *ngIf="authority === 'pm'" class="btn-group">
@@ -46,7 +46,7 @@
         Pm {{info.token}}
       </button>
       <div class="dropdown-menu">
-        <a class="dropdown-item" (click)="logoutUser()" href="#">Log out</a>
+        <a class="dropdown-item" (click)="logoutUser()" href="#">Logout</a>
       </div>
     </li>
     <li *ngIf="!authority" class="nav-item">

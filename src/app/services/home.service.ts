@@ -35,7 +35,7 @@ export class HomeService {
     return this.httpClient.put<Home>(`${this.API_URL}` + '/home/' + `${id}`, home);
   }
 
-  public deleteHome(id: string): Observable<Home> {
+  public deleteHome(id: number): Observable<Home> {
     return this.httpClient.delete<Home>(this.API_URL + '/home/' + id);
   }
 

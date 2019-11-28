@@ -60,7 +60,7 @@ export class HeaderComponent implements OnInit {
     // if (this.info.token != null) {
     //   return this.router.navigateByUrl('/user-booking-list');
     // } else {
-      return this.logoutUser();
+    //   return this.logoutUser();
 
     // }
   }

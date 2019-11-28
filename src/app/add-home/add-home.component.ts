@@ -3,10 +3,9 @@ import {Home} from '../services/home';
 import {CategoryHome} from '../services/category-home';
 import {CategoryRoom} from '../services/category-room';
 import {StatusHome} from '../services/status-home';
-import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {FormBuilder, FormControl, FormGroup} from '@angular/forms';
 import {HomeService} from '../services/home.service';
 import {ActivatedRoute, Router} from '@angular/router';
-import {Token} from '@angular/compiler';
 import {TokenStorageService} from '../auth/token-storage.service';
 
 @Component({
@@ -61,8 +60,7 @@ export class AddHomeComponent implements OnInit {
       role: this.token.getAuthorities()
     };
 
-    console.log(this.info);
-
+    // console.log(this.info);
 
     this.getHomeList();
 
@@ -100,8 +98,18 @@ export class AddHomeComponent implements OnInit {
 
   saveHome(closeButton: HTMLInputElement) {
     const {
-      name, address, bedroomQuantity, bathroomQuantity, price, file, description, latitude, longitude, categoryHomeId,
-      categoryRoomId, statusHomeId
+      name,
+      address,
+      bedroomQuantity,
+      bathroomQuantity,
+      price,
+      file,
+      description,
+      latitude,
+      longitude,
+      categoryHomeId,
+      categoryRoomId,
+      statusHomeId
     } = this.homeForm.value;
 
     const home = {
@@ -133,11 +141,11 @@ export class AddHomeComponent implements OnInit {
           console.log(next.id);
           this.getHomeList();
         }, error => {
-          alert('Upload file fail');
+          alert('Upload File Fail');
         }
       );
     }, error => {
-      return alert('error add home');
+      return alert('Error Add Home!!!');
     });
     console.log('Thêm thành công');
     closeButton.click();
