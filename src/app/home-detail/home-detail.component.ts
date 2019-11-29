@@ -124,6 +124,7 @@ export class HomeDetailComponent implements OnInit {
       result => {
         console.log(result, 'ok');
         this.formCommentCreate.reset();
+        this.getAllCommentThisHome();
       }, error => {
         console.log(error);
       }

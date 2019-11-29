@@ -15,7 +15,7 @@ import {StatusHome} from '../services/status-home';
 export class EditHomeComponent implements OnInit {
 
   fileUpload: File;
-  homeList: Home[];
+  // homeList: Home[];
 
   id: any;
   home: Home;
@@ -35,11 +35,11 @@ export class EditHomeComponent implements OnInit {
     );
   }
 
-  private getHomeList() {
-    this.homeService.getList().subscribe(result => {
-      this.homeList = result;
-    });
-  }
+  // private getHomeList() {
+  //   this.homeService.getList().subscribe(result => {
+  //     this.homeList = result;
+  //   });
+  // }
 
   ngOnInit() {
     console.log(this.id);
@@ -112,20 +112,23 @@ export class EditHomeComponent implements OnInit {
     };
     console.log(home);
     this.homeService.updateHome(home, this.id).subscribe(next => {
-      const form = new FormData();
-      form.append('file', this.fileUpload);
-      this.homeService.addFile(form, String(next.id)).subscribe(
-        result => {
-          console.log(next.id);
-        }, error => {
-          alert('Upload file fail');
-        }
-      );
+      if (this.fileUpload === null || this.fileUpload === undefined) {
+        console.log('create home ok');
+      } else {
+        const form = new FormData();
+        form.append('file', this.fileUpload);
+        this.homeService.addFile(form, String(next.id)).subscribe(
+          result => {
+            console.log(next.id);
+          }, error => {
+            alert('Upload file fail');
+          }
+        );
+      }
     }, error => {
       return alert('error edit home');
     });
-    console.log('Thêm thành công');
-    this.getHomeList();
+    console.log('Sửa thành công');
     this.homeForm.reset();
   }
 }

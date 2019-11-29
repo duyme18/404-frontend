@@ -15,7 +15,7 @@ import {TokenStorageService} from '../auth/token-storage.service';
 })
 export class AddHomeComponent implements OnInit {
   fileUpload: File;
-   Home;
+  Home;
   homeList: Home[];
   categoryHomeList: CategoryHome[];
   categoryRoomList: CategoryRoom[];
@@ -47,6 +47,7 @@ export class AddHomeComponent implements OnInit {
 
   deleteHome(i) {
     const home = this.homeList[i];
+    console.log(home);
     this.homeService.deleteHome(home.id).subscribe(() => {
       this.homeList = this.homeList.filter(t => t.id !== home.id);
     });

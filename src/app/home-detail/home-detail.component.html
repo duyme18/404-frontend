@@ -77,12 +77,12 @@
         <a #closeModalRef class="btn btn-primary a-btn-slide-text" data-toggle="collapse"
            [attr.data-target]="'#collapseExample' + i" aria-expanded="false">
           <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
-          <span><strong>Edit</strong></span>
+          <span><strong class="pointer">Edit</strong></span>
         </a>
         <a (click)="getIdComment(comment.id)" class="btn btn-warning a-btn-slide-text" data-toggle="modal"
            data-target="#exampleModalCenter">
           <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
-          <span><strong>Delete</strong></span>
+          <span><strong class="pointer">Delete</strong></span>
         </a>
         <div class="collapse" [id]="'collapseExample'+i">
           <form>
@@ -113,7 +113,7 @@
           </button>
         </div>
         <div class="modal-body text-dark text-center">
-          <h5>Are you sure ?</h5>
+          <h5>Are you sure?</h5>
         </div>
         <div class="modal-footer">
           <button #closeModalRef2 type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
