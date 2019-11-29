@@ -39,7 +39,6 @@ export class HeaderComponent implements OnInit {
       username: this.token.getAuthorities()
     };
     if (this.tokenStorage.getToken()) {
-      // this.isLoggedIn = true;
       this.roles = this.tokenStorage.getAuthorities();
       this.roles.every(role => {
         if (role === 'ADMIN') {

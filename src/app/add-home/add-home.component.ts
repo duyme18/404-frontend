@@ -15,7 +15,7 @@ import {TokenStorageService} from '../auth/token-storage.service';
 })
 export class AddHomeComponent implements OnInit {
   fileUpload: File;
-  home: Home;
+   Home;
   homeList: Home[];
   categoryHomeList: CategoryHome[];
   categoryRoomList: CategoryRoom[];
@@ -77,7 +77,7 @@ export class AddHomeComponent implements OnInit {
     const id = +this.route.snapshot.paramMap.get('id');
     this.homeService.getHomeId(id).subscribe(
       next => {
-        this.home = next;
+        this.Home = next;
         this.homeForm.patchValue(this.homeList);
       }, error => {
         console.log(error);

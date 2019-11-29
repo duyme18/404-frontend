@@ -16,6 +16,9 @@ import {FooterComponent} from './footer/footer.component';
 import {HomeListComponent} from './home-list/home-list.component';
 import {AddHomeComponent} from './add-home/add-home.component';
 import {EditHomeComponent} from './edit-home/edit-home.component';
+import { RegisterComponent } from './register/register.component';
+import { SignupComponent } from './signup/signup.component';
+import { ChangePassComponent } from './change-pass/change-pass.component';
 import {RegisterComponent} from './register/register.component';
 import {SignupComponent} from './signup/signup.component';
 import {FeaturedComponent} from './featured/featured.component';
@@ -33,6 +36,7 @@ import {UserBookingListComponent} from './user-booking-list/user-booking-list.co
 import {CreateBookingComponent} from './create-booking/create-booking.component';
 import {CreateHomeComponent} from './create-home/create-home.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -44,6 +48,7 @@ import {CreateHomeComponent} from './create-home/create-home.component';
     EditHomeComponent,
     RegisterComponent,
     SignupComponent,
+    ChangePassComponent
     FeaturedComponent,
     HomeComponent,
     FeaturedComponent,

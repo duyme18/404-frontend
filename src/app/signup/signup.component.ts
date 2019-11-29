@@ -10,12 +10,10 @@ import {Router} from '@angular/router';
   styleUrls: ['./signup.component.scss']
 })
 export class SignupComponent implements OnInit {
-
   form: any = {};
-  isLoggedIn = false;
-  isLoginFailed = false;
   errorMessage = '';
   roles: string[] = [];
+  id: any;
   private loginInfo: AuthLoginInfo;
   private info: any;
 
@@ -45,18 +43,25 @@ export class SignupComponent implements OnInit {
         this.tokenStorage.saveToken(data.accessToken);
         this.tokenStorage.saveUsername(data.username);
         this.tokenStorage.saveAuthorities(data.roles);
-        this.isLoginFailed = false;
-        this.isLoggedIn = true;
         this.roles = this.tokenStorage.getAuthorities();
+
+        this.tokenStorage.saveUserId(data.id);
+        this.id = this.tokenStorage.getUserId();
+        // this.ngOnInit();
+        // this.reloadPage();
+        // this.router.navigate(['/widget']);
+        this.router.navigateByUrl('/home-list', {skipLocationChange: true}).then(() => {
+          this.router.navigate(['Your actualComponent']);
+
         console.log(this.tokenStorage.getUserId(), this.tokenStorage.getToken(), this.tokenStorage.getUsername());
         this.router.navigate(['/']).then(r => {
           console.log('success to navigate');
+
         });
       },
       error => {
         console.log(error);
         this.errorMessage = error.error.message;
-        this.isLoginFailed = true;
       }
     );
   }

@@ -14,9 +14,7 @@ export class TokenStorageService {
   private roles: Array<string> = [];
   constructor() { }
 
-  public signOut() {
-    window.sessionStorage.clear();
-  }
+
 
   public saveToken(token: string) {
     window.sessionStorage.removeItem(TOKEN_KEY);
@@ -58,7 +56,20 @@ export class TokenStorageService {
         this.roles.push(authority.authority);
       });
     }
-
     return this.roles;
   }
+  public signOut() {
+    window.sessionStorage.clear();
+  }
+  public getName(): string {
+    return sessionStorage.getItem(NAME_KEY);
+  }
+  public saveUserId(userId: string) {
+    window.sessionStorage.removeItem(ID_KEY);
+    window.sessionStorage.setItem(ID_KEY, userId);
+  }
+  public getUserId(): string {
+    return sessionStorage.getItem(ID_KEY);
+  }
+
 }

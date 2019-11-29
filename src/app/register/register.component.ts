@@ -10,14 +10,15 @@ import {Router} from '@angular/router';
 })
 export class RegisterComponent implements OnInit {
 
+  constructor(private authService: AuthService,
+              private router: Router) { }
+
   form: any = {};
   signupInfo: SignUpInfo;
   isSignedUp = false;
   isSignUpFailed = false;
   errorMessage = '';
-
-  constructor(private authService: AuthService,
-              private router: Router) { }
+   FB: any;
 
   ngOnInit() { }
 
@@ -49,5 +50,7 @@ export class RegisterComponent implements OnInit {
     localStorage.removeItem('token');
     this.router.navigate(['/login']);
   }
+  onFacebookLoginClick() {
 
+  }
 }
