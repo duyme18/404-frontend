@@ -20,8 +20,7 @@ export class AuthService {
   private signupUrl = 'http://localhost:8080/api/auth/signup';
 
   private updatePasswordUrl: 'http://localhost:8080/api/auth/update-password';
-  constructor(private http: HttpClient
-  ) {
+
 
 
   constructor(private http: HttpClient) {

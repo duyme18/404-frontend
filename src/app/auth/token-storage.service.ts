@@ -68,8 +68,4 @@ export class TokenStorageService {
     window.sessionStorage.removeItem(ID_KEY);
     window.sessionStorage.setItem(ID_KEY, userId);
   }
-  public getUserId(): string {
-    return sessionStorage.getItem(ID_KEY);
-  }
-
 }

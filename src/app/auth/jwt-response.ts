@@ -4,5 +4,4 @@ export class JwtResponse {
   type: string;
   username: string;
   roles: string[];
-  id: any;
 }

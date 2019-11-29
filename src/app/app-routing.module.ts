@@ -47,12 +47,11 @@ const routes: Routes = [
   {
     path: 'login',
     component: SignupComponent,
-
+    canActivate: [NotActivateTeam]
   },
   {
     path: 'change-password',
     component: ChangePassComponent,
-    canActivate: [NotActivateTeam]
   }, {
     path: '',
     component: HomeListComponent,

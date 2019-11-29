@@ -51,17 +51,19 @@ export class SignupComponent implements OnInit {
         // this.reloadPage();
         // this.router.navigate(['/widget']);
         this.router.navigateByUrl('/home-list', {skipLocationChange: true}).then(() => {
-          this.router.navigate(['Your actualComponent']);
+            this.router.navigate(['Your actualComponent']);
 
-        console.log(this.tokenStorage.getUserId(), this.tokenStorage.getToken(), this.tokenStorage.getUsername());
-        this.router.navigate(['/']).then(r => {
-          console.log('success to navigate');
+            console.log(this.tokenStorage.getUserId(), this.tokenStorage.getToken(), this.tokenStorage.getUsername());
+            this.router.navigate(['/']).then(r => {
+              console.log('success to navigate');
 
-        });
-      },
-      error => {
-        console.log(error);
-        this.errorMessage = error.error.message;
+            });
+          },
+          error => {
+            console.log(error);
+            this.errorMessage = error.error.message;
+          }
+        );
       }
     );
   }

@@ -16,9 +16,7 @@ import {FooterComponent} from './footer/footer.component';
 import {HomeListComponent} from './home-list/home-list.component';
 import {AddHomeComponent} from './add-home/add-home.component';
 import {EditHomeComponent} from './edit-home/edit-home.component';
-import { RegisterComponent } from './register/register.component';
-import { SignupComponent } from './signup/signup.component';
-import { ChangePassComponent } from './change-pass/change-pass.component';
+import {ChangePassComponent} from './change-pass/change-pass.component';
 import {RegisterComponent} from './register/register.component';
 import {SignupComponent} from './signup/signup.component';
 import {FeaturedComponent} from './featured/featured.component';
@@ -48,7 +46,7 @@ import {CreateHomeComponent} from './create-home/create-home.component';
     EditHomeComponent,
     RegisterComponent,
     SignupComponent,
-    ChangePassComponent
+    ChangePassComponent,
     FeaturedComponent,
     HomeComponent,
     FeaturedComponent,
