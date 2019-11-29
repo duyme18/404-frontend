@@ -1,11 +1,11 @@
 import {Component, OnInit} from '@angular/core';
-import {Home} from '../home';
+import {Home} from '../services/home';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
-import {HomeService} from '../home.service';
-import {CategoryHome} from '../category-home';
-import {CategoryRoom} from '../category-room';
-import {StatusHome} from '../status-home';
+import {HomeService} from '../services/home.service';
+import {CategoryHome} from '../services/category-home';
+import {CategoryRoom} from '../services/category-room';
+import {StatusHome} from '../services/status-home';
 
 @Component({
   selector: 'app-edit-home',
@@ -60,10 +60,12 @@ export class EditHomeComponent implements OnInit {
       bathroomQuantity: [''],
       price: [''],
       file: [''],
+      latitude: [''],
+      longitude: [''],
       description: [''],
       categoryHomeId: [''],
       categoryRoomId: [''],
-      statusHomeId: [''],
+      statusHomeId: ['']
     });
     const id = +this.route.snapshot.paramMap.get('homeId');
     this.homeService.getHomeId(id).subscribe(next => {
@@ -83,7 +85,7 @@ export class EditHomeComponent implements OnInit {
 
   editHome() {
     const {
-      name, address, bedroomQuantity, bathroomQuantity, price, file, description, categoryHomeId,
+      name, address, bedroomQuantity, bathroomQuantity, price, file, latitude, longitude, description, categoryHomeId,
       categoryRoomId, statusHomeId
     } = this.homeForm.value;
 
@@ -95,6 +97,8 @@ export class EditHomeComponent implements OnInit {
       bathroomQuantity,
       price,
       file,
+      latitude,
+      longitude,
       description,
       categoryHome: {
         id: categoryHomeId

@@ -1,3 +1,4 @@
+<app-header></app-header>
 <div class="container">
   <h1>Update information the home</h1>
   <form [formGroup]="homeForm">
@@ -32,6 +33,15 @@
       <label for="description">Description</label>
       <input type="text" class="form-control" id="description" name="description" formControlName="description">
     </div>
+    <div class="form-group">
+      <label for="latitude">Latitude</label>
+      <input type="text" class="form-control" id="latitude" name="latitude" formControlName="latitude">
+    </div>
+    <div class="form-group">
+      <label for="longitude">Longitude</label>
+      <input type="text" class="form-control" id="longitude" name="longitude" formControlName="longitude">
+    </div>
+
     <div class="form-group">
       <label for="exampleFormControlSelect1">Category Home</label>
       <select class="form-control" id="exampleFormControlSelect1" name="categoryHome"

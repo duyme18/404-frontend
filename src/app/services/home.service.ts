@@ -6,7 +6,8 @@ import {CategoryHome} from './category-home';
 import {CategoryRoom} from './category-room';
 import {StatusHome} from './status-home';
 import {FileForm} from './file-form';
-import {SearchHomeByAddress} from './home-list/search-home-by-address';
+import {SearchHomeByAddress} from '../home-list/search-home-by-address';
+import {Booking} from './booking';
 
 @Injectable({
   providedIn: 'root'
@@ -34,7 +35,7 @@ export class HomeService {
     return this.httpClient.put<Home>(`${this.API_URL}` + '/home/' + `${id}`, home);
   }
 
-  public deleteHome(id: string): Observable<Home> {
+  public deleteHome(id: number): Observable<Home> {
     return this.httpClient.delete<Home>(this.API_URL + '/home/' + id);
   }
 

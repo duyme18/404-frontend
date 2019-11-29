@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {SearchService} from '../search.service';
-import {Home} from '../home';
+import {SearchService} from '../services/search.service';
+import {Home} from '../services/home';
 import {TokenStorageService} from '../auth/token-storage.service';
 import {Router} from '@angular/router';
 
@@ -13,13 +13,15 @@ export class HeaderComponent implements OnInit {
   private roles: string[];
   private authority: string;
   private name: string;
-  infor: any;
+  info: any;
   homeList: Home[];
   filterHomeList: any[];
 
   searchText: string;
 
-  constructor(private searchService: SearchService, private tokenStorage: TokenStorageService, private router: Router,
+  constructor(private searchService: SearchService,
+              private tokenStorage: TokenStorageService,
+              private router: Router,
               private token: TokenStorageService) {
   }
 
@@ -32,7 +34,7 @@ export class HeaderComponent implements OnInit {
     this.searchService.listen().subscribe(searchText => {
       this.filterHomeList = this.homeList.filter(home => home.name.includes(searchText));
     });
-    this.infor = {
+    this.info = {
       token: this.token.getUsername(),
       username: this.token.getAuthorities()
     };
@@ -53,13 +55,20 @@ export class HeaderComponent implements OnInit {
       });
     }
   }
+  buttonAllow() {
+    // if (this.info.token != null) {
+    //   return this.router.navigateByUrl('/user-booking-list');
+    // } else {
+    //   return this.logoutUser();
 
+    // }
+  }
   logoutUser() {
     this.token.signOut();
-    window.location.reload();
+    this.router.navigateByUrl('/login');
   }
 
   detailUser() {
-    console.log(this.infor);
+    console.log(this.info);
   }
 }

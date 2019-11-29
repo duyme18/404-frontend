@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {AuthLoginInfo} from '../auth/login-infor';
 import {AuthService} from '../auth/auth.service';
 import {TokenStorageService} from '../auth/token-storage.service';
@@ -15,16 +15,23 @@ export class SignupComponent implements OnInit {
   roles: string[] = [];
   id: any;
   private loginInfo: AuthLoginInfo;
+  private info: any;
 
   constructor(private authService: AuthService, private tokenStorage: TokenStorageService,
               private router: Router) {
   }
 
   ngOnInit() {
+    this.info = {
+      token: this.tokenStorage.getToken(),
+      username: this.tokenStorage.getUsername(),
+      id: this.tokenStorage.getUserId()
+    };
+
+    console.log(this.info);
   }
 
   onSubmit() {
-    console.log(this.form);
 
     this.loginInfo = new AuthLoginInfo(
       this.form.username,
@@ -32,10 +39,12 @@ export class SignupComponent implements OnInit {
 
     this.authService.attemptAuth(this.loginInfo).subscribe(
       data => {
+        this.tokenStorage.saveId(data.id);
         this.tokenStorage.saveToken(data.accessToken);
         this.tokenStorage.saveUsername(data.username);
         this.tokenStorage.saveAuthorities(data.roles);
         this.roles = this.tokenStorage.getAuthorities();
+
         this.tokenStorage.saveUserId(data.id);
         this.id = this.tokenStorage.getUserId();
         // this.ngOnInit();
@@ -43,6 +52,11 @@ export class SignupComponent implements OnInit {
         // this.router.navigate(['/widget']);
         this.router.navigateByUrl('/home-list', {skipLocationChange: true}).then(() => {
           this.router.navigate(['Your actualComponent']);
+
+        console.log(this.tokenStorage.getUserId(), this.tokenStorage.getToken(), this.tokenStorage.getUsername());
+        this.router.navigate(['/']).then(r => {
+          console.log('success to navigate');
+
         });
       },
       error => {
@@ -51,7 +65,6 @@ export class SignupComponent implements OnInit {
       }
     );
   }
-
 
   reloadPage() {
     window.location.reload();

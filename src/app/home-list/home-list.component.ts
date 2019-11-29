@@ -1,12 +1,13 @@
 import {Component, OnInit} from '@angular/core';
-import {Home} from '../home';
-import {CategoryHome} from '../category-home';
-import {CategoryRoom} from '../category-room';
-import {StatusHome} from '../status-home';
+import {Home} from '../services/home';
+import {CategoryHome} from '../services/category-home';
+import {CategoryRoom} from '../services/category-room';
+import {StatusHome} from '../services/status-home';
 import {FormControl, FormGroup} from '@angular/forms';
-import {HomeService} from '../home.service';
-import {SearchService} from '../search.service';
+import {HomeService} from '../services/home.service';
+import {SearchService} from '../services/search.service';
 import {SearchHomeByAddress} from './search-home-by-address';
+import {TokenStorageService} from '../auth/token-storage.service';
 
 @Component({
   selector: 'app-home-list',
@@ -20,8 +21,10 @@ export class HomeListComponent implements OnInit {
   statusHomeList: StatusHome[];
 
   searchAddress = '';
+  private info: any;
 
-  constructor(private homeService: HomeService, private searchService: SearchService) {
+  constructor(private tokenStorage: TokenStorageService,
+              private homeService: HomeService, private searchService: SearchService) {
   }
 
   ngOnInit() {
@@ -35,6 +38,14 @@ export class HomeListComponent implements OnInit {
     this.homeService.getStatusHomeList().subscribe(result => {
       this.statusHomeList = this.statusHomeList;
     });
+
+    this.info = {
+      token: this.tokenStorage.getToken(),
+      username: this.tokenStorage.getUsername(),
+      id: this.tokenStorage.getUserId()
+    };
+
+    console.log(this.info);
   }
 
   searchHomeByAddress() {

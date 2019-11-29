@@ -1,11 +1,12 @@
 import {Component, OnInit} from '@angular/core';
-import {Home} from '../home';
-import {CategoryHome} from '../category-home';
-import {CategoryRoom} from '../category-room';
-import {StatusHome} from '../status-home';
-import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
-import {HomeService} from '../home.service';
+import {Home} from '../services/home';
+import {CategoryHome} from '../services/category-home';
+import {CategoryRoom} from '../services/category-room';
+import {StatusHome} from '../services/status-home';
+import {FormBuilder, FormControl, FormGroup} from '@angular/forms';
+import {HomeService} from '../services/home.service';
 import {ActivatedRoute, Router} from '@angular/router';
+import {TokenStorageService} from '../auth/token-storage.service';
 
 @Component({
   selector: 'app-add-home',
@@ -27,14 +28,21 @@ export class AddHomeComponent implements OnInit {
     bathroomQuantity: new FormControl(''),
     price: new FormControl(''),
     file: new FormControl(''),
+    latitude: new FormControl(''),
+    longitude: new FormControl(''),
     description: new FormControl(''),
     categoryHomeId: new FormControl(''),
     categoryRoomId: new FormControl(''),
     statusHomeId: new FormControl('')
   });
+  private info: any;
 
 
-  constructor(private homeService: HomeService, private fb: FormBuilder, private route: ActivatedRoute, private router: Router) {
+  constructor(private homeService: HomeService,
+              private fb: FormBuilder,
+              private route: ActivatedRoute,
+              private router: Router,
+              private token: TokenStorageService) {
   }
 
   deleteHome(i) {
@@ -45,6 +53,15 @@ export class AddHomeComponent implements OnInit {
   }
 
   ngOnInit() {
+
+    this.info = {
+      token: this.token.getToken(),
+      username: this.token.getUsername(),
+      role: this.token.getAuthorities()
+    };
+
+    // console.log(this.info);
+
     this.getHomeList();
 
     this.homeService.getCategoryHomeList().subscribe(result => {
@@ -81,8 +98,18 @@ export class AddHomeComponent implements OnInit {
 
   saveHome(closeButton: HTMLInputElement) {
     const {
-      name, address, bedroomQuantity, bathroomQuantity, price, file, description, categoryHomeId,
-      categoryRoomId, statusHomeId
+      name,
+      address,
+      bedroomQuantity,
+      bathroomQuantity,
+      price,
+      file,
+      description,
+      latitude,
+      longitude,
+      categoryHomeId,
+      categoryRoomId,
+      statusHomeId
     } = this.homeForm.value;
 
     const home = {
@@ -93,6 +120,8 @@ export class AddHomeComponent implements OnInit {
       price,
       file,
       description,
+      latitude,
+      longitude,
       categoryHome: {
         id: categoryHomeId
       },
@@ -112,11 +141,11 @@ export class AddHomeComponent implements OnInit {
           console.log(next.id);
           this.getHomeList();
         }, error => {
-          alert('Upload file fail');
+          alert('Upload File Fail');
         }
       );
     }, error => {
-      return alert('error add home');
+      return alert('Error Add Home!!!');
     });
     console.log('Thêm thành công');
     closeButton.click();
