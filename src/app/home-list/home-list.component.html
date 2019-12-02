@@ -1,22 +1,32 @@
 <app-header></app-header>
 <app-featured></app-featured>
 <br>
+
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-8">
-
+    <div class="col-md-4">
     </div>
     <div class="col-md-4">
       <nav class="navbar navbar-light bg-light">
         <div class="form-inline">
           <input [(ngModel)]="searchAddress" class="form-control mr-sm-2" type="search" placeholder="Search"
                  aria-label="Search"
-                 (keydown)="searchHomeByAddress()">
+                 (keyup)="searchHomeByAddress()">
           <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
         </div>
       </nav>
     </div>
+    <nav class="navbar navbar-light bg-light">
+      <div class="form-inline">
+        <button type="button" class="btn btn-outline-success my-2 my-sm-0" data-toggle="modal"
+                data-target="#exampleModalCenter"
+                (click)="isShowModal=true">More filters
+        </button>
+      </div>
+    </nav>
   </div>
+
+  <br>
   <h1 class="text-center">Homes List</h1>
   <div class="row">
     <div class="col-3" *ngFor="let home of homeList; index as idx">
@@ -27,6 +37,55 @@
           <p class="card-text">{{ home.name }}</p>
           <p class="card-text">${{ home.price }}/night</p>
         </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--More filters form-->
+
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalCenterTitle">More filters</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="searchAllForm">
+          <div class="form-group">
+            <label for="bedroom">Bedroom Quantity</label>
+            <input type="email" class="form-control" id="bedroom"
+                   formControlName="searchBedroomQuantity">
+          </div>
+          <div class="form-group">
+            <label for="bathroom">Bathroom Quantity</label>
+            <input type="email" class="form-control" id="bathroom" name="bathroom"
+                   formControlName="searchBathroomQuantity">
+          </div>
+          <div class="form-group">
+            <label for="addressInput">Address</label>
+            <input type="email" class="form-control" id="addressInput" name="addressInput"
+                   formControlName="searchAddress">
+          </div>
+          <div class="form-group">
+            <label for="priceMinInput">Price Min</label>
+            <input type="email" class="form-control" id="priceMinInput" name="priceMinInput"
+                   formControlName="searchPriceMin">
+          </div>
+          <div class="form-group">
+            <label for="priceMaxInput">Price Max</label>
+            <input type="email" class="form-control" id="priceMaxInput" name="priceMaxInput"
+                   formControlName="searchPriceMax">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button #closeModalRef type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="searchAll()">Show homes</button>
       </div>
     </div>
   </div>
