@@ -67,7 +67,6 @@ export class HomeListComponent implements OnInit {
     console.log(this.info);
   }
 
-
   searchAll() {
     const {value} = this.searchAllForm;
     console.log(value);
@@ -76,6 +75,15 @@ export class HomeListComponent implements OnInit {
     }
     if (value.searchBathroomQuantity === '') {
       value.searchBathroomQuantity = -1;
+    }
+    if (value.searchAddress === '') {
+      value.searchAddress = -1;
+    }
+    if (value.searchPriceMin === '') {
+      value.searchPriceMin = 1;
+    }
+    if (value.searchPriceMax === '') {
+      value.searchPriceMax = 100000;
     }
     this.searchAllService.searchALl(value.searchBedroomQuantity,
       value.searchBathroomQuantity,
