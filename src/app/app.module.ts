@@ -34,7 +34,6 @@ import {UserBookingListComponent} from './user-booking-list/user-booking-list.co
 import {CreateBookingComponent} from './create-booking/create-booking.component';
 import {CreateHomeComponent} from './create-home/create-home.component';
 
-
 @NgModule({
   declarations: [
     AppComponent,
