@@ -23,6 +23,9 @@ export class EditHomeComponent implements OnInit {
   categoryHomeList: CategoryHome[];
   categoryRoomList: CategoryRoom[];
   statusHomeList: StatusHome[];
+  categoryHomeId = '';
+  categoryRoomId = '';
+  statusHomeId = '';
 
   constructor(private route: ActivatedRoute,
               private homeService: HomeService,
@@ -84,30 +87,41 @@ export class EditHomeComponent implements OnInit {
   }
 
   editHome() {
-    const {
-      name, address, bedroomQuantity, bathroomQuantity, price, file, latitude, longitude, description, categoryHomeId,
-      categoryRoomId, statusHomeId
-    } = this.homeForm.value;
+    console.log(this.statusHomeId, this.categoryHomeId , this.categoryRoomId);
+    if (this.categoryRoomId === '') {
+      this.categoryRoomId = this.home.categoryRoom.id;
+    }
+    if (this.categoryHomeId === '') {
+      this.categoryHomeId = this.home.categoryHome.id;
+    }
+    if (this.statusHomeId === '') {
+      this.statusHomeId = this.home.statusHome.id;
+    }
 
+    //   const {
+    //     name, address, bedroomQuantity, bathroomQuantity, price, file, latitude, longitude, description, categoryHomeId,
+    //     categoryRoomId, statusHomeId
+    //   } = this.homeForm.value;
+    //
     const home = {
       id: this.id,
-      name,
-      address,
-      bedroomQuantity,
-      bathroomQuantity,
-      price,
-      file,
-      latitude,
-      longitude,
-      description,
+      name: this.home.name,
+      address: this.home.address,
+      bedroomQuantity: this.home.bedroomQuantity,
+      bathroomQuantity: this.home.bathroomQuantity,
+      price: this.home.price,
+      file: this.home.file,
+      latitude: this.home.latitude,
+      longitude: this.home.longitude,
+      description: this.home.description,
       categoryHome: {
-        id: categoryHomeId
+        id: this.categoryHomeId
       },
       categoryRoom: {
-        id: categoryRoomId
+        id: this.categoryRoomId
       },
       statusHome: {
-        id: statusHomeId
+        id: this.statusHomeId
       }
     };
     console.log(home);

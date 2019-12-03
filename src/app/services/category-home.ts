@@ -1,4 +1,4 @@
 export interface CategoryHome {
-    id: number;
+    id: string;
     name?: string;
 }

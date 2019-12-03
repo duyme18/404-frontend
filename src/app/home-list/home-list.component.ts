@@ -3,12 +3,10 @@ import {Home} from '../services/home';
 import {CategoryHome} from '../services/category-home';
 import {CategoryRoom} from '../services/category-room';
 import {StatusHome} from '../services/status-home';
-import {FormBuilder, FormControl, FormGroup} from '@angular/forms';
+import {FormBuilder, FormGroup} from '@angular/forms';
 import {HomeService} from '../services/home.service';
-import {SearchService} from '../services/search.service';
 import {SearchHomeByAddress} from './search-home-by-address';
 import {TokenStorageService} from '../auth/token-storage.service';
-import {SearchAll} from './search-all';
 import {SearchAllService} from '../services/search-all.service';
 
 @Component({
@@ -21,11 +19,6 @@ export class HomeListComponent implements OnInit {
   categoryHomeList: CategoryHome[];
   categoryRoomList: CategoryRoom[];
   statusHomeList: StatusHome[];
-
-  searchBedroomQuantity: number;
-  searchBathroomQuantity: number;
-  searchPriceMin: number;
-  searchPriceMax: number;
   searchAddress = '';
   private info: any;
 
@@ -34,8 +27,7 @@ export class HomeListComponent implements OnInit {
   constructor(private tokenStorage: TokenStorageService,
               private homeService: HomeService,
               private searchAllService: SearchAllService,
-              private fb: FormBuilder,
-              private searchService: SearchService) {
+              private fb: FormBuilder) {
   }
 
   ngOnInit() {
@@ -111,5 +103,4 @@ export class HomeListComponent implements OnInit {
       this.homeList = result;
     });
   }
-
 }

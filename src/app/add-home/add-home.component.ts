@@ -15,6 +15,7 @@ import {TokenStorageService} from '../auth/token-storage.service';
 })
 export class AddHomeComponent implements OnInit {
   fileUpload: File;
+  files: File[] = [];
   Home;
   homeList: Home[];
   categoryHomeList: CategoryHome[];
@@ -95,6 +96,12 @@ export class AddHomeComponent implements OnInit {
 
   handleFileChoose(files: FileList) {
     this.fileUpload = files.item(0);
+  }
+
+  addFiles(files: FileList) {
+    for (let i = 0; i < files.length; i++) {
+      this.files.push(files.item(i));
+    }
   }
 
   saveHome(closeButton: HTMLInputElement) {

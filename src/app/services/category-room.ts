@@ -1,4 +1,4 @@
 export interface CategoryRoom {
-  id: number;
+  id: string;
   name?: string;
 }

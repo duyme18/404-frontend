@@ -27,8 +27,6 @@ export class SignupComponent implements OnInit {
       username: this.tokenStorage.getUsername(),
       id: this.tokenStorage.getUserId()
     };
-
-    console.log(this.info);
   }
 
   onSubmit() {
@@ -62,6 +60,7 @@ export class SignupComponent implements OnInit {
           error => {
             console.log(error);
             this.errorMessage = error.error.message;
+            alert('The username or password is incorrect!');
           }
         );
       }
