@@ -8,6 +8,7 @@ import {HomeService} from '../services/home.service';
 import {SearchHomeByAddress} from './search-home-by-address';
 import {TokenStorageService} from '../auth/token-storage.service';
 import {SearchAllService} from '../services/search-all.service';
+import {ImageHomeService} from '../services/image-home.service';
 
 @Component({
   selector: 'app-home-list',
@@ -27,7 +28,8 @@ export class HomeListComponent implements OnInit {
   constructor(private tokenStorage: TokenStorageService,
               private homeService: HomeService,
               private searchAllService: SearchAllService,
-              private fb: FormBuilder) {
+              private fb: FormBuilder,
+              private imageHome: ImageHomeService) {
   }
 
   ngOnInit() {

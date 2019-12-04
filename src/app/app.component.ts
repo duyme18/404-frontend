@@ -1,5 +1,7 @@
 import {Component} from '@angular/core';
 import {SearchService} from './services/search.service';
+import * as firebase from 'firebase';
+import {environment} from '../environments/environment';
 
 @Component({
   selector: 'app-root',
@@ -8,6 +10,9 @@ import {SearchService} from './services/search.service';
 })
 export class AppComponent {
   title = 'frontend';
+
+  public appFirebase = firebase.initializeApp(environment.firebase);
+
 
   constructor() {
 

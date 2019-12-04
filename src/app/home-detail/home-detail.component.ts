@@ -10,6 +10,8 @@ import {TokenStorageService} from '../auth/token-storage.service';
 import {FormControl, FormGroup} from '@angular/forms';
 import {IComment} from '../services/comment';
 import {CommentService} from '../services/comment.service';
+import {ImageHomeService} from '../services/image-home.service';
+import {ImageHome} from '../services/image-home';
 
 @Component({
   selector: 'app-home-detail',
@@ -22,6 +24,7 @@ export class HomeDetailComponent implements OnInit {
   userId: string;
   home: Home;
   id: number;
+  iFile: ImageHome[] = [];
   homeName: string;
   categoryHome: CategoryHome;
   categoryRoom: CategoryRoom;
@@ -43,7 +46,8 @@ export class HomeDetailComponent implements OnInit {
               private homeService: HomeService,
               private commentService: CommentService,
               private router: Router,
-              private token: TokenStorageService) {
+              private token: TokenStorageService,
+              private imageHome: ImageHomeService) {
     this.activatedRoute.params.subscribe(params => {
       this.id = params.homeId;
       this.homeName = params.homeName;
@@ -53,6 +57,12 @@ export class HomeDetailComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.imageHome.getAllByHome(this.id).subscribe(next => {
+      this.iFile = next;
+      console.log('success get file by home');
+    }, error => {
+      console.log('fail to get file by home');
+    });
     console.log(this.homeId, this.token.getUserId());
     this.getHomeId();
     this.getAllCommentThisHome();

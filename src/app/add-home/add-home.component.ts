@@ -7,6 +7,10 @@ import {FormBuilder, FormControl, FormGroup} from '@angular/forms';
 import {HomeService} from '../services/home.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {TokenStorageService} from '../auth/token-storage.service';
+import * as firebase from 'firebase';
+import {ImageHomeService} from '../services/image-home.service';
+import {environment} from '../../environments/environment';
+import {ImageHome} from '../services/image-home';
 
 @Component({
   selector: 'app-add-home',
@@ -15,12 +19,13 @@ import {TokenStorageService} from '../auth/token-storage.service';
 })
 export class AddHomeComponent implements OnInit {
   fileUpload: File;
-  files: File[] = [];
+  fileList: File[] = [];
   Home;
   homeList: Home[];
   categoryHomeList: CategoryHome[];
   categoryRoomList: CategoryRoom[];
   statusHomeList: StatusHome[];
+  downloadURL: string;
 
   homeForm = new FormGroup({
     name: new FormControl(''),
@@ -38,13 +43,19 @@ export class AddHomeComponent implements OnInit {
   });
   private info: any;
 
-
   constructor(private homeService: HomeService,
               private fb: FormBuilder,
               private route: ActivatedRoute,
               private router: Router,
-              private token: TokenStorageService) {
+              private token: TokenStorageService,
+              private imageUpload: ImageHomeService) {
   }
+
+  fireForm = this.fb.group({
+    id: [''],
+    pathFile: [''],
+    home: ['']
+  });
 
   deleteHome(i) {
     const home = this.homeList[i];
@@ -55,7 +66,6 @@ export class AddHomeComponent implements OnInit {
   }
 
   ngOnInit() {
-
     this.info = {
       token: this.token.getToken(),
       username: this.token.getUsername(),
@@ -98,10 +108,56 @@ export class AddHomeComponent implements OnInit {
     this.fileUpload = files.item(0);
   }
 
-  addFiles(files: FileList) {
-    for (let i = 0; i < files.length; i++) {
-      this.files.push(files.item(i));
+  addFiles(event) {
+    for (let i = 0; i < event.target.files.length; i++) {
+      this.fileList.push(event.target.files.item(i));
+      console.log('file upload');
     }
+  }
+
+  startUpload(file: File, home: Home) {
+    const metadata = {
+      contentType: 'image/jpg'
+    };
+    const storageRef = firebase.storage().ref();
+    const fileImage = storageRef.child('image/' + file.name).put(file, metadata);
+    storageRef.child(file.name).getDownloadURL().then(url => {
+      console.log(url);
+    });
+    fileImage.on(firebase.storage.TaskEvent.STATE_CHANGED, snapshot => {
+      const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+      console.log('upload is ' + progress + ' % done');
+      switch (snapshot.state) {
+        case firebase.storage.TaskState.PAUSED: // or 'paused'
+          console.log('upload is paused');
+          break;
+      }
+    }, errors => {
+      switch (errors.message) {
+        case 'storage/unauthorized':
+          console.log('unauthorized');
+          break;
+        case 'storage/canceled':
+          console.log('cancel upload');
+          break;
+        case 'storage/unknown':
+          console.log('unknown');
+          break;
+      }
+    }, () => {
+      fileImage.snapshot.ref.getDownloadURL().then(downloadURl => {
+        console.log('file available at: ' + downloadURl);
+        this.downloadURL = downloadURl;
+        const {value} = this.fireForm;
+        value.pathFile = downloadURl;
+        value.home = home;
+        this.imageUpload.addImage(value).subscribe(success => {
+          console.log('success create new image');
+        }, error => {
+          console.log('fail to create image');
+        });
+      });
+    });
   }
 
   saveHome(closeButton: HTMLInputElement) {
@@ -152,6 +208,10 @@ export class AddHomeComponent implements OnInit {
           alert('Upload File Fail');
         }
       );
+      console.log('success');
+      for (const fileUp of this.fileList) {
+        this.startUpload(fileUp, next);
+      }
     }, error => {
       return alert('Error Add Home!!!');
     });

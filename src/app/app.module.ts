@@ -33,6 +33,9 @@ import {CanActivateTeam} from './deactivate/can-activate-team';
 import {UserBookingListComponent} from './user-booking-list/user-booking-list.component';
 import {CreateBookingComponent} from './create-booking/create-booking.component';
 import {CreateHomeComponent} from './create-home/create-home.component';
+import {AngularFirestoreModule} from '@angular/fire/firestore';
+import {AngularFireAuthModule} from '@angular/fire/auth';
+import { DropzoneDirective } from './dropzone.directive';
 
 
 @NgModule({
@@ -55,9 +58,15 @@ import {CreateHomeComponent} from './create-home/create-home.component';
     BookingComponent,
     UserBookingListComponent,
     CreateBookingComponent,
-    CreateHomeComponent
+    CreateHomeComponent,
+    DropzoneDirective
   ],
   imports: [
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireDatabaseModule,
+    AngularFireStorageModule,
+    AngularFirestoreModule,
+    AngularFireAuthModule,
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
@@ -68,9 +77,6 @@ import {CreateHomeComponent} from './create-home/create-home.component';
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyBL1psdbu18dDFFpDlMOuASQl-65r72vJE'
     }),
-    AngularFireModule.initializeApp(environment.firebase),
-    AngularFireDatabaseModule,
-    AngularFireStorageModule
   ],
   providers: [Permissions, CanActivateTeam, NotActivateTeam, IsAdmin],
   bootstrap: [AppComponent]

@@ -3,7 +3,7 @@
   <h1>Update information the home</h1>
   <div class="form-group">
     <label for="name">Name</label>
-    <input type="text" class="form-control" id="name" name="name" [(ngModel)]="this.home.name">
+    <input *ngIf="home !== undefined" type="text" class="form-control" id="name" name="name" [(ngModel)]="home.name">
   </div>
   <div class="form-group">
     <label for="address">Address</label>
@@ -28,6 +28,12 @@
     <input type="file" class="form-control" id="file" name="file"
            (change)="handleFileChoose($event.target.files)">
     <img src="{{'http://localhost:8080/uploads/' + home.file}}" [routerLink]="" width="250px" height="250px">
+  </div>
+  <div class="form-group">
+    <label for="file1">Images</label>
+    <input type="file" class="form-control" id="file1" name="file1" multiple
+           (change)="addFiles($event)">
+    <button class="btn-primary" (click)="clickDeleteFile()">Delete all old images</button>
   </div>
   <div class="form-group">
     <label for="description">Description</label>
