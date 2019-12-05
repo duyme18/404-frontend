@@ -7,7 +7,7 @@ import {StatusHome} from './status-home';
   providedIn: 'root'
 })
 export class StatusHomeService {
-  private readonly API_STATUS_HOME_URL = 'http://localhost:8080/api/auth/status-h/';
+  private readonly API_STATUS_HOME_URL = 'http://localhost:8080/api/auth/status-home/';
 
   constructor(private http: HttpClient) {
   }
