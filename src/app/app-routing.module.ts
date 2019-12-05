@@ -1,18 +1,21 @@
 import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
-import {HomeListComponent} from './home-list/home-list.component';
-import {AddHomeComponent} from './add-home/add-home.component';
-import {EditHomeComponent} from './edit-home/edit-home.component';
+import {HomeListComponent} from './home-management/home-list/home-list.component';
+import {AddHomeComponent} from './home-management/add-home/add-home.component';
+import {EditHomeComponent} from './home-management/edit-home/edit-home.component';
 import {RegisterComponent} from './register/register.component';
 import {SignupComponent} from './signup/signup.component';
 import {ChangePassComponent} from './change-pass/change-pass.component';
-import {HomeDetailComponent} from './home-detail/home-detail.component';
+import {HomeDetailComponent} from './home-management/home-detail/home-detail.component';
 import {BookingComponent} from './booking/booking.component';
 import {NotActivateTeam} from './deactivate/not-activate-team';
 import {IsAdmin} from './deactivate/is-admin';
 import {CreateBookingComponent} from './create-booking/create-booking.component';
 import {UserBookingListComponent} from './user-booking-list/user-booking-list.component';
 import {CreateHomeComponent} from './create-home/create-home.component';
+import {CategoryHomeComponent} from './category/category-home/category-home.component';
+import {CategoryRoomComponent} from './category/category-room/category-room.component';
+import {StatusHomeComponent} from './status-home/status-home.component';
 
 const routes: Routes = [
   {
@@ -20,6 +23,15 @@ const routes: Routes = [
   },
   {
     path: 'add-home', component: AddHomeComponent, canActivate: [IsAdmin]
+  },
+  {
+    path: 'category-home', component: CategoryHomeComponent, canActivate: [IsAdmin]
+  },
+  {
+    path: 'category-room', component: CategoryRoomComponent, canActivate: [IsAdmin]
+  },
+  {
+    path: 'status-home', component: StatusHomeComponent, canActivate: [IsAdmin]
   },
   {
     path: 'create-booking', component: CreateBookingComponent

@@ -13,9 +13,9 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {SidebarComponent} from './sidebar/sidebar.component';
 import {HeaderComponent} from './header/header.component';
 import {FooterComponent} from './footer/footer.component';
-import {HomeListComponent} from './home-list/home-list.component';
-import {AddHomeComponent} from './add-home/add-home.component';
-import {EditHomeComponent} from './edit-home/edit-home.component';
+import {HomeListComponent} from './home-management/home-list/home-list.component';
+import {AddHomeComponent} from './home-management/add-home/add-home.component';
+import {EditHomeComponent} from './home-management/edit-home/edit-home.component';
 import {ChangePassComponent} from './change-pass/change-pass.component';
 import {RegisterComponent} from './register/register.component';
 import {SignupComponent} from './signup/signup.component';
@@ -24,7 +24,7 @@ import {HomeComponent} from './home/home.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {GoogleMapComponent} from './google-map/google-map.component';
 import {AgmCoreModule} from '@agm/core';
-import {HomeDetailComponent} from './home-detail/home-detail.component';
+import {HomeDetailComponent} from './home-management/home-detail/home-detail.component';
 import {BookingComponent} from './booking/booking.component';
 import {Permissions} from './deactivate/permissions';
 import {NotActivateTeam} from './deactivate/not-activate-team';
@@ -35,7 +35,10 @@ import {CreateBookingComponent} from './create-booking/create-booking.component'
 import {CreateHomeComponent} from './create-home/create-home.component';
 import {AngularFirestoreModule} from '@angular/fire/firestore';
 import {AngularFireAuthModule} from '@angular/fire/auth';
-import { DropzoneDirective } from './dropzone.directive';
+import {DropzoneDirective} from './dropzone.directive';
+import {CategoryRoomComponent} from './category/category-room/category-room.component';
+import {CategoryHomeComponent} from './category/category-home/category-home.component';
+import {StatusHomeComponent} from './status-home/status-home.component';
 
 
 @NgModule({
@@ -59,7 +62,10 @@ import { DropzoneDirective } from './dropzone.directive';
     UserBookingListComponent,
     CreateBookingComponent,
     CreateHomeComponent,
-    DropzoneDirective
+    DropzoneDirective,
+    CategoryRoomComponent,
+    CategoryHomeComponent,
+    StatusHomeComponent
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebase),

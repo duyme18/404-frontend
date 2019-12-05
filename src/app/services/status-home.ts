@@ -1,4 +1,4 @@
 export interface StatusHome {
-    id: string;
-    name?: string;
+  id?: string;
+  name?: string;
 }

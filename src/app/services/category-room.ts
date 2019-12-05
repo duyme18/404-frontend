@@ -1,4 +1,6 @@
+import {Home} from './home';
+
 export interface CategoryRoom {
-  id: string;
+  id?: string;
   name?: string;
 }

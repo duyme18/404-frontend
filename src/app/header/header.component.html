@@ -11,13 +11,17 @@
     </a>
   </h5>
   <nav class="my-2 my-md-0 mr-md-3">
-    <a class="p-3 text-light dropdown-toggle" id="navbarDropdownMenuLink" href="#" role="button"
+    <a *ngIf="authority === 'admin'" class="p-3 text-light dropdown-toggle" id="navbarDropdownMenuLink" href="#"
+       role="button"
        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Home Management</a>
     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-      <a class="dropdown-item" href="/add-home">Add Home</a>
       <a class="dropdown-item" href="/home-list">Home List</a>
+      <a class="dropdown-item" href="/add-home">Add Home</a>
+      <a class="dropdown-item" href="/category-home">Category Home</a>
+      <a class="dropdown-item" href="/category-room">Category Room</a>
+      <a class="dropdown-item" href="/status-home">Status Home</a>
     </div>
-    <a class="p-3 text-light" href="/create-home">About Us</a>
+    <a class="p-3 text-light" href="/home-list">About Us</a>
     <a class="p-3 text-light" href="/register">Registration</a>
   </nav>
 

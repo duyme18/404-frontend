@@ -1,16 +1,16 @@
 import {Component, OnInit} from '@angular/core';
-import {Home} from '../services/home';
-import {CategoryHome} from '../services/category-home';
-import {CategoryRoom} from '../services/category-room';
-import {StatusHome} from '../services/status-home';
+import {Home} from '../../services/home';
+import {CategoryHome} from '../../services/category-home';
+import {CategoryRoom} from '../../services/category-room';
+import {StatusHome} from '../../services/status-home';
 import {FormBuilder, FormControl, FormGroup} from '@angular/forms';
-import {HomeService} from '../services/home.service';
+import {HomeService} from '../../services/home.service';
 import {ActivatedRoute, Router} from '@angular/router';
-import {TokenStorageService} from '../auth/token-storage.service';
+import {TokenStorageService} from '../../auth/token-storage.service';
 import * as firebase from 'firebase';
-import {ImageHomeService} from '../services/image-home.service';
-import {environment} from '../../environments/environment';
-import {ImageHome} from '../services/image-home';
+import {ImageHomeService} from '../../services/image-home.service';
+import {environment} from '../../../environments/environment';
+import {ImageHome} from '../../services/image-home';
 
 @Component({
   selector: 'app-add-home',

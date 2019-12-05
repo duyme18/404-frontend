@@ -1,14 +1,14 @@
 import {Component, OnInit} from '@angular/core';
-import {Home} from '../services/home';
-import {CategoryHome} from '../services/category-home';
-import {CategoryRoom} from '../services/category-room';
-import {StatusHome} from '../services/status-home';
+import {Home} from '../../services/home';
+import {CategoryHome} from '../../services/category-home';
+import {CategoryRoom} from '../../services/category-room';
+import {StatusHome} from '../../services/status-home';
 import {FormBuilder, FormGroup} from '@angular/forms';
-import {HomeService} from '../services/home.service';
+import {HomeService} from '../../services/home.service';
 import {SearchHomeByAddress} from './search-home-by-address';
-import {TokenStorageService} from '../auth/token-storage.service';
-import {SearchAllService} from '../services/search-all.service';
-import {ImageHomeService} from '../services/image-home.service';
+import {TokenStorageService} from '../../auth/token-storage.service';
+import {SearchAllService} from '../../services/search-all.service';
+import {ImageHomeService} from '../../services/image-home.service';
 
 @Component({
   selector: 'app-home-list',

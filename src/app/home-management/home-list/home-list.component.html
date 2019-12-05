@@ -12,13 +12,13 @@
           <input [(ngModel)]="searchAddress" class="form-control mr-sm-2" type="search" placeholder="Search by address"
                  aria-label="Search"
                  (keyup)="searchHomeByAddress()">
-          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+          <button class="btn my-2 my-sm-0 border-radius1" type="submit">Search</button>
         </div>
       </nav>
     </div>
     <nav class="navbar navbar-light bg-light">
       <div class="form-inline">
-        <button type="button" class="btn btn-outline-success my-2 my-sm-0" data-toggle="modal"
+        <button type="button" class="btn my-2 my-sm-0 border-radius1" data-toggle="modal"
                 data-target="#exampleModalCenter"
                 (click)="isShowModal=true">More filters
         </button>
@@ -90,3 +90,4 @@
     </div>
   </div>
 </div>
+<app-footer></app-footer>

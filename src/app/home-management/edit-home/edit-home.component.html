@@ -6,28 +6,30 @@
     <input *ngIf="home !== undefined" type="text" class="form-control" id="name" name="name" [(ngModel)]="home.name">
   </div>
   <div class="form-group">
-    <label for="address">Address</label>
-    <input type="text" class="form-control" id="address" name="address" [(ngModel)]="this.home.address">
-  </div>
-  <div class="form-group">
-    <label for="bedroomQuantity">Bedrooms</label>
-    <input type="text" class="form-control" id="bedroomQuantity" name="bedroomQuantity"
-           [(ngModel)]="this.home.bedroomQuantity">
-  </div>
-  <div class="form-group">
-    <label for="bathroomQuantity">Bathrooms</label>
-    <input type="text" class="form-control" id="bathroomQuantity" name="bathroomQuantity"
-           [(ngModel)]="this.home.bathroomQuantity">
-  </div>
-  <div class="form-group">
-    <label for="price">Price</label>
-    <input type="text" class="form-control" id="price" name="price" [(ngModel)]="this.home.price">
-  </div>
-  <div class="form-group">
     <label for="file">Image</label>
     <input type="file" class="form-control" id="file" name="file"
            (change)="handleFileChoose($event.target.files)">
     <img src="{{'http://localhost:8080/uploads/' + home.file}}" [routerLink]="" width="250px" height="250px">
+  </div>
+  <div class="form-group">
+    <label for="address">Address</label>
+    <input *ngIf="home !== undefined" type="text" class="form-control" id="address" name="address"
+           [(ngModel)]="home.address">
+  </div>
+  <div class="form-group">
+    <label for="bedroomQuantity">Bedrooms</label>
+    <input *ngIf="home !== undefined" type="text" class="form-control" id="bedroomQuantity" name="bedroomQuantity"
+           [(ngModel)]="home.bedroomQuantity">
+  </div>
+  <div class="form-group">
+    <label for="bathroomQuantity">Bathrooms</label>
+    <input *ngIf="home !== undefined" type="text" class="form-control" id="bathroomQuantity" name="bathroomQuantity"
+           [(ngModel)]="home.bathroomQuantity">
+  </div>
+  <div class="form-group">
+    <label for="price">Price</label>
+    <input *ngIf="home !== undefined" type="text" class="form-control" id="price" name="price"
+           [(ngModel)]="home.price">
   </div>
   <div class="form-group">
     <label for="file1">Images</label>
@@ -37,7 +39,7 @@
   </div>
   <div class="form-group">
     <label for="description">Description</label>
-    <textarea type="text" class="form-control" id="description" name="price" [(ngModel)]="this.home.price"></textarea>
+    <textarea type="text" class="form-control" id="description" name="price" [(ngModel)]="home.price"></textarea>
   </div>
   <div class="form-group">
     <label for="exampleFormControlSelect1">Category Room</label>
@@ -57,7 +59,7 @@
   </div>
   <div class="form-group">
     <label for="exampleFormControlSelect3">Status</label>
-    <select class="form-control" id="exampleFormControlSelect3" name="statusHome" [ngModel]="statusHomeId" >
+    <select class="form-control" id="exampleFormControlSelect3" name="statusHome" [ngModel]="statusHomeId">
       <option value="">{{home.statusHome.name}}</option>
       <option *ngFor="let statusHome of statusHomeList" value="{{ statusHome.id }}"> {{ statusHome.name }}
       </option>
@@ -89,3 +91,4 @@
   </div>
 </div>
 
+<app-footer></app-footer>

@@ -1,15 +1,15 @@
 import {Component, OnInit} from '@angular/core';
-import {Home} from '../services/home';
+import {Home} from '../../services/home';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
-import {HomeService} from '../services/home.service';
-import {CategoryHome} from '../services/category-home';
-import {CategoryRoom} from '../services/category-room';
-import {StatusHome} from '../services/status-home';
+import {HomeService} from '../../services/home.service';
+import {CategoryHome} from '../../services/category-home';
+import {CategoryRoom} from '../../services/category-room';
+import {StatusHome} from '../../services/status-home';
 import * as firebase from 'firebase';
-import {TokenStorageService} from '../auth/token-storage.service';
-import {ImageHomeService} from '../services/image-home.service';
-import {environment} from '../../environments/environment';
+import {TokenStorageService} from '../../auth/token-storage.service';
+import {ImageHomeService} from '../../services/image-home.service';
+import {environment} from '../../../environments/environment';
 
 @Component({
   selector: 'app-edit-home',

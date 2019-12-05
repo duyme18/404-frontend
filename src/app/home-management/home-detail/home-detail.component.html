@@ -1,8 +1,8 @@
 <app-header></app-header>
 <div class="imageFiles" *ngFor="let file of iFile">
-  <img class="filesImage" src="{{file.pathFile}}" [routerLink]="" width="250px" height="250px">
+  <img class="filesImage" style="float:left" src="{{file.pathFile}}" [routerLink]="" width="250px" height="250px">
 </div>
-<div class="container-fluid">
+<div class="container-fluid" style="clear:both">
   <br>
   <div class="row bgr-validation">
     <div class="col-md-9">
@@ -21,9 +21,9 @@
       <p>{{home.description}}</p>
       <h3>Status: </h3>
       <p>{{home.statusHome.name}}</p>
-<!--      <agm-map [latitude]="latitude" [longitude]="longitude" (mapClick)="onChoseLocation($event)">-->
-<!--        <agm-marker [latitude]="latitude" [longitude]="longitude" *ngIf="locationChosen"></agm-marker>-->
-<!--      </agm-map>-->
+      <!--      <agm-map [latitude]="latitude" [longitude]="longitude" (mapClick)="onChoseLocation($event)">-->
+      <!--        <agm-marker [latitude]="latitude" [longitude]="longitude" *ngIf="locationChosen"></agm-marker>-->
+      <!--      </agm-map>-->
     </div>
     <form>
       <div class="col-md-12 titel-icon">
@@ -123,3 +123,4 @@
     </div>
   </div>
 </div>
+<app-footer></app-footer>
