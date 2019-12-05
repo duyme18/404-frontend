@@ -4,6 +4,8 @@ import {TokenStorageService} from '../auth/token-storage.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Booking} from '../services/booking';
 import {BookingService} from '../services/booking.service';
+import {HomeService} from '../services/home.service';
+import {Home} from '../services/home';
 
 @Component({
   selector: 'app-create-booking',
@@ -17,9 +19,12 @@ export class CreateBookingComponent implements OnInit {
     checkout: new FormControl('')
   });
 
+  home: Home;
+
   constructor(private token: TokenStorageService,
               private route: ActivatedRoute,
               private router: Router,
+              private homeService: HomeService,
               private bookingService: BookingService) {
   }
 
@@ -48,6 +53,19 @@ export class CreateBookingComponent implements OnInit {
     console.log(booking);
     this.bookingService.createBooking(booking).subscribe(
       result => {
+        const id = +this.route.snapshot.paramMap.get('homeId');
+        this.homeService.getHomeId(id).subscribe(next => {
+          this.home = next;
+          this.home.booking = result;
+          this.home.statusHome.id = '1';
+          this.homeService.updateHome(this.home, this.home.id).subscribe(result2 => {
+            console.log('success');
+          }, error => {
+            console.log('fail to update home');
+          });
+        }, error => {
+          console.log('fail to get home');
+        });
         const form = new FormData();
         // closeButton.click();
         alert('Successful Booking');

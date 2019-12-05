@@ -1,7 +1,7 @@
 import {User} from './user';
 
 export interface Booking {
-    id?: string;
+    id?: number;
     checkin: string;
     checkout: string;
     home?: string;

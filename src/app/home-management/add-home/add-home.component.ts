@@ -109,6 +109,7 @@ export class AddHomeComponent implements OnInit {
   }
 
   addFiles(event) {
+    this.fileList = [];
     for (let i = 0; i < event.target.files.length; i++) {
       this.fileList.push(event.target.files.item(i));
       console.log('file upload');

@@ -1,6 +1,7 @@
 import {CategoryHome} from './category-home';
 import {CategoryRoom} from './category-room';
 import {StatusHome} from './status-home';
+import {Booking} from './booking';
 
 export interface Home {
   id?: number;
@@ -16,4 +17,5 @@ export interface Home {
   categoryHome?: CategoryHome;
   categoryRoom?: CategoryRoom;
   statusHome?: StatusHome;
+  booking?: Booking;
 }

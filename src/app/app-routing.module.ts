@@ -34,7 +34,7 @@ const routes: Routes = [
     path: 'status-home', component: StatusHomeComponent, canActivate: [IsAdmin]
   },
   {
-    path: 'create-booking', component: CreateBookingComponent
+    path: 'create-booking/:homeId', component: CreateBookingComponent
   },
   {
     path: 'user-booking-list', component: UserBookingListComponent

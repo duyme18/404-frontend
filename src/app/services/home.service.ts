@@ -61,4 +61,8 @@ export class HomeService {
   public getStatusHomeList(): Observable<StatusHome[]> {
     return this.httpClient.get<StatusHome[]>(this.API_URL + '/status-home');
   }
+
+  getAllHomeByBookingId(id: number): Observable<Home> {
+    return this.httpClient.get<Home>(this.API_URL + '/home/booking/' + id);
+  }
 }

@@ -103,7 +103,7 @@ export class HomeDetailComponent implements OnInit {
 
   bookingButton() {
     if (this.info.token != null) {
-      return this.router.navigateByUrl('/create-booking');
+      return this.router.navigateByUrl('/create-booking/' + this.id);
     } else {
       return this.router.navigateByUrl('/login');
 

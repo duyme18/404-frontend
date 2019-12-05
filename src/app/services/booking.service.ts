@@ -1,7 +1,8 @@
-  import {Injectable} from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Booking} from './booking';
+import {Home} from './home';
 
 @Injectable({
   providedIn: 'root'
@@ -20,11 +21,13 @@ export class BookingService {
     return this.http.post<Booking>(this.API_BOOKING_URL, booking);
   }
 
-  deleteBookingById(id: string): Observable<Booking> {
+  deleteBookingById(id: number): Observable<Booking> {
     return this.http.delete<Booking>(this.API_BOOKING_URL + '/' + id);
   }
 
   findBookingById(id: number): Observable<Booking> {
     return this.http.get<Booking>(this.API_BOOKING_URL + '/' + id);
   }
+
+
 }

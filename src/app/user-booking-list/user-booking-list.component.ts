@@ -7,6 +7,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {User} from '../services/user';
 import {Home} from '../services/home';
 import {FormControl, FormGroup} from '@angular/forms';
+import {HomeService} from '../services/home.service';
 
 @Component({
   selector: 'app-user-booking-list',
@@ -15,15 +16,17 @@ import {FormControl, FormGroup} from '@angular/forms';
 })
 export class UserBookingListComponent implements OnInit {
 
-  bookingId: string;
+  private homeId: string;
   booking: Booking;
   listBooking: Booking[];
   private info: any;
+  home: Home;
 
   constructor(private token: TokenStorageService,
               private bookingService: BookingService,
               private route: ActivatedRoute,
               private router: Router,
+              private homeService: HomeService,
               private userService: UserService) {
   }
 
@@ -55,6 +58,7 @@ export class UserBookingListComponent implements OnInit {
       }
     );
   }
+
   private getListBooking() {
     this.bookingService.getBookingList().subscribe(result => {
       this.listBooking = result;
@@ -63,8 +67,23 @@ export class UserBookingListComponent implements OnInit {
 
   deleteBooking(i) {
     const booking = this.listBooking[i];
-    this.bookingService.deleteBookingById(booking.id).subscribe(() => {
-      this.listBooking = this.listBooking.filter(t => t.id !== booking.id);
+    this.homeService.getAllHomeByBookingId(booking.id).subscribe(next => {
+      this.home = next;
+      console.log(this.home[0]);
+      this.home[0].statusHome.id = '2';
+      this.home[0].booking = null;
+      this.homeService.updateHome(this.home[0], this.home[0].id).subscribe(result2 => {
+        console.log('success');
+        this.bookingService.deleteBookingById(booking.id).subscribe(() => {
+          console.log('success to delete booking');
+          this.getBookingList();
+        });
+      }, error => {
+        this.bookingService.deleteBookingById(booking.id).subscribe(() => {
+          console.log('success to delete booking');
+        });
+        console.log('fail to update home');
+      });
     });
   }
 }
