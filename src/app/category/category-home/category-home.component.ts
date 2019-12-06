@@ -4,6 +4,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {CategoryHomeService} from '../../services/category-home.service';
 import {CategoryHome} from '../../services/category-home';
 import {Home} from '../../services/home';
+import {SearchCategoryHomeByName} from './search-category-home-by-name';
 
 @Component({
   selector: 'app-category-home',
@@ -13,6 +14,7 @@ import {Home} from '../../services/home';
 export class CategoryHomeComponent implements OnInit {
   categoryHomeList: CategoryHome[];
   categoryHomeId: any;
+  searchName = '';
 
   categoryHomeForm = new FormGroup({
     name: new FormControl('')
@@ -23,6 +25,17 @@ export class CategoryHomeComponent implements OnInit {
 
   ngOnInit() {
     this.getCategoryHomeList();
+  }
+
+  searchCategoryHomeByName() {
+    const categoryHomeForm: SearchCategoryHomeByName = {
+      name: this.searchName
+    };
+    this.categoryHomeService.searchCategoryHomeByName(categoryHomeForm).subscribe(result => {
+      this.categoryHomeList = result;
+    }, error => {
+      console.log(error);
+    });
   }
 
   deleteCategoryHome(closeModalRef2: HTMLButtonElement) {

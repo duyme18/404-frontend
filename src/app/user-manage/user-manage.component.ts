@@ -6,6 +6,7 @@ import {BookingService} from '../services/booking.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {HomeService} from '../services/home.service';
 import {Booking} from '../services/booking';
+import {SearchUserByName} from './search-user-by-name';
 
 @Component({
   selector: 'app-user-manage',
@@ -13,7 +14,7 @@ import {Booking} from '../services/booking';
   styleUrls: ['./user-manage.component.scss']
 })
 export class UserManageComponent implements OnInit {
-
+  searchUser = '';
   userList: User[] = [];
   booking: Booking;
   userId: string;
@@ -29,6 +30,15 @@ export class UserManageComponent implements OnInit {
 
   ngOnInit() {
     this.getListUser();
+  }
+
+  searchUserByName() {
+    const usernameForm: SearchUserByName = {
+      name: this.searchUser
+    };
+    this.userService.searchUserByName(usernameForm).subscribe(result => {
+      this.userList = result;
+    });
   }
 
   getListUser() {

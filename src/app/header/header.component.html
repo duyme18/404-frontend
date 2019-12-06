@@ -32,7 +32,7 @@
       <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
         User {{info.token}}
       </button>
-      <div class="dropdown-menu">
+      <div class="dropdown-menu dropdown-menu-right">
         <a class="dropdown-item pointer" (click)="buttonAllow()" [routerLink]="['/user-booking-list', info.id]">List
           Booking</a>
         <a class="dropdown-item pointer" (click)=" detailUser()">Detail</a>
@@ -45,7 +45,7 @@
       <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
         Admin {{info.token}}
       </button>
-      <div class="dropdown-menu">
+      <div class="dropdown-menu dropdown-menu-right">
         <a class="dropdown-item pointer" (click)="detailUser()">Detail</a>
         <a class="dropdown-item pointer" href="/change-password">Change password</a>
         <a class="dropdown-item pointer" (click)="logoutUser()">Logout</a>

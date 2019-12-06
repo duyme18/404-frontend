@@ -3,6 +3,7 @@ import {FormBuilder, FormControl, FormGroup} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
 import {CategoryRoomService} from '../../services/category-room.service';
 import {CategoryRoom} from '../../services/category-room';
+import {SearchCategoryHomeByName} from '../category-home/search-category-home-by-name';
 
 @Component({
   selector: 'app-category-room',
@@ -12,6 +13,7 @@ import {CategoryRoom} from '../../services/category-room';
 export class CategoryRoomComponent implements OnInit {
   categoryRoomList: CategoryRoom[];
   categoryRoomId: any;
+  searchName = '';
 
   categoryRoomForm = new FormGroup({
     name: new FormControl('')
@@ -34,6 +36,17 @@ export class CategoryRoomComponent implements OnInit {
   getCategoryRoomList() {
     this.categoryRoomService.getListCategoryRoom().subscribe(result => {
       this.categoryRoomList = result;
+    });
+  }
+
+  searchCategoryRoomByName() {
+    const categoryRoomForm: SearchCategoryHomeByName = {
+      name: this.searchName
+    };
+    this.categoryRoomService.searchCategoryRoomByName(categoryRoomForm).subscribe(result => {
+      this.categoryRoomList = result;
+    }, error => {
+      console.log(error);
     });
   }
 

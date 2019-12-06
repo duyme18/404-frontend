@@ -1,4 +1,14 @@
 <app-header></app-header>
+<div class="col-md-4 float-right">
+  <nav class="navbar navbar-light bg-light">
+    <div class="form-inline">
+      <input [(ngModel)]="searchUser" class="form-control mr-sm-2" type="search" placeholder="Search by username"
+             aria-label="Search"
+             (keyup)="searchUserByName()">
+      <button class="btn btn-primary my-2 my-sm-0 border-radius1" type="submit">Search</button>
+    </div>
+  </nav>
+</div>
 <table class="table">
   <thead class="thead-dark">
   <tr>

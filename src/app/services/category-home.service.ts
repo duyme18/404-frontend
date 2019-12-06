@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {CategoryHome} from './category-home';
 import {Observable} from 'rxjs';
+import {SearchCategoryHomeByName} from '../category/category-home/search-category-home-by-name';
 
 @Injectable({
   providedIn: 'root'
@@ -30,6 +31,10 @@ export class CategoryHomeService {
 
   getAllHomeByCategoryHomeId(id: string): Observable<CategoryHome> {
     return this.http.get<CategoryHome>(this.API_CATEGORY_HOME_URL + 'home/' + id);
+  }
+
+  searchCategoryHomeByName(name: SearchCategoryHomeByName): Observable<CategoryHome[]> {
+    return this.http.post<CategoryHome[]>(this.API_CATEGORY_HOME_URL + 'search-by-name', name);
   }
 }
 

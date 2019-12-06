@@ -3,6 +3,8 @@ import {HttpClient} from '@angular/common/http';
 import {CategoryRoom} from './category-room';
 import {Observable} from 'rxjs';
 import {CategoryHome} from './category-home';
+import {SearchCategoryHomeByName} from '../category/category-home/search-category-home-by-name';
+import {SearchCategoryRoomByName} from '../category/category-room/search-category-room-by-name';
 
 @Injectable({
   providedIn: 'root'
@@ -31,5 +33,9 @@ export class CategoryRoomService {
 
   getAllHomeByCategoryRoomId(id: string): Observable<CategoryRoom> {
     return this.http.get<CategoryRoom>(this.API_CATEGORY_ROOM_URL + 'home/' + id);
+  }
+
+  searchCategoryRoomByName(name: SearchCategoryRoomByName): Observable<CategoryRoom[]> {
+    return this.http.post<CategoryRoom[]>(this.API_CATEGORY_ROOM_URL + 'search-by-name', name);
   }
 }
