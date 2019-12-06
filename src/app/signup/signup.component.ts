@@ -63,6 +63,10 @@ export class SignupComponent implements OnInit {
             alert('The username or password is incorrect!');
           }
         );
+      }, error => {
+        console.log(error);
+        this.errorMessage = error.error.message;
+        alert('The username or password is incorrect!');
       }
     );
   }
