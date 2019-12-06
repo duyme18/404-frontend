@@ -39,6 +39,8 @@ import {DropzoneDirective} from './dropzone.directive';
 import {CategoryRoomComponent} from './category/category-room/category-room.component';
 import {CategoryHomeComponent} from './category/category-home/category-home.component';
 import {StatusHomeComponent} from './status-home/status-home.component';
+import { AboutUsComponent } from './about-us/about-us.component';
+import { UserManageComponent } from './user-manage/user-manage.component';
 
 
 @NgModule({
@@ -65,7 +67,9 @@ import {StatusHomeComponent} from './status-home/status-home.component';
     DropzoneDirective,
     CategoryRoomComponent,
     CategoryHomeComponent,
-    StatusHomeComponent
+    StatusHomeComponent,
+    AboutUsComponent,
+    UserManageComponent
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebase),

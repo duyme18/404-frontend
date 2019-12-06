@@ -1,0 +1,30 @@
+<app-header></app-header>
+<table class="table">
+  <thead class="thead-dark">
+  <tr>
+    <th scope="col">Id</th>
+    <th scope="col">Name</th>
+    <th scope="col">Email</th>
+    <th scope="col">List Booking</th>
+    <th scope="col">Delete</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let user of userList;index as i">
+    <th scope="row">{{ user.id }}</th>
+    <td>{{ user.name }}</td>
+    <td>{{ user.email }}</td>
+    <td>
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter1"
+              [routerLink]="['/user-booking-list', user.id]">List Booking
+      </button>
+    </td>
+    <td>
+      <button type="buttoDetailn" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter2"
+      >Delete
+      </button>
+    </td>
+  </tr>
+  </tbody>
+</table>
+<app-footer></app-footer>

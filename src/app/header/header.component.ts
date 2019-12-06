@@ -3,6 +3,7 @@ import {SearchService} from '../services/search.service';
 import {Home} from '../services/home';
 import {TokenStorageService} from '../auth/token-storage.service';
 import {Router} from '@angular/router';
+import {User} from '../services/user';
 
 @Component({
   selector: 'app-header',
@@ -11,6 +12,7 @@ import {Router} from '@angular/router';
 })
 export class HeaderComponent implements OnInit {
   private roles: string[];
+  userList: User[] = [];
   private authority: string;
   private name: string;
   info: any;
@@ -35,6 +37,7 @@ export class HeaderComponent implements OnInit {
       this.filterHomeList = this.homeList.filter(home => home.name.includes(searchText));
     });
     this.info = {
+      id: this.token.getUserId(),
       token: this.token.getUsername(),
       username: this.token.getAuthorities()
     };

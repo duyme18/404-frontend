@@ -20,8 +20,10 @@
       <a class="dropdown-item" href="/category-home">Category Home</a>
       <a class="dropdown-item" href="/category-room">Category Room</a>
       <a class="dropdown-item" href="/status-home">Status Home</a>
+      <a class="dropdown-item" href="/list-user">List User</a>
     </div>
     <a class="p-3 text-light" href="/home-list">About Us</a>
+    <a class="p-3 text-light" href="/home-list">Homes List</a>
     <a class="p-3 text-light" href="/register">Registration</a>
   </nav>
 
@@ -31,7 +33,8 @@
         User {{info.token}}
       </button>
       <div class="dropdown-menu">
-        <a class="dropdown-item pointer" (click)="buttonAllow()" href="/user-booking-list">List Booking</a>
+        <a class="dropdown-item pointer" (click)="buttonAllow()" [routerLink]="['/user-booking-list', info.id]">List
+          Booking</a>
         <a class="dropdown-item pointer" (click)=" detailUser()">Detail</a>
         <a class="dropdown-item pointer" href="/change-password">Change password</a>
         <a class="dropdown-item pointer" (click)=" logoutUser()">Logout</a>

@@ -48,8 +48,20 @@ export class UserBookingListComponent implements OnInit {
     };
   }
 
+  getAllHomeByBookingId(id: number) {
+    this.homeService.getAllHomeByBookingId(id).subscribe(result => {
+      this.home = result;
+      this.router.navigateByUrl('/home/' + this.home[0].id + '/' + this.home[0].name).then( success => {
+        console.log('success to find home by booking');
+      });
+    }, error => {
+      console.log('fail to get home');
+    });
+  }
+
   getBookingList() {
-    this.userService.getBookingByUser(this.token.getUserId()).subscribe(
+    const id = +this.route.snapshot.paramMap.get('userId');
+    this.userService.getBookingByUser(id).subscribe(
       result => {
         this.listBooking = result;
         console.log(this.listBooking);
@@ -57,12 +69,6 @@ export class UserBookingListComponent implements OnInit {
         alert('Error get booking');
       }
     );
-  }
-
-  private getListBooking() {
-    this.bookingService.getBookingList().subscribe(result => {
-      this.listBooking = result;
-    });
   }
 
   deleteBooking(i) {

@@ -16,6 +16,7 @@ import {CreateHomeComponent} from './create-home/create-home.component';
 import {CategoryHomeComponent} from './category/category-home/category-home.component';
 import {CategoryRoomComponent} from './category/category-room/category-room.component';
 import {StatusHomeComponent} from './status-home/status-home.component';
+import {UserManageComponent} from './user-manage/user-manage.component';
 
 const routes: Routes = [
   {
@@ -34,10 +35,16 @@ const routes: Routes = [
     path: 'status-home', component: StatusHomeComponent, canActivate: [IsAdmin]
   },
   {
+    path: 'list-user', component: UserManageComponent, canActivate: [IsAdmin]
+  },
+  {
     path: 'create-booking/:homeId', component: CreateBookingComponent
   },
   {
     path: 'user-booking-list', component: UserBookingListComponent
+  },
+  {
+    path: 'user-booking-list/:userId', component: UserBookingListComponent
   },
   {
     path: 'home/:homeId/:name', component: HomeDetailComponent
