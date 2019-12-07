@@ -8,61 +8,62 @@ import {StatusHome} from './status-home';
 import {FileForm} from './file-form';
 import {SearchHomeByAddress} from '../home-management/home-list/search-home-by-address';
 import {Booking} from './booking';
+import {environment} from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class HomeService {
 
-  private readonly API_URL = 'http://localhost:8080/api/auth';
+  private readonly homeUrl = environment.homeUrl;
 
   constructor(private httpClient: HttpClient) {
   }
 
   public getHomeId(id: number): Observable<Home> {
-    return this.httpClient.get<Home>(this.API_URL + '/home/' + id);
+    return this.httpClient.get<Home>(this.homeUrl + '/home/' + id);
   }
 
   public getList(): Observable<Home[]> {
-    return this.httpClient.get<Home[]>(this.API_URL + '/home');
+    return this.httpClient.get<Home[]>(this.homeUrl + '/home');
   }
 
   public addHome(home: Home): Observable<Home> {
-    return this.httpClient.post<Home>(this.API_URL + '/home', home);
+    return this.httpClient.post<Home>(this.homeUrl + '/home', home);
   }
 
   public updateHome(home: Home, id: number): Observable<Home> {
-    return this.httpClient.put<Home>(`${this.API_URL}` + '/home/' + `${id}`, home);
+    return this.httpClient.put<Home>(`${this.homeUrl}` + '/home/' + `${id}`, home);
   }
 
   public deleteHome(id: number): Observable<Home> {
-    return this.httpClient.delete<Home>(this.API_URL + '/home/' + id);
+    return this.httpClient.delete<Home>(this.homeUrl + '/home/' + id);
   }
 
   public addFile(file: FormData, id: string): Observable<FileForm> {
     const headers = new HttpHeaders();
     headers.append('Content-Type', 'multipart/form-data');
     headers.append('Accept', 'application/json');
-    return this.httpClient.post<FileForm>(this.API_URL + '/file/' + id, file, {headers});
+    return this.httpClient.post<FileForm>(this.homeUrl + '/file/' + id, file, {headers});
   }
 
   public searchHomeByAddress(address: SearchHomeByAddress): Observable<Home[]> {
-    return this.httpClient.post<Home[]>(this.API_URL + '/home/searchByAddress', address);
+    return this.httpClient.post<Home[]>(this.homeUrl + '/home/searchByAddress', address);
   }
 
   public getCategoryHomeList(): Observable<CategoryHome[]> {
-    return this.httpClient.get<CategoryHome[]>(this.API_URL + '/category-home');
+    return this.httpClient.get<CategoryHome[]>(this.homeUrl + '/category-home');
   }
 
   public getCategoryRoomList(): Observable<CategoryRoom[]> {
-    return this.httpClient.get<CategoryRoom[]>(this.API_URL + '/category-room');
+    return this.httpClient.get<CategoryRoom[]>(this.homeUrl + '/category-room');
   }
 
   public getStatusHomeList(): Observable<StatusHome[]> {
-    return this.httpClient.get<StatusHome[]>(this.API_URL + '/status-home');
+    return this.httpClient.get<StatusHome[]>(this.homeUrl + '/status-home');
   }
 
   getAllHomeByBookingId(id: number): Observable<Home> {
-    return this.httpClient.get<Home>(this.API_URL + '/home/booking/' + id);
+    return this.httpClient.get<Home>(this.homeUrl + '/home/booking/' + id);
   }
 }

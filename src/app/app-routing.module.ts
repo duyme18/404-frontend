@@ -4,7 +4,7 @@ import {HomeListComponent} from './home-management/home-list/home-list.component
 import {AddHomeComponent} from './home-management/add-home/add-home.component';
 import {EditHomeComponent} from './home-management/edit-home/edit-home.component';
 import {RegisterComponent} from './register/register.component';
-import {SignupComponent} from './signup/signup.component';
+import {SignupComponent} from './login/signup.component';
 import {ChangePassComponent} from './change-pass/change-pass.component';
 import {HomeDetailComponent} from './home-management/home-detail/home-detail.component';
 import {BookingComponent} from './booking/booking.component';

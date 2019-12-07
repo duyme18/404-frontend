@@ -2,29 +2,30 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {IComment} from './comment';
+import {environment} from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CommentService {
-  private readonly API_COMMENT_URL = 'http://localhost:8080/api/auth/comment/';
+  private readonly commentUrl = environment.commentUrl;
 
   constructor(private http: HttpClient) {
   }
 
   public getAllCommentByHome(id: number): Observable<IComment[]> {
-    return this.http.get<IComment[]>(this.API_COMMENT_URL + 'home/' + id);
+    return this.http.get<IComment[]>(this.commentUrl + 'home/' + id);
   }
 
   public createComment(comment: IComment): Observable<IComment> {
-    return this.http.post<IComment>(this.API_COMMENT_URL, comment);
+    return this.http.post<IComment>(this.commentUrl, comment);
   }
 
   public editComment(comment: IComment): Observable<IComment> {
-    return this.http.put<IComment>(this.API_COMMENT_URL + comment.id, comment);
+    return this.http.put<IComment>(this.commentUrl + comment.id, comment);
   }
 
   public deleteComment(id: number): Observable<void> {
-    return this.http.delete<void>(this.API_COMMENT_URL + id);
+    return this.http.delete<void>(this.commentUrl + id);
   }
 }

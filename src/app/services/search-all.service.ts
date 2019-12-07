@@ -3,13 +3,14 @@ import {HttpClient} from '@angular/common/http';
 import {SearchAll} from '../home-management/home-list/search-all';
 import {Observable} from 'rxjs';
 import {Home} from './home';
+import {environment} from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SearchAllService {
 
-  private readonly API_SEARCH_ALL_URL = 'http://localhost:8080/api/auth/home/searchAll/';
+  private readonly searchAllUrl = environment.searchAllUrl;
 
   constructor(private http: HttpClient) {
   }
@@ -19,7 +20,7 @@ export class SearchAllService {
             address: string,
             priceMin: number,
             priceMax: number): Observable<Home[]> {
-    return this.http.get<Home[]>(this.API_SEARCH_ALL_URL
+    return this.http.get<Home[]>(this.searchAllUrl
       + bedroomQuantity + '/'
       + bathroomQuantity + '/'
       + address + '/'

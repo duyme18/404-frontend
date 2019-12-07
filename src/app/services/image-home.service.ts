@@ -3,38 +3,39 @@ import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {ImageHome} from './image-home';
 import {IComment} from './comment';
+import {environment} from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ImageHomeService {
 
-  private readonly API_IMAGE_HOME_URL = 'http://localhost:8080/api/auth/imageHome';
+  private readonly imageHomeUrl = environment.imageHomeUrl;
 
   constructor(private httpClient: HttpClient) {
   }
 
   public getImageId(id: string): Observable<ImageHome> {
-    return this.httpClient.get<ImageHome>(this.API_IMAGE_HOME_URL + id);
+    return this.httpClient.get<ImageHome>(this.imageHomeUrl + id);
   }
 
   public getList(): Observable<ImageHome[]> {
-    return this.httpClient.get<ImageHome[]>(this.API_IMAGE_HOME_URL + '/home');
+    return this.httpClient.get<ImageHome[]>(this.imageHomeUrl + '/home');
   }
 
   public addImage(imageHome: ImageHome): Observable<ImageHome> {
-    return this.httpClient.post<ImageHome>(this.API_IMAGE_HOME_URL, imageHome);
+    return this.httpClient.post<ImageHome>(this.imageHomeUrl, imageHome);
   }
 
   public updateImage(imageHome: ImageHome, id: string): Observable<ImageHome> {
-    return this.httpClient.put<ImageHome>(this.API_IMAGE_HOME_URL +  '/' + id, imageHome);
+    return this.httpClient.put<ImageHome>(this.imageHomeUrl +  '/' + id, imageHome);
   }
 
   public deleteImage(id: string): Observable<ImageHome> {
-    return this.httpClient.delete<ImageHome>(this.API_IMAGE_HOME_URL + '/' + id);
+    return this.httpClient.delete<ImageHome>(this.imageHomeUrl + '/' + id);
   }
 
   public getAllByHome(id: number): Observable<ImageHome[]> {
-    return this.httpClient.get<ImageHome[]>(this.API_IMAGE_HOME_URL + '/home/' + id);
+    return this.httpClient.get<ImageHome[]>(this.imageHomeUrl + '/home/' + id);
   }
 }

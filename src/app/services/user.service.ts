@@ -3,9 +3,8 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Booking} from './booking';
 import {Observable} from 'rxjs';
 import {User} from './user';
-import {SearchHomeByAddress} from '../home-management/home-list/search-home-by-address';
-import {Home} from './home';
 import {SearchUserByName} from '../user-manage/search-user-by-name';
+import {environment} from '../../environments/environment';
 
 const httpOptions = {
   headers: new HttpHeaders({'Content-Type': 'application/json'})
@@ -15,7 +14,7 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class UserService {
-  private userUrl = 'http://localhost:8080/api/auth/user/';
+  private userUrl = environment.userUrl;
 
   constructor(private http: HttpClient) {
   }

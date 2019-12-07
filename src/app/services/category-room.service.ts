@@ -5,37 +5,38 @@ import {Observable} from 'rxjs';
 import {CategoryHome} from './category-home';
 import {SearchCategoryHomeByName} from '../category/category-home/search-category-home-by-name';
 import {SearchCategoryRoomByName} from '../category/category-room/search-category-room-by-name';
+import {environment} from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CategoryRoomService {
-  private readonly API_CATEGORY_ROOM_URL = 'http://localhost:8080/api/auth/category-room/';
+  private readonly categoryRoomUrl = environment.categoryRoomUrl;
 
   constructor(private http: HttpClient) {
   }
 
   getListCategoryRoom(): Observable<CategoryRoom[]> {
-    return this.http.get<CategoryRoom[]>(this.API_CATEGORY_ROOM_URL);
+    return this.http.get<CategoryRoom[]>(this.categoryRoomUrl);
   }
 
   createCategoryRoom(categoryRoom: CategoryRoom): Observable<CategoryRoom> {
-    return this.http.post<CategoryRoom>(this.API_CATEGORY_ROOM_URL, categoryRoom);
+    return this.http.post<CategoryRoom>(this.categoryRoomUrl, categoryRoom);
   }
 
   updateCategoryRoom(categoryRoom: CategoryRoom): Observable<CategoryRoom> {
-    return this.http.put<CategoryRoom>(this.API_CATEGORY_ROOM_URL + categoryRoom.id, categoryRoom);
+    return this.http.put<CategoryRoom>(this.categoryRoomUrl + categoryRoom.id, categoryRoom);
   }
 
   deleteCategoryRoom(id: string): Observable<CategoryRoom> {
-    return this.http.delete<CategoryRoom>(this.API_CATEGORY_ROOM_URL + id);
+    return this.http.delete<CategoryRoom>(this.categoryRoomUrl + id);
   }
 
   getAllHomeByCategoryRoomId(id: string): Observable<CategoryRoom> {
-    return this.http.get<CategoryRoom>(this.API_CATEGORY_ROOM_URL + 'home/' + id);
+    return this.http.get<CategoryRoom>(this.categoryRoomUrl + 'home/' + id);
   }
 
   searchCategoryRoomByName(name: SearchCategoryRoomByName): Observable<CategoryRoom[]> {
-    return this.http.post<CategoryRoom[]>(this.API_CATEGORY_ROOM_URL + 'search-by-name', name);
+    return this.http.post<CategoryRoom[]>(this.categoryRoomUrl + 'search-by-name', name);
   }
 }

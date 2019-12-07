@@ -18,7 +18,7 @@ import {AddHomeComponent} from './home-management/add-home/add-home.component';
 import {EditHomeComponent} from './home-management/edit-home/edit-home.component';
 import {ChangePassComponent} from './change-pass/change-pass.component';
 import {RegisterComponent} from './register/register.component';
-import {SignupComponent} from './signup/signup.component';
+import {SignupComponent} from './login/signup.component';
 import {FeaturedComponent} from './featured/featured.component';
 import {HomeComponent} from './home/home.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
