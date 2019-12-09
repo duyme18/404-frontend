@@ -2,8 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
 import {CategoryHomeService} from '../../services/category-home.service';
-import {CategoryHome} from '../../services/category-home';
-import {Home} from '../../services/home';
+import {CategoryHome} from '../../model/category-home';
+import {Home} from '../../model/home';
 import {SearchCategoryHomeByName} from './search-category-home-by-name';
 
 @Component({

@@ -1,9 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {SearchService} from '../services/search.service';
-import {Home} from '../services/home';
+import {Home} from '../model/home';
 import {TokenStorageService} from '../auth/token-storage.service';
 import {Router} from '@angular/router';
-import {User} from '../services/user';
+import {User} from '../model/user';
 
 @Component({
   selector: 'app-header',

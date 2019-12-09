@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {StatusHome} from '../services/status-home';
+import {StatusHome} from '../model/status-home';
 import {FormControl, FormGroup} from '@angular/forms';
 import {StatusHomeService} from '../services/status-home.service';
 

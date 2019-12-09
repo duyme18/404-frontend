@@ -8,8 +8,8 @@
   <div class="form-group">
     <label for="file">Image</label>
     <input type="file" class="form-control" id="file" name="file"
-           (change)="handleFileChoose($event.target.files)">
-    <img src="{{'http://localhost:8080/uploads/' + home.file}}" [routerLink]="" width="250px" height="250px">
+           (change)="addOneFile($event)">
+    <img src="{{filePath}}" alt="" style="width: 250px; height: 250px">
   </div>
   <div class="form-group">
     <label for="address">Address</label>
@@ -34,15 +34,26 @@
   <div class="form-group">
     <label for="file1">Images</label>
     <input type="file" class="form-control" id="file1" name="file1" multiple
-           (change)="addFiles($event)">
+           (change)="onSelectFile($event);addFiles($event)">
     <button class="btn-primary" (click)="clickDeleteFile()">Delete all old images</button>
+  </div>
+  <div *ngFor='let url of urls; index as i'>
+    <p class="text-success"><strong>Preview #{{i + 1}}</strong></p>
+    <div class="text-right">
+      <button (click)="removePreviewImage(i)" class="close text-danger">
+        X
+      </button>
+    </div>
+    <img [src]="url" style="height: 400px ; width: 100%;">
+    <br/>
+    <hr>
   </div>
   <div class="form-group">
     <label for="description">Description</label>
     <textarea type="text" class="form-control" id="description" name="price" [(ngModel)]="home.price"></textarea>
   </div>
   <div class="form-group">
-    <label for="exampleFormControlSelect1">Category Room</label>
+    <label for="exampleFormControlSelect1">Category Home</label>
     <select class="form-control" id="exampleFormControlSelect1" name="categoryHome" [(ngModel)]="categoryHomeId">
       <option value="">{{home.categoryHome.name}}</option>
       <option *ngFor="let categoryHome of categoryHomeList" value="{{ categoryHome.id }}">

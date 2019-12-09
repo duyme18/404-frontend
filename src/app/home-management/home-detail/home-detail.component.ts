@@ -2,16 +2,16 @@ import {Component, OnInit} from '@angular/core';
 import {DomSanitizer} from '@angular/platform-browser';
 import {HomeService} from '../../services/home.service';
 import {ActivatedRoute, Router} from '@angular/router';
-import {CategoryHome} from '../../services/category-home';
-import {CategoryRoom} from '../../services/category-room';
-import {StatusHome} from '../../services/status-home';
-import {Home} from '../../services/home';
+import {CategoryHome} from '../../model/category-home';
+import {CategoryRoom} from '../../model/category-room';
+import {StatusHome} from '../../model/status-home';
+import {Home} from '../../model/home';
 import {TokenStorageService} from '../../auth/token-storage.service';
 import {FormControl, FormGroup} from '@angular/forms';
-import {IComment} from '../../services/comment';
+import {IComment} from '../../model/comment';
 import {CommentService} from '../../services/comment.service';
 import {ImageHomeService} from '../../services/image-home.service';
-import {ImageHome} from '../../services/image-home';
+import {ImageHome} from '../../model/image-home';
 
 @Component({
   selector: 'app-home-detail',

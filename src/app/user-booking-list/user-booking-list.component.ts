@@ -1,11 +1,11 @@
 import {Component, OnInit} from '@angular/core';
-import {Booking} from '../services/booking';
+import {Booking} from '../model/booking';
 import {TokenStorageService} from '../auth/token-storage.service';
 import {BookingService} from '../services/booking.service';
 import {UserService} from '../services/user.service';
 import {ActivatedRoute, Router} from '@angular/router';
-import {User} from '../services/user';
-import {Home} from '../services/home';
+import {User} from '../model/user';
+import {Home} from '../model/home';
 import {FormControl, FormGroup} from '@angular/forms';
 import {HomeService} from '../services/home.service';
 

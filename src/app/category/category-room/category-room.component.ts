@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
 import {CategoryRoomService} from '../../services/category-room.service';
-import {CategoryRoom} from '../../services/category-room';
+import {CategoryRoom} from '../../model/category-room';
 import {SearchCategoryHomeByName} from '../category-home/search-category-home-by-name';
 
 @Component({

@@ -1,14 +1,16 @@
 import {Component, OnInit} from '@angular/core';
-import {Home} from '../../services/home';
-import {CategoryHome} from '../../services/category-home';
-import {CategoryRoom} from '../../services/category-room';
-import {StatusHome} from '../../services/status-home';
-import {FormBuilder, FormGroup} from '@angular/forms';
+import {Home} from '../../model/home';
+import {CategoryHome} from '../../model/category-home';
+import {CategoryRoom} from '../../model/category-room';
+import {StatusHome} from '../../model/status-home';
+import {FormBuilder, FormControl, FormGroup} from '@angular/forms';
 import {HomeService} from '../../services/home.service';
 import {SearchHomeByAddress} from './search-home-by-address';
 import {TokenStorageService} from '../../auth/token-storage.service';
 import {SearchAllService} from '../../services/search-all.service';
 import {ImageHomeService} from '../../services/image-home.service';
+import {CategoryHomeService} from '../../services/category-home.service';
+import {CategoryRoomService} from '../../services/category-room.service';
 
 @Component({
   selector: 'app-home-list',
@@ -29,6 +31,8 @@ export class HomeListComponent implements OnInit {
               private homeService: HomeService,
               private searchAllService: SearchAllService,
               private fb: FormBuilder,
+              private categoryHomeService: CategoryHomeService,
+              private categoryRoomService: CategoryRoomService,
               private imageHome: ImageHomeService) {
   }
 

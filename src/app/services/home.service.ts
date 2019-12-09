@@ -1,13 +1,13 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {Home} from './home';
-import {CategoryHome} from './category-home';
-import {CategoryRoom} from './category-room';
-import {StatusHome} from './status-home';
-import {FileForm} from './file-form';
+import {Home} from '../model/home';
+import {CategoryHome} from '../model/category-home';
+import {CategoryRoom} from '../model/category-room';
+import {StatusHome} from '../model/status-home';
+import {FileForm} from '../model/file-form';
 import {SearchHomeByAddress} from '../home-management/home-list/search-home-by-address';
-import {Booking} from './booking';
+import {Booking} from '../model/booking';
 import {environment} from '../../environments/environment';
 
 @Injectable({
@@ -45,6 +45,10 @@ export class HomeService {
     headers.append('Content-Type', 'multipart/form-data');
     headers.append('Accept', 'application/json');
     return this.httpClient.post<FileForm>(this.homeUrl + '/file/' + id, file, {headers});
+  }
+
+  searchHomeByCategoryHomeId(id: string): Observable<Home[]> {
+    return this.httpClient.get<Home[]>(this.homeUrl + '/search-by-category-home-id' + id);
   }
 
   public searchHomeByAddress(address: SearchHomeByAddress): Observable<Home[]> {

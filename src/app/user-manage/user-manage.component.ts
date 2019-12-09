@@ -1,11 +1,11 @@
 import {Component, OnInit} from '@angular/core';
 import {UserService} from '../services/user.service';
-import {User} from '../services/user';
+import {User} from '../model/user';
 import {TokenStorageService} from '../auth/token-storage.service';
 import {BookingService} from '../services/booking.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {HomeService} from '../services/home.service';
-import {Booking} from '../services/booking';
+import {Booking} from '../model/booking';
 import {SearchUserByName} from './search-user-by-name';
 
 @Component({

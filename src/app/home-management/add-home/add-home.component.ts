@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {Home} from '../../services/home';
-import {CategoryHome} from '../../services/category-home';
-import {CategoryRoom} from '../../services/category-room';
-import {StatusHome} from '../../services/status-home';
+import {Home} from '../../model/home';
+import {CategoryHome} from '../../model/category-home';
+import {CategoryRoom} from '../../model/category-room';
+import {StatusHome} from '../../model/status-home';
 import {FormBuilder, FormControl, FormGroup} from '@angular/forms';
 import {HomeService} from '../../services/home.service';
 import {ActivatedRoute, Router} from '@angular/router';
@@ -10,7 +10,7 @@ import {TokenStorageService} from '../../auth/token-storage.service';
 import * as firebase from 'firebase';
 import {ImageHomeService} from '../../services/image-home.service';
 import {environment} from '../../../environments/environment';
-import {ImageHome} from '../../services/image-home';
+import {ImageHome} from '../../model/image-home';
 
 @Component({
   selector: 'app-add-home',
@@ -26,6 +26,7 @@ export class AddHomeComponent implements OnInit {
   categoryRoomList: CategoryRoom[];
   statusHomeList: StatusHome[];
   downloadURL: string;
+  fileUrl: File;
 
   homeForm = new FormGroup({
     name: new FormControl(''),
@@ -42,6 +43,8 @@ export class AddHomeComponent implements OnInit {
     statusHomeId: new FormControl('')
   });
   private info: any;
+  private filePath: any;
+  urls: any[] = [];
 
   constructor(private homeService: HomeService,
               private fb: FormBuilder,
@@ -105,7 +108,36 @@ export class AddHomeComponent implements OnInit {
   }
 
   handleFileChoose(files: FileList) {
+    console.log(this.filePath);
     this.fileUpload = files.item(0);
+    const reader = new FileReader();
+    reader.readAsDataURL(files[0]);
+    reader.onload = (event) => {
+      this.filePath = reader.result;
+
+    };
+  }
+
+  onSelectFile(event) {
+    if (event.target.files && event.target.files[0]) {
+      const filesAmount = event.target.files.length;
+      for (let i = 0; i < filesAmount; i++) {
+        const reader = new FileReader();
+
+        reader.onload = (event: any) => {
+          console.log(this.urls);
+          this.urls.push(event.target.result);
+        };
+        reader.readAsDataURL(event.target.files[i]);
+      }
+    }
+  }
+
+  removePreviewImage(i: number) {
+    this.urls.splice(i, 1);
+    this.fileList.splice(i, 1);
+    console.log(this.fileList);
+    console.log(this.urls);
   }
 
   addFiles(event) {
@@ -114,6 +146,11 @@ export class AddHomeComponent implements OnInit {
       this.fileList.push(event.target.files.item(i));
       console.log('file upload');
     }
+  }
+
+  addFileUrl(event) {
+    this.fileUrl = null;
+    this.fileUrl = event.target.files.item(0);
   }
 
   startUpload(file: File, home: Home) {
@@ -161,6 +198,49 @@ export class AddHomeComponent implements OnInit {
     });
   }
 
+  startUploadFile(file: File, home: Home) {
+    const metadata = {
+      contentType: 'image/jpg'
+    };
+    const storageRef = firebase.storage().ref();
+    const fileImage = storageRef.child('image/' + file.name).put(file, metadata);
+    storageRef.child(file.name).getDownloadURL().then(url => {
+      console.log(url);
+    });
+    fileImage.on(firebase.storage.TaskEvent.STATE_CHANGED, snapshot => {
+      const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+      console.log('upload is ' + progress + ' % done');
+      switch (snapshot.state) {
+        case firebase.storage.TaskState.PAUSED: // or 'paused'
+          console.log('upload is paused');
+          break;
+      }
+    }, errors => {
+      switch (errors.message) {
+        case 'storage/unauthorized':
+          console.log('unauthorized');
+          break;
+        case 'storage/canceled':
+          console.log('cancel upload');
+          break;
+        case 'storage/unknown':
+          console.log('unknown');
+          break;
+      }
+    }, () => {
+      fileImage.snapshot.ref.getDownloadURL().then(downloadURl => {
+        console.log('file available at: ' + downloadURl);
+        home.file = this.downloadURL;
+        console.log(home);
+        this.homeService.updateHome(home, home.id).subscribe(next => {
+          console.log('success upload 1 file');
+        }, error => {
+          console.log('fail upload 1 file');
+        });
+      });
+    });
+  }
+
   saveHome(closeButton: HTMLInputElement) {
     const {
       name,
@@ -201,15 +281,8 @@ export class AddHomeComponent implements OnInit {
     this.homeService.addHome(home).subscribe(next => {
       const form = new FormData();
       form.append('file', this.fileUpload);
-      this.homeService.addFile(form, String(next.id)).subscribe(
-        result => {
-          console.log(next.id);
-          this.getHomeList();
-        }, error => {
-          alert('Upload File Fail');
-        }
-      );
       console.log('success');
+      this.startUploadFile(this.fileUrl, next);
       for (const fileUp of this.fileList) {
         this.startUpload(fileUp, next);
       }

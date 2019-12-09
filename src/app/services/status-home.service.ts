@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {StatusHome} from './status-home';
+import {StatusHome} from '../model/status-home';
 import {environment} from '../../environments/environment';
 
 @Injectable({

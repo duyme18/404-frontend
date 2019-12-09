@@ -2,10 +2,10 @@ import {Component, OnInit} from '@angular/core';
 import {HomeService} from '../services/home.service';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {HomeImageService} from '../services/home-image.service';
-import {FileUpload} from '../services/fileupload';
-import {CategoryHome} from '../services/category-home';
-import {CategoryRoom} from '../services/category-room';
-import {StatusHome} from '../services/status-home';
+import {FileUpload} from '../model/fileupload';
+import {CategoryHome} from '../model/category-home';
+import {CategoryRoom} from '../model/category-room';
+import {StatusHome} from '../model/status-home';
 
 @Component({
   selector: 'app-create-home',

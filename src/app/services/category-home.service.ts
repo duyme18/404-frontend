@@ -1,9 +1,11 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {CategoryHome} from './category-home';
+import {CategoryHome} from '../model/category-home';
 import {Observable} from 'rxjs';
 import {SearchCategoryHomeByName} from '../category/category-home/search-category-home-by-name';
 import {environment} from '../../environments/environment';
+import {Home} from '../model/home';
+import {SearchHomeByCategoryHomeId} from '../model/search-home-by-category-home-id';
 
 @Injectable({
   providedIn: 'root'
@@ -30,8 +32,8 @@ export class CategoryHomeService {
     return this.http.delete<CategoryHome>(this.categoryHomeUrl + id);
   }
 
-  getAllHomeByCategoryHomeId(id: string): Observable<CategoryHome> {
-    return this.http.get<CategoryHome>(this.categoryHomeUrl + 'home/' + id);
+  getAllHomeByCategoryHomeId(id: string): Observable<Home[]> {
+    return this.http.get<Home[]>(this.categoryHomeUrl + 'home/' + id);
   }
 
   searchCategoryHomeByName(name: SearchCategoryHomeByName): Observable<CategoryHome[]> {

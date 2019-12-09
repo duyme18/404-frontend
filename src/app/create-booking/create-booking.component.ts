@@ -2,10 +2,10 @@ import {Component, OnInit} from '@angular/core';
 import {FormGroup, FormControl} from '@angular/forms';
 import {TokenStorageService} from '../auth/token-storage.service';
 import {ActivatedRoute, Router} from '@angular/router';
-import {Booking} from '../services/booking';
+import {Booking} from '../model/booking';
 import {BookingService} from '../services/booking.service';
 import {HomeService} from '../services/home.service';
-import {Home} from '../services/home';
+import {Home} from '../model/home';
 
 @Component({
   selector: 'app-create-booking',

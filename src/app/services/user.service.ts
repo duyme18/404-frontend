@@ -1,8 +1,8 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {Booking} from './booking';
+import {Booking} from '../model/booking';
 import {Observable} from 'rxjs';
-import {User} from './user';
+import {User} from '../model/user';
 import {SearchUserByName} from '../user-manage/search-user-by-name';
 import {environment} from '../../environments/environment';
 

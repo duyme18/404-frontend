@@ -1,11 +1,11 @@
 import {Component, OnInit} from '@angular/core';
-import {Home} from '../../services/home';
+import {Home} from '../../model/home';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
 import {HomeService} from '../../services/home.service';
-import {CategoryHome} from '../../services/category-home';
-import {CategoryRoom} from '../../services/category-room';
-import {StatusHome} from '../../services/status-home';
+import {CategoryHome} from '../../model/category-home';
+import {CategoryRoom} from '../../model/category-room';
+import {StatusHome} from '../../model/status-home';
 import * as firebase from 'firebase';
 import {TokenStorageService} from '../../auth/token-storage.service';
 import {ImageHomeService} from '../../services/image-home.service';
@@ -32,6 +32,7 @@ export class EditHomeComponent implements OnInit {
   categoryRoomId = '';
   statusHomeId = '';
   downloadURL: string;
+  fileAvatar: File;
 
   // private appFirebase2 = firebase.initializeApp(environment.firebase);
 
@@ -40,6 +41,8 @@ export class EditHomeComponent implements OnInit {
     pathFile: [''],
     home: ['']
   });
+  private filePath: any;
+  private urls: any[] = [];
 
 
   constructor(private route: ActivatedRoute,
@@ -99,8 +102,38 @@ export class EditHomeComponent implements OnInit {
 
   }
 
+  onSelectFile(event) {
+    if (event.target.files && event.target.files[0]) {
+      const filesAmount = event.target.files.length;
+      for (let i = 0; i < filesAmount; i++) {
+        const reader = new FileReader();
+
+        reader.onload = (event: any) => {
+          console.log(this.urls);
+          this.urls.push(event.target.result);
+        };
+
+        reader.readAsDataURL(event.target.files[i]);
+      }
+    }
+  }
+
+  removePreviewImage(i: number) {
+    this.urls.splice(i, 1);
+    this.fileList.splice(i, 1);
+    console.log(this.fileList);
+    console.log(this.urls);
+  }
+
   handleFileChoose(files: FileList) {
+    console.log(this.filePath);
     this.fileUpload = files.item(0);
+    const reader = new FileReader();
+    reader.readAsDataURL(files[0]);
+    reader.onload = (event) => {
+      this.filePath = reader.result;
+
+    };
   }
 
   clickDeleteFile() {
@@ -121,8 +154,9 @@ export class EditHomeComponent implements OnInit {
   editHome() {
     const id = +this.route.snapshot.paramMap.get('homeId');
     this.homeService.getHomeId(id).subscribe(next => {
+      this.startUpload(this.fileAvatar, next, false);
       for (const fileUp of this.fileList) {
-        this.startUpload(fileUp, next);
+        this.startUpload(fileUp, next, true);
       }
       console.log('success');
     }, error => {
@@ -191,7 +225,11 @@ export class EditHomeComponent implements OnInit {
     }
   }
 
-  startUpload(file: File, home: Home) {
+  addOneFile(event) {
+    this.fileAvatar = event.target.files.item(0);
+  }
+
+  startUpload(file: File, home: Home, multi: boolean) {
     const metadata = {
       contentType: 'image/jpg'
     };
@@ -224,15 +262,24 @@ export class EditHomeComponent implements OnInit {
     }, () => {
       fileImage.snapshot.ref.getDownloadURL().then(downloadURl => {
         console.log('file available at: ' + downloadURl);
-        this.downloadURL = downloadURl;
-        const {value} = this.fireForm;
-        value.pathFile = downloadURl;
-        value.home = home;
-        this.imageUpload.addImage(value).subscribe(success => {
-          console.log('success create new image');
-        }, error => {
-          console.log('fail to create image');
-        });
+        if (multi === true) {
+          this.downloadURL = downloadURl;
+          const {value} = this.fireForm;
+          value.pathFile = downloadURl;
+          value.home = home;
+          this.imageUpload.addImage(value).subscribe(success => {
+            console.log('success create new image');
+          }, error => {
+            console.log('fail to create image');
+          });
+        } else {
+          home.file = downloadURl;
+          this.homeService.updateHome(home, home.id).subscribe(next => {
+            console.log('success to edit avatar');
+          }, error => {
+            console.log('fail to edit avatar');
+          });
+        }
       });
     });
   }
