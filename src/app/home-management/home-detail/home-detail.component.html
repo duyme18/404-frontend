@@ -1,11 +1,14 @@
 <app-header></app-header>
-<div class="imageFiles" *ngFor="let file of iFile">
-  <img class="filesImage" style="float:left" src="{{file.pathFile}}" [routerLink]="" width="250px" height="250px">
+<div class="container">
+  <div class="imageFiles" *ngFor="let file of iFile">
+    <img class="filesImage" style="float:left" src="{{file.pathFile}}" [routerLink]="" width="250px" height="250px">
+  </div>
 </div>
-<div class="container-fluid" style="clear:both">
+
+<div class="container" style="clear:both">
   <br>
   <div class="row bgr-validation">
-    <div class="col-md-9" *ngIf = "home" >
+    <div class="col-md-9" *ngIf="home">
       <h1>{{home.address}} - {{home.name}}</h1>
       <h3>Bedroom: </h3>
       <p>{{home.bedroomQuantity}}</p>
@@ -21,9 +24,9 @@
       <p>{{home.description}}</p>
       <h3>Status: </h3>
       <p>{{home.statusHome.name}}</p>
-      <!--      <agm-map [latitude]="latitude" [longitude]="longitude" (mapClick)="onChoseLocation($event)">-->
-      <!--        <agm-marker [latitude]="latitude" [longitude]="longitude" *ngIf="locationChosen"></agm-marker>-->
-      <!--      </agm-map>-->
+      <agm-map [latitude]="latitude" [longitude]="longitude" (mapClick)="onChoseLocation($event)">
+        <agm-marker [latitude]="latitude" [longitude]="longitude" *ngIf="locationChosen"></agm-marker>
+      </agm-map>
     </div>
     <form>
       <div class="col-md-12 titel-icon" *ngIf="home">

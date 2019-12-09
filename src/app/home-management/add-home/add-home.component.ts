@@ -108,15 +108,15 @@ export class AddHomeComponent implements OnInit {
     });
   }
 
-  handleFileChoose(files: FileList) {
+  handleFileChoose(event) {
     console.log(this.filePath);
-    this.fileUpload = files.item(0);
+    this.fileUpload = event.target.files.item(0);
     const reader = new FileReader();
-    reader.readAsDataURL(files[0]);
-    reader.onload = (event) => {
-      this.filePath = reader.result;
-
+    reader.onload = (event2: any) => {
+      this.filePath = event2.target.result;
     };
+    reader.readAsDataURL(this.fileUpload);
+
   }
 
   onSelectFile(event) {
@@ -125,9 +125,9 @@ export class AddHomeComponent implements OnInit {
       for (let i = 0; i < filesAmount; i++) {
         const reader = new FileReader();
 
-        reader.onload = (event: any) => {
+        reader.onload = (event2: any) => {
           console.log(this.urls);
-          this.urls.push(event.target.result);
+          this.urls.push(event2.target.result);
         };
         reader.readAsDataURL(event.target.files[i]);
       }
@@ -281,9 +281,6 @@ export class AddHomeComponent implements OnInit {
     };
     console.log(home);
     this.homeService.addHome(home).subscribe(next => {
-      const form = new FormData();
-      form.append('file', this.fileUpload);
-      console.log('success');
       this.startUploadFile(this.fileUrl, next);
       for (const fileUp of this.fileList) {
         this.startUpload(fileUp, next);

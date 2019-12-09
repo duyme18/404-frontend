@@ -70,7 +70,7 @@
           <div class="form-group">
             <label for="file">Image</label>
             <input type="file" class="form-control" id="file" name="file" formControlName="file"
-                   (change)="handleFileChoose($event.target.files);addFileUrl($event)">
+                   (change)="addFileUrl($event); handleFileChoose($event)">
           </div>
           <img src="{{filePath}}" alt="" style="width: 100px; height: 100px">
           <div class="form-group">
