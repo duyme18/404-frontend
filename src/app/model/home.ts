@@ -9,7 +9,7 @@ export interface Home {
   address: string;
   bedroomQuantity: number;
   bathroomQuantity: number;
-  price: number;
+  price: string;
   file: string;
   description: string;
   latitude: string;

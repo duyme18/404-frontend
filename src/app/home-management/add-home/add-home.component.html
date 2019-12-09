@@ -34,7 +34,6 @@
     <td>{{ home.price }}</td>
     <td><img src="{{home.file}}" width="150px" height="150px"></td>
     <td>{{ home.description.slice(0, 100) }}...<a [routerLink]="'/home/' + home.id + '/' + home.name">Read more</a></td>
-
     <td>{{ home.latitude }}</td>
     <td>{{ home.longitude }}</td>
     <td>{{ home.categoryHome.name }}</td>
@@ -71,7 +70,7 @@
           <div class="form-group">
             <label for="file">Image</label>
             <input type="file" class="form-control" id="file" name="file" formControlName="file"
-                   (change)="addFileUrl($event)">
+                   (change)="handleFileChoose($event.target.files);addFileUrl($event)">
           </div>
           <img src="{{filePath}}" alt="" style="width: 100px; height: 100px">
           <div class="form-group">
@@ -96,14 +95,14 @@
             <label for="file1">Images</label>
             <input type="file" class="form-control" id="file1" name="file1" formControlName="file1" multiple
                    (change)="onSelectFile($event);addFiles($event)">
-            <div *ngFor='let url of urls; index as i' >
+            <div *ngFor='let url of urls; index as i'>
               <p class="text-success"><strong>Preview #{{i + 1}}</strong></p>
               <div class="text-right">
                 <button (click)="removePreviewImage(i)" class="close text-danger">
                   X
                 </button>
               </div>
-              <img  [src]="url" style="height: 400px ; width: 100%;">
+              <img [src]="url" style="height: 400px ; width: 100%;">
               <br/>
               <hr>
             </div>

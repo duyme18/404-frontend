@@ -40,7 +40,7 @@ export class AddHomeComponent implements OnInit {
     description: new FormControl(''),
     categoryHomeId: new FormControl(''),
     categoryRoomId: new FormControl(''),
-    statusHomeId: new FormControl('')
+    statusHomeId: new FormControl(''),
   });
   private info: any;
   private filePath: any;
@@ -104,6 +104,7 @@ export class AddHomeComponent implements OnInit {
   private getHomeList() {
     this.homeService.getList().subscribe(result => {
       this.homeList = result;
+      console.log('asdf');
     });
   }
 
@@ -234,6 +235,7 @@ export class AddHomeComponent implements OnInit {
         console.log(home);
         this.homeService.updateHome(home, home.id).subscribe(next => {
           console.log('success upload 1 file');
+          this.getHomeList();
         }, error => {
           console.log('fail upload 1 file');
         });

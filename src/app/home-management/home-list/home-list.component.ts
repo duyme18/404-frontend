@@ -61,8 +61,6 @@ export class HomeListComponent implements OnInit {
       username: this.tokenStorage.getUsername(),
       id: this.tokenStorage.getUserId()
     };
-
-    console.log(this.info);
   }
 
   searchAll() {
