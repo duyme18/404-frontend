@@ -45,7 +45,6 @@ export class HomeDetailComponent implements OnInit {
   longitude: 108.1891961;
 
 
-
   constructor(private activatedRoute: ActivatedRoute,
               private domSanitizer: DomSanitizer,
               private homeService: HomeService,
@@ -92,8 +91,15 @@ export class HomeDetailComponent implements OnInit {
       this.statusHome = this.statusHome;
     });
   }
+
   mapClick(event) {
     // console.log(event);
+  }
+
+  onChoseLocation(event) {
+    this.latitude = event.coords.lat;
+    this.longitude = event.coords.lng;
+    this.locationChosen = true;
   }
 
   mapDoubleClick(event) {
