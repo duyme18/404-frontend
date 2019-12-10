@@ -1,15 +1,15 @@
 export const environment = {
   // 'https://boiling-stream-91425.herokuapp.com/api/auth/'
   production: true,
-  bookingUrl: 'https://boiling-stream-91425.herokuapp.com/api/auth',
-  userUrl: 'https://boiling-stream-91425.herokuapp.com/api/auth/',
-  categoryRoomUrl: 'https://boiling-stream-91425.herokuapp.com/api/auth/',
-  categoryHomeUrl: 'https://boiling-stream-91425.herokuapp.com/api/auth/',
-  statusHomeUrl: 'https://boiling-stream-91425.herokuapp.com/api/auth/',
-  searchAllUrl: 'https://boiling-stream-91425.herokuapp.com/api/auth/',
-  imageHomeUrl: 'https://boiling-stream-91425.herokuapp.com/api/auth',
+  bookingUrl: 'https://boiling-stream-91425.herokuapp.com/api/auth/booking',
+  userUrl: 'https://boiling-stream-91425.herokuapp.com/api/auth/user/',
+  categoryRoomUrl: 'https://boiling-stream-91425.herokuapp.com/api/auth/category-room/',
+  categoryHomeUrl: 'https://boiling-stream-91425.herokuapp.com/api/auth/category-home/',
+  statusHomeUrl: 'https://boiling-stream-91425.herokuapp.com/api/auth/status-home/',
+  searchAllUrl: 'https://boiling-stream-91425.herokuapp.com/api/auth/searchAll/',
+  imageHomeUrl: 'https://boiling-stream-91425.herokuapp.com/api/auth/imageHome',
   homeUrl: 'https://boiling-stream-91425.herokuapp.com/api/auth',
-  commentUrl: 'https://boiling-stream-91425.herokuapp.com/api/auth',
+  commentUrl: 'https://boiling-stream-91425.herokuapp.com/api/auth/comment/',
   firebase: {
     apiKey: 'AIzaSyD3Gv2FfLLjeQ3dIAdKDOXgBGduXgPvSPk',
     authDomain: 'angular-firebase-c1517.firebaseapp.com',
