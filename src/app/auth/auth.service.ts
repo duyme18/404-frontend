@@ -7,20 +7,22 @@ import {SignUpInfo} from './sigup-info';
 import {Router} from '@angular/router';
 
 import {PassForm} from '../change-pass/PassForm';
+import {environment} from '../../environments/environment.prod';
 
 const httpOptions = {
   headers: new HttpHeaders({'Content-Type': 'application/json'})
 };
 
+const apiURL = environment.apiURL;
+
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  private loginUrl = 'https://boiling-stream-91425.herokuapp.com/api/auth/signin';
-  private signupUrl = 'https://boiling-stream-91425.herokuapp.com/api/auth/signup';
+  private loginUrl = apiURL +  '/signin';
+  private signupUrl = apiURL + '/signup';
 
-  private updatePasswordUrl: 'https://boiling-stream-91425.herokuapp.com/api/auth/update-password';
-
+  private updatePasswordUrl = apiURL + '/update-password';
 
 
   constructor(private http: HttpClient) {
@@ -36,7 +38,7 @@ export class AuthService {
   }
 
   updatePassword(passwordForm: PassForm): Observable<void> {
-    return this.http.post<void>('https://boiling-stream-91425.herokuapp.com/api/auth/update-password' + '/' + passwordForm.userId , passwordForm);
+    return this.http.post<void>(this.updatePasswordUrl + '/' + passwordForm.userId, passwordForm);
   }
 
 }

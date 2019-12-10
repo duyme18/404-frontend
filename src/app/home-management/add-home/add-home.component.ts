@@ -138,6 +138,17 @@ export class AddHomeComponent implements OnInit {
     console.log(this.fileList);
     console.log(this.urls);
   }
+  addFileUrl(event3) {
+    this.fileUrl = null;
+    this.fileUrl = event3.target.files.item(0);
+    const reader = new FileReader();
+    reader.onload = (event2: any) => {
+      this.filePath = event2.target.result;
+    };
+    reader.readAsDataURL(this.fileUrl);
+    console.log(this.fileUrl);
+    console.log(this.filePath);
+  }
 
   addFiles(event) {
     this.fileList = [];
@@ -145,14 +156,10 @@ export class AddHomeComponent implements OnInit {
       this.fileList.push(event.target.files.item(i));
       console.log('file upload');
     }
+    console.log(this.fileList);
   }
 
-  addFileUrl(event) {
-    this.fileUrl = null;
-    this.fileUrl = event.target.files.item(0);
-  }
-
-  startUpload(file: File, home: Home) {
+  startUpload(file: File, home: Home, multi: boolean) {
     const metadata = {
       contentType: 'image/jpg'
     };
@@ -168,7 +175,8 @@ export class AddHomeComponent implements OnInit {
         case firebase.storage.TaskState.PAUSED: // or 'paused'
           console.log('upload is paused');
           break;
-      }
+      }  // private appFirebase = firebase.initializeApp(environment.firebase);
+
     }, errors => {
       switch (errors.message) {
         case 'storage/unauthorized':
@@ -184,64 +192,33 @@ export class AddHomeComponent implements OnInit {
     }, () => {
       fileImage.snapshot.ref.getDownloadURL().then(downloadURl => {
         console.log('file available at: ' + downloadURl);
-        this.downloadURL = downloadURl;
-        const {value} = this.fireForm;
-        value.pathFile = downloadURl;
-        value.home = home;
-        this.imageUpload.addImage(value).subscribe(success => {
-          console.log('success create new image');
-        }, error => {
-          console.log('fail to create image');
-        });
+        if (multi === true) {
+          console.log(file);
+          this.downloadURL = downloadURl;
+          const {value} = this.fireForm;
+          value.pathFile = downloadURl;
+          value.home = home;
+          this.imageUpload.addImage(value).subscribe(success => {
+            console.log('success create new image');
+          }, error => {
+            console.log('fail to create image');
+          });
+        } else {
+          console.log(file);
+          home.file = downloadURl;
+          console.log(home);
+          this.homeService.updateHome(home, home.id).subscribe(next => {
+            console.log('success upload 1 file');
+            this.getHomeList();
+          }, error => {
+            console.log('fail upload 1 file');
+          });
+        }
       });
     });
   }
 
-  startUploadFile(file: File, home: Home) {
-    const metadata = {
-      contentType: 'image/jpg'
-    };
-    const storageRef = firebase.storage().ref();
-    const fileImage = storageRef.child('image/' + file.name).put(file, metadata);
-    storageRef.child(file.name).getDownloadURL().then(url => {
-      console.log(url);
-    });
-    fileImage.on(firebase.storage.TaskEvent.STATE_CHANGED, snapshot => {
-      const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-      console.log('upload is ' + progress + ' % done');
-      switch (snapshot.state) {
-        case firebase.storage.TaskState.PAUSED: // or 'paused'
-          console.log('upload is paused');
-          break;
-      }
-    }, errors => {
-      switch (errors.message) {
-        case 'storage/unauthorized':
-          console.log('unauthorized');
-          break;
-        case 'storage/canceled':
-          console.log('cancel upload');
-          break;
-        case 'storage/unknown':
-          console.log('unknown');
-          break;
-      }
-    }, () => {
-      fileImage.snapshot.ref.getDownloadURL().then(downloadURl => {
-        console.log('file available at: ' + downloadURl);
-        home.file = this.downloadURL;
-        console.log(home);
-        this.homeService.updateHome(home, home.id).subscribe(next => {
-          console.log('success upload 1 file');
-          this.getHomeList();
-        }, error => {
-          console.log('fail upload 1 file');
-        });
-      });
-    });
-  }
-
-  saveHome(closeButton: HTMLInputElement) {
+  saveHome() {
     const {
       name,
       address,
@@ -279,15 +256,14 @@ export class AddHomeComponent implements OnInit {
     };
     console.log(home);
     this.homeService.addHome(home).subscribe(next => {
-      this.startUploadFile(this.fileUrl, next);
       for (const fileUp of this.fileList) {
-        this.startUpload(fileUp, next);
+        this.startUpload(fileUp, next, true);
       }
+      this.startUpload(this.fileUrl, next, false);
     }, error => {
       return alert('Error Add Home!!!');
     });
     console.log('Thêm thành công');
-    closeButton.click();
     this.homeForm.reset();
   }
 }

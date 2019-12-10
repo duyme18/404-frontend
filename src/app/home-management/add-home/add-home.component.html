@@ -70,7 +70,7 @@
           <div class="form-group">
             <label for="file">Image</label>
             <input type="file" class="form-control" id="file" name="file" formControlName="file"
-                   (change)="addFileUrl($event); handleFileChoose($event)">
+                   (change)="addFileUrl($event)">
           </div>
           <img src="{{filePath}}" alt="" style="width: 100px; height: 100px">
           <div class="form-group">
@@ -147,8 +147,8 @@
         </form>
       </div>
       <div class="modal-footer">
-        <button #closeModalRef type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" (click)="saveHome(closeModalRef)">Save changes</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="saveHome()">Save changes</button>
       </div>
     </div>
   </div>
