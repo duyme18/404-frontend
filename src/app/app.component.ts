@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {SearchService} from './services/search.service';
 import * as firebase from 'firebase';
-import {environment} from '../environments/environment';
+import {environment} from '../environments/environment.prod';
 
 @Component({
   selector: 'app-root',

@@ -4,7 +4,7 @@ import {Booking} from '../model/booking';
 import {Observable} from 'rxjs';
 import {User} from '../model/user';
 import {SearchUserByName} from '../user-manage/search-user-by-name';
-import {environment} from '../../environments/environment';
+import {environment} from '../../environments/environment.prod';
 
 const httpOptions = {
   headers: new HttpHeaders({'Content-Type': 'application/json'})

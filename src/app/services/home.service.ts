@@ -7,8 +7,7 @@ import {CategoryRoom} from '../model/category-room';
 import {StatusHome} from '../model/status-home';
 import {FileForm} from '../model/file-form';
 import {SearchHomeByAddress} from '../home-management/home-list/search-home-by-address';
-import {Booking} from '../model/booking';
-import {environment} from '../../environments/environment';
+import {environment} from '../../environments/environment.prod';
 
 @Injectable({
   providedIn: 'root'

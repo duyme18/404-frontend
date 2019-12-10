@@ -3,7 +3,7 @@ import {HttpClient} from '@angular/common/http';
 import {SearchAll} from '../home-management/home-list/search-all';
 import {Observable} from 'rxjs';
 import {Home} from '../model/home';
-import {environment} from '../../environments/environment';
+import {environment} from '../../environments/environment.prod';
 
 @Injectable({
   providedIn: 'root'

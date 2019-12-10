@@ -2,10 +2,8 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {CategoryRoom} from '../model/category-room';
 import {Observable} from 'rxjs';
-import {CategoryHome} from '../model/category-home';
-import {SearchCategoryHomeByName} from '../category/category-home/search-category-home-by-name';
 import {SearchCategoryRoomByName} from '../category/category-room/search-category-room-by-name';
-import {environment} from '../../environments/environment';
+import {environment} from '../../environments/environment.prod';
 
 @Injectable({
   providedIn: 'root'
