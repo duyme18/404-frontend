@@ -4,7 +4,6 @@ import {NgModule} from '@angular/core';
 import {AngularFireModule} from '@angular/fire';
 import {AngularFireDatabaseModule} from '@angular/fire/database';
 import {AngularFireStorageModule} from '@angular/fire/storage';
-import {environment} from '../environments/environment';
 
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
@@ -39,8 +38,9 @@ import {DropzoneDirective} from './dropzone.directive';
 import {CategoryRoomComponent} from './category/category-room/category-room.component';
 import {CategoryHomeComponent} from './category/category-home/category-home.component';
 import {StatusHomeComponent} from './status-home/status-home.component';
-import { AboutUsComponent } from './about-us/about-us.component';
-import { UserManageComponent } from './user-manage/user-manage.component';
+import {AboutUsComponent} from './about-us/about-us.component';
+import {UserManageComponent} from './user-manage/user-manage.component';
+import {environment} from '../environments/environment.prod';
 
 
 @NgModule({
