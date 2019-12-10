@@ -16,6 +16,7 @@ export class SignupComponent implements OnInit {
   id: any;
   loginInfo: AuthLoginInfo;
   info: any;
+  isLoggedIn: any;
 
   constructor(private authService: AuthService, private tokenStorage: TokenStorageService,
               private router: Router) {
