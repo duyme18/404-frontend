@@ -11,10 +11,10 @@ import {User} from '../model/user';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-  private roles: string[];
+  roles: string[];
   userList: User[] = [];
-  private authority: string;
-  private name: string;
+  authority: string;
+  name: string;
   info: any;
   homeList: Home[];
   filterHomeList: any[];

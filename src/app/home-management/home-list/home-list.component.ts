@@ -23,7 +23,7 @@ export class HomeListComponent implements OnInit {
   categoryRoomList: CategoryRoom[];
   statusHomeList: StatusHome[];
   searchAddress = '';
-  private info: any;
+  info: any;
 
   searchAllForm: FormGroup;
 

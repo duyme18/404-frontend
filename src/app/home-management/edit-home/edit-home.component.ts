@@ -41,8 +41,8 @@ export class EditHomeComponent implements OnInit {
     pathFile: [''],
     home: ['']
   });
-  private filePath: any;
-  private urls: any[] = [];
+  filePath: any;
+  urls: any[] = [];
 
 
   constructor(private route: ActivatedRoute,

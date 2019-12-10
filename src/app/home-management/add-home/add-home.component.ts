@@ -9,8 +9,6 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {TokenStorageService} from '../../auth/token-storage.service';
 import * as firebase from 'firebase';
 import {ImageHomeService} from '../../services/image-home.service';
-import {environment} from '../../../environments/environment';
-import {ImageHome} from '../../model/image-home';
 
 @Component({
   selector: 'app-add-home',
@@ -42,8 +40,8 @@ export class AddHomeComponent implements OnInit {
     categoryRoomId: new FormControl(''),
     statusHomeId: new FormControl(''),
   });
-  private info: any;
-  private filePath: any;
+  info: any;
+  filePath: any;
   urls: any[] = [];
 
   constructor(private homeService: HomeService,

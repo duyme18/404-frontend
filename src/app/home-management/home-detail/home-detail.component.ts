@@ -20,7 +20,7 @@ import {ImageHome} from '../../model/image-home';
 })
 export class HomeDetailComponent implements OnInit {
 
-  private homeId: string;
+  homeId: string;
   userId: string;
   home: Home;
   id: number;
@@ -36,10 +36,10 @@ export class HomeDetailComponent implements OnInit {
     commentInput: new FormControl('')
   });
   commentUpdate = new FormControl();
-  private commentList: IComment[] = [];
-  private idComment: number;
-  private tokenJWT: string;
-  private info: any;
+  commentList: IComment[] = [];
+  idComment: number;
+  tokenJWT: string;
+  info: any;
 
   constructor(private activatedRoute: ActivatedRoute,
               private domSanitizer: DomSanitizer,

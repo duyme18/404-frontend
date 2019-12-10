@@ -14,8 +14,8 @@ export class SignupComponent implements OnInit {
   errorMessage = '';
   roles: string[] = [];
   id: any;
-  private loginInfo: AuthLoginInfo;
-  private info: any;
+  loginInfo: AuthLoginInfo;
+  info: any;
 
   constructor(private authService: AuthService, private tokenStorage: TokenStorageService,
               private router: Router) {
