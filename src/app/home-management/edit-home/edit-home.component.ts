@@ -83,6 +83,8 @@ export class EditHomeComponent implements OnInit {
       bathroomQuantity: [''],
       price: [''],
       file: [''],
+      latitude: [''],
+      longitude: [''],
       description: [''],
       categoryHomeId: [''],
       categoryRoomId: [''],
@@ -180,6 +182,8 @@ export class EditHomeComponent implements OnInit {
       bathroomQuantity: this.home.bathroomQuantity,
       price: this.home.price,
       file: this.home.file,
+      latitude: this.home.latitude,
+      longitude: this.home.longitude,
       description: this.home.description,
       categoryHome: {
         id: this.categoryHomeId

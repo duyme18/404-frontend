@@ -24,15 +24,9 @@
       <p>{{home.description}}</p>
       <h3>Status: </h3>
       <p>{{home.statusHome.name}}</p>
-      <div class="content">
-        <agm-map [latitude]="latitude" [longitude]="longitude" (mapClick)="onChoseLocation($event)">
-          <agm-marker
-            [latitude]="latitude"
-            [longitude]="longitude"
-            *ngIf="locationChosen"></agm-marker>
-        </agm-map>
-      </div>
-
+      <agm-map [latitude]="latitude" [longitude]="longitude" (mapClick)="onChoseLocation($event)">
+        <agm-marker [latitude]="latitude" [longitude]="longitude" *ngIf="locationChosen"></agm-marker>
+      </agm-map>
     </div>
     <form>
       <div class="col-md-12 titel-icon" *ngIf="home">

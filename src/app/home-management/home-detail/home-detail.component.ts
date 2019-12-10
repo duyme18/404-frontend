@@ -29,6 +29,8 @@ export class HomeDetailComponent implements OnInit {
   categoryHome: CategoryHome;
   categoryRoom: CategoryRoom;
   statusHome: StatusHome;
+  latitude: 105.77876;
+  longitude: 105.77876;
   locationChosen: boolean;
   formCommentCreate = new FormGroup({
     commentInput: new FormControl('')
@@ -38,12 +40,6 @@ export class HomeDetailComponent implements OnInit {
   idComment: number;
   tokenJWT: string;
   info: any;
-  lat: number;
-  lng: number;
-  zoom: number;
-  latitude: 16.0471659;
-  longitude: 108.1891961;
-
 
   constructor(private activatedRoute: ActivatedRoute,
               private domSanitizer: DomSanitizer,
@@ -61,9 +57,6 @@ export class HomeDetailComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.lat = 16.0471659;
-    this.lng = 108.1891961;
-    this.zoom = 15;
     this.imageHome.getAllByHome(this.id).subscribe(next => {
       this.iFile = next;
       console.log('success get file by home');
@@ -92,19 +85,12 @@ export class HomeDetailComponent implements OnInit {
     });
   }
 
-  mapClick(event) {
-    // console.log(event);
-  }
 
   onChoseLocation(event) {
     this.latitude = event.coords.lat;
     this.longitude = event.coords.lng;
     this.locationChosen = true;
-  }
-
-  mapDoubleClick(event) {
-    this.lat = event.coords.lat;
-    this.lng = event.coords.lng;
+    console.log(event);
   }
 
   getHomeId() {
