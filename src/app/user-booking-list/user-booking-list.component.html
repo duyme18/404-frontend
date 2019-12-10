@@ -16,7 +16,7 @@
     <td>{{ booking.checkin }}</td>
     <td>{{ booking.checkout }}</td>
     <td>
-      <button class="btn-primary" (click)="getAllHomeByBookingId(booking.id)">Home Detail</button>
+      <button type="button" class="btn btn-primary" (click)="getAllHomeByBookingId(booking.id)">Home Detail</button>
     </td>
     <td>
       <button type="button" class="btn btn-primary" data-dismiss="modal" (click)=" deleteBooking(i)
