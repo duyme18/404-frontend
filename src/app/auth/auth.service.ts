@@ -16,10 +16,10 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class AuthService {
-  private loginUrl = 'http://localhost:8080/api/auth/signin';
-  private signupUrl = 'http://localhost:8080/api/auth/signup';
+  private loginUrl = 'https://boiling-stream-91425.herokuapp.com/api/auth/signin';
+  private signupUrl = 'https://boiling-stream-91425.herokuapp.com/api/auth/signup';
 
-  private updatePasswordUrl: 'http://localhost:8080/api/auth/update-password';
+  private updatePasswordUrl: 'https://boiling-stream-91425.herokuapp.com/api/auth/update-password';
 
 
 
@@ -36,7 +36,7 @@ export class AuthService {
   }
 
   updatePassword(passwordForm: PassForm): Observable<void> {
-    return this.http.post<void>('http://localhost:8080/api/auth/update-password' + '/' + passwordForm.userId , passwordForm);
+    return this.http.post<void>('https://boiling-stream-91425.herokuapp.com/api/auth/update-password' + '/' + passwordForm.userId , passwordForm);
   }
 
 }
