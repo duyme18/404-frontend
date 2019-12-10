@@ -12,8 +12,6 @@ export interface Home {
   price: string;
   file: string;
   description: string;
-  latitude: string;
-  longitude: string;
   categoryHome?: CategoryHome;
   categoryRoom?: CategoryRoom;
   statusHome?: StatusHome;
