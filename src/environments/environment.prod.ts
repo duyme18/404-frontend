@@ -1,8 +1,8 @@
 export const environment = {
   // 'https://boiling-stream-91425.herokuapp.com/api/auth/'
   production: true,
-  apiURL: 'http://localhost:8080/api/auth',
-  // apiURL: 'https://boiling-stream-91425.herokuapp.com/api/auth',
+  // apiURL: 'http://localhost:8080/api/auth',
+  apiURL: 'https://boiling-stream-91425.herokuapp.com/api/auth',
   bookingUrl: 'http://localhost:8080/api/auth/booking',
   userUrl: 'http://localhost:8080/api/auth/user/',
   categoryRoomUrl:  'http://localhost:8080/api/auth/category-room/',
