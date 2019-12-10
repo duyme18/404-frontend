@@ -1,1 +1,11 @@
-<p>google-map works!</p>
+<div class="content">
+  <agm-map
+    [latitude]="lat"
+    [longitude]="lng"
+    [zoom]="zoom"
+    (mapTypeIdChange)="mapClick($event)"
+    (mapDblClick)="mapDoubleClick($event)"
+    [disableDoubleClickZoom]="true">
+    <agm-marker [latitude]="this.lat" [longitude]="this.lng" [markerDraggable]="true" ></agm-marker>
+  </agm-map>
+</div>

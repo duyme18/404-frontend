@@ -85,7 +85,7 @@ import {environment} from '../environments/environment.prod';
     NgbModule,
 
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyBL1psdbu18dDFFpDlMOuASQl-65r72vJE'
+      apiKey: 'AIzaSyBkkPHziuQCtilx0bQUEwjwJu2Xa3g--g0'
     }),
   ],
   providers: [Permissions, CanActivateTeam, NotActivateTeam, IsAdmin],

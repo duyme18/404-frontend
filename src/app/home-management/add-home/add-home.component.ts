@@ -33,8 +33,6 @@ export class AddHomeComponent implements OnInit {
     bathroomQuantity: new FormControl(''),
     price: new FormControl(''),
     file: new FormControl(''),
-    latitude: new FormControl(''),
-    longitude: new FormControl(''),
     description: new FormControl(''),
     categoryHomeId: new FormControl(''),
     categoryRoomId: new FormControl(''),

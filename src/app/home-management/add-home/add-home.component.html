@@ -15,8 +15,6 @@
     <th scope="col">Price</th>
     <th scope="col">Image</th>
     <th scope="col">Description</th>
-    <th scope="col">Latitude</th>
-    <th scope="col">Longitude</th>
     <th scope="col">Category Home</th>
     <th scope="col">Category Room</th>
     <th scope="col">Status</th>
@@ -34,8 +32,6 @@
     <td>{{ home.price }}</td>
     <td><img src="{{home.file}}" width="150px" height="150px"></td>
     <td>{{ home.description.slice(0, 100) }}...<a [routerLink]="'/home/' + home.id + '/' + home.name">Read more</a></td>
-    <td>{{ home.latitude }}</td>
-    <td>{{ home.longitude }}</td>
     <td>{{ home.categoryHome.name }}</td>
     <td>{{ home.categoryRoom.name }}</td>
     <td>{{ home.statusHome.name }}</td>
@@ -112,14 +108,6 @@
             <label for="description">Description</label>
             <textarea type="email" class="form-control" id="description" name="description"
                       formControlName="description"></textarea>
-          </div>
-          <div class="form-group">
-            <label for="latitude">Latitude</label>
-            <input type="email" class="form-control" id="latitude" name="latitude" formControlName="latitude">
-          </div>
-          <div class="form-group">
-            <label for="longitude">Longitude</label>
-            <input type="email" class="form-control" id="longitude" name="longitude" formControlName="longitude">
           </div>
           <div class="form-group">
             <label for="exampleFormControlSelect1">Category Home</label>
