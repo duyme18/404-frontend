@@ -41,6 +41,9 @@ export class HomeDetailComponent implements OnInit {
   lat: number;
   lng: number;
   zoom: number;
+  latitude: 16.0471659;
+  longitude: 108.1891961;
+
 
 
   constructor(private activatedRoute: ActivatedRoute,

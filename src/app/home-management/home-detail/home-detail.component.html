@@ -25,14 +25,11 @@
       <h3>Status: </h3>
       <p>{{home.statusHome.name}}</p>
       <div class="content">
-        <agm-map
-          [latitude]="lat"
-          [longitude]="lng"
-          [zoom]="zoom"
-          (mapTypeIdChange)="mapClick($event)"
-          (mapDblClick)="mapDoubleClick($event)"
-          [disableDoubleClickZoom]="true">
-          <agm-marker [latitude]="this.lat" [longitude]="this.lng" [markerDraggable]="true" ></agm-marker>
+        <agm-map [latitude]="latitude" [longitude]="longitude" (mapClick)="onChoseLocation($event)">
+          <agm-marker
+            [latitude]="latitude"
+            [longitude]="longitude"
+            *ngIf="locationChosen"></agm-marker>
         </agm-map>
       </div>
 
