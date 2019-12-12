@@ -17,10 +17,14 @@ import {CategoryHomeComponent} from './category/category-home/category-home.comp
 import {CategoryRoomComponent} from './category/category-room/category-room.component';
 import {StatusHomeComponent} from './status-home/status-home.component';
 import {UserManageComponent} from './user-manage/user-manage.component';
+import {AboutUsComponent} from './about-us/about-us.component';
 
 const routes: Routes = [
   {
     path: 'home-list', component: HomeListComponent
+  },
+  {
+    path: 'about-us', component: AboutUsComponent
   },
   {
     path: 'add-home', component: AddHomeComponent, canActivate: [IsAdmin]

@@ -50,12 +50,13 @@
   </div>
   <div class="form-group">
     <label for="description">Description</label>
-    <textarea type="text" class="form-control" id="description" name="description" [(ngModel)]="home.description"></textarea>
+    <textarea type="text" class="form-control" id="description" name="description"
+              [(ngModel)]="home.description"></textarea>
   </div>
   <div class="form-group">
     <label for="exampleFormControlSelect1">Category Home</label>
     <select class="form-control" id="exampleFormControlSelect1" name="categoryHome" [(ngModel)]="categoryHomeId">
-      <option value="">{{home.categoryHome.name}}</option>
+      <option value=""></option>
       <option *ngFor="let categoryHome of categoryHomeList" value="{{ categoryHome.id }}">
         {{ categoryHome.name }}</option>
     </select>

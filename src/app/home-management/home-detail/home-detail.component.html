@@ -1,7 +1,11 @@
 <app-header></app-header>
 <div class="container">
-  <div class="imageFiles" *ngFor="let file of iFile">
-    <img class="filesImage" style="float:left" src="{{file.pathFile}}" [routerLink]="" width="250px" height="250px">
+  <div class="gallery">
+    <div class="imageFiles" *ngFor="let file of iFile">
+      <a target="_blank" href="{{file.pathFile}}">
+        <img class="filesImage" style="float:left" src="{{file.pathFile}}" [routerLink]="" width="250px" height="250px">
+      </a>
+    </div>
   </div>
 </div>
 
@@ -38,18 +42,20 @@
       </div>
     </div>
     <form>
-      <div class="col-md-12 titel-icon" *ngIf="home">
-        <h6>STARTING ROOM FROM</h6>
-        <p class="price">
-          <span class="amout">${{home.price}}</span> per night
-        </p>
-        <hr/>
-      </div>
-      <div class="col-md-12 col-sm-12 btn-a" style="margin-top:20px;margin-bottom:20px">
-        <button
-          class="hvr-sweep-to-top tbn-hover" (click)="bookingButton()"><i class="fa fa-calendar"></i>
-          Book Now
-        </button>
+      <div *ngIf="home.statusHome.id==2">
+        <div class="col-md-12 titel-icon" *ngIf="home">
+          <h6>STARTING ROOM FROM</h6>
+          <p class="price">
+            <span class="amout">${{home.price}}</span> per night
+          </p>
+          <hr/>
+        </div>
+        <div class="col-md-12 col-sm-12 btn-a" style="margin-top:20px;margin-bottom:20px">
+          <button
+            class="hvr-sweep-to-top tbn-hover" (click)="bookingButton()"><i class="fa fa-calendar"></i>
+            Book Now
+          </button>
+        </div>
       </div>
     </form>
   </div>
