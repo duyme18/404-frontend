@@ -33,16 +33,19 @@
 
   <br>
   <h1 class="text-center">Homes List</h1>
+  <br>
   <div class="row">
-    <div class="col-3" *ngFor="let home of homeList; index as idx">
-      <div *ngIf="home.statusHome.id ==2" class="card" style="width: 18rem;"
-           [routerLink]="'/home/' + home.id + '/' + home.name ">
-        <img src="{{home.file}}" width="150px" height="200px"
-             class="card-img-top border-radius"
-             alt="...">
-        <div class="card-body text-center">
-          <p class="card-text">{{ home.name }}</p>
-          <p class="card-text">${{ home.price }}/night</p>
+    <div *ngFor="let home of homeList; index as idx">
+      <div class="col-3" *ngIf="home.statusHome.id == 2">
+        <div class="card" style="width: 18rem;"
+             [routerLink]="'/home/' + home.id + '/' + home.name ">
+          <img src="{{home.file}}" width="150px" height="200px"
+               class="card-img-top border-radius"
+               alt="...">
+          <div class="card-body text-center">
+            <p class="card-text">{{ home.name }}</p>
+            <p class="card-text">${{ home.price }}/night</p>
+          </div>
         </div>
       </div>
     </div>

@@ -71,8 +71,6 @@ export class AddHomeComponent implements OnInit {
       role: this.token.getAuthorities()
     };
 
-    // console.log(this.info);
-
     this.getHomeList();
 
     this.homeService.getCategoryHomeList().subscribe(result => {
@@ -104,23 +102,11 @@ export class AddHomeComponent implements OnInit {
     });
   }
 
-  handleFileChoose(event) {
-    console.log(this.filePath);
-    this.fileUpload = event.target.files.item(0);
-    const reader = new FileReader();
-    reader.onload = (event2: any) => {
-      this.filePath = event2.target.result;
-    };
-    reader.readAsDataURL(this.fileUpload);
-
-  }
-
   onSelectFile(event) {
     if (event.target.files && event.target.files[0]) {
       const filesAmount = event.target.files.length;
       for (let i = 0; i < filesAmount; i++) {
         const reader = new FileReader();
-
         reader.onload = (event2: any) => {
           console.log(this.urls);
           this.urls.push(event2.target.result);
@@ -136,6 +122,7 @@ export class AddHomeComponent implements OnInit {
     console.log(this.fileList);
     console.log(this.urls);
   }
+
   addFileUrl(event3) {
     this.fileUrl = null;
     this.fileUrl = event3.target.files.item(0);
