@@ -5,7 +5,7 @@ import {CategoryRoom} from '../../model/category-room';
 import {StatusHome} from '../../model/status-home';
 import {FormBuilder, FormControl, FormGroup} from '@angular/forms';
 import {HomeService} from '../../services/home.service';
-import {SearchHomeByAddress} from './search-home-by-address';
+import {SearchHomeByAddress} from '../../model/search-home-by-address';
 import {TokenStorageService} from '../../auth/token-storage.service';
 import {SearchAllService} from '../../services/search-all.service';
 import {ImageHomeService} from '../../services/image-home.service';

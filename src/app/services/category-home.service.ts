@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {CategoryHome} from '../model/category-home';
 import {Observable} from 'rxjs';
-import {SearchCategoryHomeByName} from '../category/category-home/search-category-home-by-name';
+import {SearchCategoryHomeByName} from '../model/search-category-home-by-name';
 import {Home} from '../model/home';
 import {environment} from '../../environments/environment.prod';
 

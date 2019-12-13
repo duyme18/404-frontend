@@ -4,7 +4,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {CategoryHomeService} from '../../services/category-home.service';
 import {CategoryHome} from '../../model/category-home';
 import {Home} from '../../model/home';
-import {SearchCategoryHomeByName} from './search-category-home-by-name';
+import {SearchCategoryHomeByName} from '../../model/search-category-home-by-name';
 
 @Component({
   selector: 'app-category-home',

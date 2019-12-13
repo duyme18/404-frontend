@@ -1,10 +1,13 @@
 <app-header></app-header>
 <div class="container">
-  <div class="gallery">
-    <div class="imageFiles" *ngFor="let file of iFile">
-      <a target="_blank" href="{{file.pathFile}}">
-        <img class="filesImage" style="float:left" src="{{file.pathFile}}" [routerLink]="" width="250px" height="250px">
-      </a>
+  <div class="imageFiles" *ngFor="let file of iFile">
+    <img class="filesImage" src="{{file.pathFile}}" style="float:left;width: 250px;height:250px;cursor:zoom-in"
+         onclick="document.getElementById('modal01').style.display='block'" (click)="onClickFile(file.pathFile)">
+  </div>
+  <div id="modal01" class="w3-modal" onclick="this.style.display='none'">
+    <span class="w3-button w3-hover-red w3-xlarge w3-display-topright">&times;</span>
+    <div class="w3-modal-content w3-animate-zoom">
+      <img [src]="showFile" style="width:100%">
     </div>
   </div>
 </div>

@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {SearchAll} from '../home-management/home-list/search-all';
+import {SearchAll} from '../model/search-all';
 import {Observable} from 'rxjs';
 import {Home} from '../model/home';
 import {environment} from '../../environments/environment.prod';

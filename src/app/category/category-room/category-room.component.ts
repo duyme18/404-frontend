@@ -3,7 +3,7 @@ import {FormBuilder, FormControl, FormGroup} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
 import {CategoryRoomService} from '../../services/category-room.service';
 import {CategoryRoom} from '../../model/category-room';
-import {SearchCategoryHomeByName} from '../category-home/search-category-home-by-name';
+import {SearchCategoryHomeByName} from '../../model/search-category-home-by-name';
 
 @Component({
   selector: 'app-category-room',

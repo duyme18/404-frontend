@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {CategoryRoom} from '../model/category-room';
 import {Observable} from 'rxjs';
-import {SearchCategoryRoomByName} from '../category/category-room/search-category-room-by-name';
+import {SearchCategoryRoomByName} from '../model/search-category-room-by-name';
 import {environment} from '../../environments/environment.prod';
 
 @Injectable({

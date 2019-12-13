@@ -6,7 +6,7 @@ import {CategoryHome} from '../model/category-home';
 import {CategoryRoom} from '../model/category-room';
 import {StatusHome} from '../model/status-home';
 import {FileForm} from '../model/file-form';
-import {SearchHomeByAddress} from '../home-management/home-list/search-home-by-address';
+import {SearchHomeByAddress} from '../model/search-home-by-address';
 import {environment} from '../../environments/environment.prod';
 
 @Injectable({

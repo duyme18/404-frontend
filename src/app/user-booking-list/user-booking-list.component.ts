@@ -30,7 +30,6 @@ export class UserBookingListComponent implements OnInit {
 
   ngOnInit() {
     this.getBookingList();
-    // this.getListBooking();
 
     const id = +this.route.snapshot.paramMap.get('id');
     this.bookingService.findBookingById(id).subscribe(next => {
@@ -49,7 +48,7 @@ export class UserBookingListComponent implements OnInit {
   getAllHomeByBookingId(id: number) {
     this.homeService.getAllHomeByBookingId(id).subscribe(result => {
       this.home = result;
-      this.router.navigateByUrl('/home/' + this.home[0].id + '/' + this.home[0].name).then( success => {
+      this.router.navigateByUrl('/home/' + this.home[0].id + '/' + this.home[0].name).then(success => {
         console.log('success to find home by booking');
       });
     }, error => {
@@ -72,21 +71,17 @@ export class UserBookingListComponent implements OnInit {
   deleteBooking(i) {
     const booking = this.listBooking[i];
     this.homeService.getAllHomeByBookingId(booking.id).subscribe(next => {
-      this.home = next;
+      this.home = next
       console.log(this.home[0]);
       this.home[0].statusHome.id = '2';
       this.home[0].booking = null;
       this.homeService.updateHome(this.home[0], this.home[0].id).subscribe(result2 => {
-        console.log('success');
         this.bookingService.deleteBookingById(booking.id).subscribe(() => {
-          console.log('success to delete booking');
           this.getBookingList();
         });
       }, error => {
         this.bookingService.deleteBookingById(booking.id).subscribe(() => {
-          console.log('success to delete booking');
         });
-        console.log('fail to update home');
       });
     });
   }

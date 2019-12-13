@@ -29,6 +29,7 @@ export class HomeDetailComponent implements OnInit {
   categoryHome: CategoryHome;
   categoryRoom: CategoryRoom;
   statusHome: StatusHome;
+  showFile: string;
   locationChosen: boolean;
   formCommentCreate = new FormGroup({
     commentInput: new FormControl('')
@@ -88,6 +89,11 @@ export class HomeDetailComponent implements OnInit {
       this.statusHome = this.statusHome;
     });
   }
+
+  onClickFile(pathFile: string) {
+    this.showFile = pathFile;
+  }
+
   mapClick(event) {
     // console.log(event);
   }
